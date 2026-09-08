@@ -1,0 +1,9 @@
+# 数据与规范文件需要维护者复核
+/data/                      @awesome-ai-tool/maintainers
+/docs/                      @awesome-ai-tool/maintainers
+/src/data/                  @awesome-ai-tool/maintainers
+/src/types/                 @awesome-ai-tool/maintainers
+/scripts/                   @awesome-ai-tool/maintainers
+/.github/                   @awesome-ai-tool/maintainers
+/CONTRIBUTING.md            @awesome-ai-tool/maintainers
+/SECURITY.md                @awesome-ai-tool/maintainers

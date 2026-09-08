@@ -1,0 +1,5 @@
+# 生成文件（diff 折叠 + 不计入语言统计）
+src/data/icons.generated.ts linguist-generated=true -diff
+src/data/search-index.generated.ts linguist-generated=true -diff
+
+* text=auto eol=lf

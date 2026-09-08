@@ -1,0 +1,161 @@
+[
+  {
+    "iconId": "OpenAI",
+    "nameCn": "OpenAI ChatGPT",
+    "category": "chat",
+    "tags": ["chatbot", "llm", "api"],
+    "description": "GPT 系列模型的创造者，提供 ChatGPT 与 OpenAI API 服务。",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "iconId": "Claude",
+    "nameCn": "Claude",
+    "category": "chat",
+    "tags": ["chatbot", "llm", "long-context"],
+    "description": "Anthropic 出品的对话助手，长文本理解与代码能力出色。",
+    "featured": true,
+    "order": 2
+  },
+  {
+    "iconId": "Gemini",
+    "nameCn": "Google Gemini",
+    "category": "chat",
+    "tags": ["chatbot", "multimodal"],
+    "description": "Google 的多模态大模型，深度集成搜索与 Workspace。",
+    "featured": true,
+    "order": 3
+  },
+  {
+    "iconId": "DeepSeek",
+    "nameCn": "DeepSeek 深度求索",
+    "category": "chat",
+    "tags": ["chatbot", "llm", "open-source", "chinese"],
+    "description": "国产开源大模型，推理与代码能力突出，性价比极高。",
+    "featured": true,
+    "order": 4
+  },
+  {
+    "iconId": "Qwen",
+    "nameCn": "通义千问",
+    "category": "chat",
+    "tags": ["chatbot", "llm", "chinese", "open-source"],
+    "description": "阿里通义千问大模型，开源生态完善，中文表现优秀。",
+    "featured": true,
+    "order": 5
+  },
+  {
+    "iconId": "Doubao",
+    "nameCn": "豆包",
+    "category": "chat",
+    "tags": ["chatbot", "chinese"],
+    "description": "字节跳动推出的 AI 对话助手，支持多场景插件。",
+    "featured": true,
+    "order": 6
+  },
+  {
+    "iconId": "Kimi",
+    "nameCn": "Kimi",
+    "category": "chat",
+    "tags": ["chatbot", "chinese", "long-context"],
+    "description": "月之暗面出品的对话助手，以超长上下文阅读见长。",
+    "featured": true,
+    "order": 7
+  },
+  {
+    "iconId": "Grok",
+    "nameCn": "Grok",
+    "category": "chat",
+    "tags": ["chatbot", "llm"],
+    "description": "xAI 推出的对话助手，可实时接入 X 平台公开信息。",
+    "order": 8
+  },
+  {
+    "iconId": "Yuanbao",
+    "nameCn": "腾讯元宝",
+    "category": "chat",
+    "tags": ["chatbot", "chinese"],
+    "description": "腾讯推出的 AI 助手，支持多模型切换与文件解析。",
+    "order": 9
+  },
+  {
+    "iconId": "Wenxin",
+    "nameCn": "文心一言",
+    "category": "chat",
+    "tags": ["chatbot", "chinese"],
+    "description": "百度文心大模型旗下的中文对话与创作助手。",
+    "order": 10
+  },
+  {
+    "iconId": "Qingyan",
+    "nameCn": "智谱清言",
+    "category": "chat",
+    "tags": ["chatbot", "chinese"],
+    "description": "智谱 AI 推出的中文对话助手，支持 GLM 系列模型。",
+    "order": 11
+  },
+  {
+    "iconId": "Hunyuan",
+    "nameCn": "腾讯混元",
+    "category": "chat",
+    "tags": ["llm", "chinese"],
+    "description": "腾讯自研的混元大模型，覆盖对话、图像与代码。",
+    "order": 12
+  },
+  {
+    "iconId": "Spark",
+    "nameCn": "讯飞星火",
+    "category": "chat",
+    "tags": ["llm", "chinese"],
+    "description": "科大讯飞星火大模型，语音与中文理解能力突出。",
+    "order": 13
+  },
+  {
+    "iconId": "Copilot",
+    "nameCn": "Microsoft Copilot",
+    "category": "chat",
+    "tags": ["chatbot", "productivity"],
+    "description": "微软内置的 AI 助手，深度集成 Windows 与 Office。",
+    "order": 14
+  },
+  {
+    "iconId": "Poe",
+    "nameCn": "Poe",
+    "category": "chat",
+    "tags": ["chatbot", "aggregator"],
+    "description": "Quora 出品的模型聚合对话平台，一个入口多家模型。",
+    "order": 15
+  },
+  {
+    "iconId": "Monica",
+    "nameCn": "Monica",
+    "category": "chat",
+    "tags": ["chatbot", "browser-extension"],
+    "description": "浏览器侧边 AI 助手，支持划词解释、翻译与写作。",
+    "order": 16
+  },
+  {
+    "iconId": "MetaAI",
+    "nameCn": "Meta AI",
+    "category": "chat",
+    "tags": ["chatbot", "llm"],
+    "description": "Meta 推出的对话助手，内置于 WhatsApp 与 Instagram。",
+    "order": 17
+  },
+  {
+    "iconId": "LongCat",
+    "nameCn": "LongCat",
+    "category": "chat",
+    "tags": ["chatbot", "chinese"],
+    "description": "美团推出的 AI 对话助手，支持长文本与工具调用。",
+    "order": 18
+  },
+  {
+    "iconId": "Pi",
+    "nameCn": "Pi",
+    "category": "chat",
+    "tags": ["chatbot", "voice"],
+    "description": "Inflection 出品的陪伴式对话助手，支持语音交流。",
+    "order": 19
+  }
+]

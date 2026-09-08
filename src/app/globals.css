@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 22% 97%;
+    --foreground: 240 13% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 13% 12%;
+    --muted: 240 12% 93%;
+    --muted-foreground: 240 6% 40%;
+    --primary: 249 92% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 247 100% 74%;
+    --accent: 177 100% 42%;
+    --accent-foreground: 240 20% 10%;
+    --border: 240 12% 88%;
+    --input: 240 12% 86%;
+    --ring: 249 92% 65%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --glass: 240 20% 100%;
+    --radius: 0.85rem;
+  }
+
+  .dark {
+    --background: 240 20% 5%;
+    --foreground: 240 20% 96%;
+    --card: 240 18% 9%;
+    --card-foreground: 240 20% 96%;
+    --muted: 240 14% 14%;
+    --muted-foreground: 240 9% 66%;
+    --primary: 249 92% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 247 100% 74%;
+    --accent: 177 100% 42%;
+    --accent-foreground: 240 20% 6%;
+    --border: 240 12% 18%;
+    --input: 240 12% 20%;
+    --ring: 249 92% 65%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --glass: 240 18% 14%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings:
+      'cv11' on,
+      'ss01' on;
+  }
+
+  ::selection {
+    @apply bg-primary/30;
+  }
+}
+
+@layer components {
+  /* 玻璃卡片：暗色毛玻璃 + 1px 内发光描边 */
+  .glass-card {
+    @apply relative rounded-2xl border border-white/10 bg-glass/60 shadow-card backdrop-blur-xl dark:border-white/10 dark:bg-glass/40;
+  }
+
+  .glass-card::after {
+    content: '';
+    @apply pointer-events-none absolute inset-0 rounded-2xl;
+    box-shadow: inset 0 1px 0 0 hsl(0 0% 100% / 0.08);
+  }
+
+  /* 顶部渐变文字 */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-primary-soft to-accent bg-clip-text text-transparent;
+  }
+
+  /* 细网格纹理 */
+  .grid-texture {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%);
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

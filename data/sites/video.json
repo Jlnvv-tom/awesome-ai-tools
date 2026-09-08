@@ -1,0 +1,135 @@
+[
+  {
+    "iconId": "Runway",
+    "nameCn": "Runway",
+    "category": "video",
+    "tags": ["video-generation", "editing"],
+    "description": "Gen 系列视频生成模型，提供网页端完整创作套件。",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "iconId": "Sora",
+    "nameCn": "Sora",
+    "category": "video",
+    "tags": ["video-generation"],
+    "description": "OpenAI 的视频生成模型，支持长时序与音画同步。",
+    "featured": true,
+    "order": 2
+  },
+  {
+    "iconId": "Kling",
+    "nameCn": "可灵",
+    "category": "video",
+    "tags": ["video-generation", "chinese"],
+    "description": "快手可灵视频大模型，物理拟真与运动控制表现突出。",
+    "featured": true,
+    "order": 3
+  },
+  {
+    "iconId": "DreamMachine",
+    "nameCn": "Luma Dream Machine",
+    "category": "video",
+    "tags": ["video-generation"],
+    "description": "Luma 的视频生成产品，几句话即可生成电影感镜头。",
+    "order": 4
+  },
+  {
+    "iconId": "Hailuo",
+    "nameCn": "海螺 AI",
+    "category": "video",
+    "tags": ["video-generation", "chinese"],
+    "description": "MiniMax 推出的视频生成与语音创作平台。",
+    "order": 5
+  },
+  {
+    "iconId": "Vidu",
+    "nameCn": "Vidu",
+    "category": "video",
+    "tags": ["video-generation", "chinese"],
+    "description": "生数科技的多模态视频生成模型，支持参考生视频。",
+    "order": 6
+  },
+  {
+    "iconId": "Pika",
+    "nameCn": "Pika",
+    "category": "video",
+    "tags": ["video-generation"],
+    "description": "主打创意特效的 AI 视频生成工具。",
+    "order": 7
+  },
+  {
+    "iconId": "PixVerse",
+    "nameCn": "PixVerse",
+    "category": "video",
+    "tags": ["video-generation"],
+    "description": "免费额度友好的 AI 视频生成平台，模板玩法丰富。",
+    "order": 8
+  },
+  {
+    "iconId": "Suno",
+    "nameCn": "Suno",
+    "category": "video",
+    "tags": ["music", "audio"],
+    "description": "输入歌词即可生成完整人声歌曲的 AI 音乐平台。",
+    "featured": true,
+    "order": 9
+  },
+  {
+    "iconId": "ElevenLabs",
+    "nameCn": "ElevenLabs",
+    "category": "video",
+    "tags": ["tts", "voice", "api"],
+    "description": "拟真度极高的语音合成平台，支持声音克隆与多语种。",
+    "featured": true,
+    "order": 10
+  },
+  {
+    "iconId": "Udio",
+    "nameCn": "Udio",
+    "category": "video",
+    "tags": ["music"],
+    "description": "AI 音乐生成平台，擅长风格化编曲与人声演绎。",
+    "order": 11
+  },
+  {
+    "iconId": "FishAudio",
+    "nameCn": "Fish Audio",
+    "category": "video",
+    "tags": ["tts", "chinese", "open-source"],
+    "description": "中文语音合成与声音克隆服务，支持开源模型自部署。",
+    "order": 12
+  },
+  {
+    "iconId": "CapCut",
+    "nameCn": "剪映 CapCut",
+    "category": "video",
+    "tags": ["editing", "chinese"],
+    "description": "字节跳动的视频剪辑工具，内置 AI 字幕与成片能力。",
+    "order": 13
+  },
+  {
+    "iconId": "Hedra",
+    "nameCn": "Hedra",
+    "category": "video",
+    "tags": ["avatar", "video-generation"],
+    "description": "会说话的数字人视频生成工具，口型与情绪自然。",
+    "order": 14
+  },
+  {
+    "iconId": "CogVideo",
+    "nameCn": "CogVideo",
+    "category": "video",
+    "tags": ["video-generation", "open-source", "chinese"],
+    "description": "智谱开源的视频生成模型，可在消费级显卡上推理。",
+    "order": 15
+  },
+  {
+    "iconId": "AssemblyAI",
+    "nameCn": "AssemblyAI",
+    "category": "video",
+    "tags": ["speech-to-text", "api"],
+    "description": "面向开发者的语音识别与音频理解 API 服务。",
+    "order": 16
+  }
+]

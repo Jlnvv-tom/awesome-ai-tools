@@ -1,0 +1,107 @@
+[
+  {
+    "iconId": "Perplexity",
+    "nameCn": "Perplexity",
+    "category": "search",
+    "tags": ["ai-search", "chatbot"],
+    "description": "带引用来源的 AI 搜索引擎，答案可追溯原文链接。",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "iconId": "Exa",
+    "nameCn": "Exa",
+    "category": "search",
+    "tags": ["ai-search", "api"],
+    "description": "面向 AI 应用的语义搜索 API，检索质量优于关键词匹配。",
+    "order": 2
+  },
+  {
+    "iconId": "Tavily",
+    "nameCn": "Tavily",
+    "category": "search",
+    "tags": ["ai-search", "api"],
+    "description": "为 RAG 与 Agent 场景设计的实时搜索 API。",
+    "order": 3
+  },
+  {
+    "iconId": "NotebookLM",
+    "nameCn": "NotebookLM",
+    "category": "search",
+    "tags": ["rag", "notes"],
+    "description": "Google 的文档知识助手，可生成摘要与播客式解读。",
+    "order": 4
+  },
+  {
+    "iconId": "Kagi",
+    "nameCn": "Kagi",
+    "category": "search",
+    "tags": ["ai-search", "search-engine"],
+    "description": "无广告的付费搜索引擎，支持结果自定义排序与聚焦。",
+    "order": 5
+  },
+  {
+    "iconId": "Bocha",
+    "nameCn": "博查",
+    "category": "search",
+    "tags": ["ai-search", "chinese", "api"],
+    "description": "国产 AI 搜索 API，中文网页覆盖与时新性表现良好。",
+    "order": 6
+  },
+  {
+    "iconId": "SearXNG",
+    "nameCn": "SearXNG",
+    "category": "search",
+    "tags": ["open-source", "search-engine", "self-hosted"],
+    "description": "可自托管的元搜索引擎，聚合多源结果且不追踪用户。",
+    "order": 7
+  },
+  {
+    "iconId": "Firecrawl",
+    "nameCn": "Firecrawl",
+    "category": "search",
+    "tags": ["crawler", "open-source", "api"],
+    "description": "把任意网站抓取并清洗为大模型友好的结构化数据。",
+    "order": 8
+  },
+  {
+    "iconId": "Jina",
+    "nameCn": "Jina AI",
+    "category": "search",
+    "tags": ["embedding", "open-source", "api"],
+    "description": "多模态向量与重排序模型，提供检索基础设施。",
+    "order": 9
+  },
+  {
+    "iconId": "Bing",
+    "nameCn": "Microsoft Bing",
+    "category": "search",
+    "tags": ["search-engine", "chatbot"],
+    "description": "微软搜索引擎，内置 Copilot 对话式搜索体验。",
+    "order": 10
+  },
+  {
+    "iconId": "Brave",
+    "nameCn": "Brave",
+    "category": "search",
+    "tags": ["search-engine", "browser-extension"],
+    "description": "注重隐私的浏览器与独立搜索索引，提供搜索 API。",
+    "order": 11
+  },
+  {
+    "iconId": "McpSo",
+    "nameCn": "MCP.so",
+    "category": "search",
+    "tags": ["directory", "mcp"],
+    "description": "MCP 服务器与客户端的收录目录站。",
+    "order": 12
+  },
+  {
+    "iconId": "RSSHub",
+    "nameCn": "RSSHub",
+    "category": "search",
+    "tags": ["open-source", "crawler"],
+    "description": "把任意站点内容转成 RSS 订阅源的开源项目。",
+    "order": 13
+  }
+]

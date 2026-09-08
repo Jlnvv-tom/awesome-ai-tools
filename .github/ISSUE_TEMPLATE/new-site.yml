@@ -1,0 +1,88 @@
+name: 申请收录新工具
+description: 收录一个 AI 工具（若图标库尚未收录该品牌，请先去 lobe-icons 申请图标）
+title: '[New Site] '
+labels: ['data', 'new-site']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢你推荐新工具！请尽量填全，信息越完整合并越快。
+        若该品牌在 https://lobehub.com/icons 找不到图标，请先到
+        https://github.com/lobehub/lobe-icons/issues 申请图标。
+
+  - type: input
+    id: name
+    attributes:
+      label: 工具名称
+      description: 官方英文名，例如 `Perplexity`
+      placeholder: Perplexity
+    validations:
+      required: true
+
+  - type: input
+    id: name-cn
+    attributes:
+      label: 中文名（可选）
+      placeholder: Perplexity
+
+  - type: input
+    id: url
+    attributes:
+      label: 官网地址
+      description: 必须是 https 开头，且不含 utm / ref 等追踪参数
+      placeholder: https://www.perplexity.ai
+    validations:
+      required: true
+
+  - type: input
+    id: icon-id
+    attributes:
+      label: 图标 ID
+      description: 在 https://lobehub.com/icons 上确认的 PascalCase 图标 id，例如 `Perplexity`
+      placeholder: Perplexity
+    validations:
+      required: true
+
+  - type: select
+    id: category
+    attributes:
+      label: 所属分类
+      options:
+        - chat（AI 对话助手）
+        - code（AI 编程开发）
+        - image（图像与设计）
+        - video（视频与音频）
+        - agent（Agent 与自动化）
+        - search（搜索与知识）
+        - writing（写作与办公）
+        - opensource（开源与社区）
+        - infra（云平台与基础设施）
+        - model（大模型与 API）
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 一句话简介
+      description: 10–80 字，客观陈述这个工具做什么，避免「最强 / 第一」等营销表述
+      placeholder: 带引用来源的 AI 搜索引擎，答案可追溯原文链接。
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: 标签
+      description: 从 data/tags.json 中选择，用英文逗号分隔，建议 1–4 个
+      placeholder: ai-search, chatbot
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 确认
+      options:
+        - label: 我确认该官网地址可达，且信息真实客观
+          required: true
+        - label: 我愿意按贡献指南自行提交 PR（可选，勾选后可直接改 JSON 提 PR）
+          required: false

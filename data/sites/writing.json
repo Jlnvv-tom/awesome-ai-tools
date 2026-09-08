@@ -1,0 +1,43 @@
+[
+  {
+    "iconId": "Notion",
+    "nameCn": "Notion",
+    "category": "writing",
+    "tags": ["notes", "productivity", "rag"],
+    "description": "一体化笔记与协作文档，内置 AI 写作与知识问答。",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "iconId": "Obsidian",
+    "nameCn": "Obsidian",
+    "category": "writing",
+    "tags": ["notes", "local", "productivity"],
+    "description": "本地优先的双链笔记工具，插件生态极其活跃。",
+    "order": 2
+  },
+  {
+    "iconId": "DeepL",
+    "nameCn": "DeepL",
+    "category": "writing",
+    "tags": ["translation", "api"],
+    "description": "以译文自然著称的机器翻译服务，支持文档整篇翻译。",
+    "order": 3
+  },
+  {
+    "iconId": "YouMind",
+    "nameCn": "YouMind",
+    "category": "writing",
+    "tags": ["notes", "productivity"],
+    "description": "面向创作者的 AI 资料整理与写作工作台。",
+    "order": 4
+  },
+  {
+    "iconId": "Doc2X",
+    "nameCn": "Doc2X",
+    "category": "writing",
+    "tags": ["ocr", "translation"],
+    "description": "PDF 与图片文档的解析、翻译与格式还原工具。",
+    "order": 5
+  }
+]

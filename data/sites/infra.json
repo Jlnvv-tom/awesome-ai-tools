@@ -1,0 +1,147 @@
+[
+  {
+    "iconId": "OpenRouter",
+    "nameCn": "OpenRouter",
+    "category": "infra",
+    "tags": ["aggregator", "api", "inference"],
+    "description": "统一接口接入数百个模型，自动选择可用且低价的服务商。",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "iconId": "Groq",
+    "nameCn": "Groq",
+    "category": "infra",
+    "tags": ["inference", "api"],
+    "description": "LPU 推理架构，以极低延迟著称的模型托管服务。",
+    "order": 2
+  },
+  {
+    "iconId": "Together",
+    "nameCn": "Together AI",
+    "category": "infra",
+    "tags": ["inference", "fine-tuning", "cloud"],
+    "description": "开源模型托管与微调平台，提供 GPU 集群与 Serverless。",
+    "order": 3
+  },
+  {
+    "iconId": "Fireworks",
+    "nameCn": "Fireworks AI",
+    "category": "infra",
+    "tags": ["inference", "api"],
+    "description": "高性价比的模型推理平台，支持微调与多模态模型。",
+    "order": 4
+  },
+  {
+    "iconId": "Replicate",
+    "nameCn": "Replicate",
+    "category": "infra",
+    "tags": ["inference", "api", "model-hub"],
+    "description": "一行 API 调用运行开源模型，覆盖图像、视频与语音。",
+    "order": 5
+  },
+  {
+    "iconId": "Bedrock",
+    "nameCn": "Amazon Bedrock",
+    "category": "infra",
+    "tags": ["cloud", "api"],
+    "description": "AWS 的托管模型服务，统一接入多家主流大模型。",
+    "order": 6
+  },
+  {
+    "iconId": "VertexAI",
+    "nameCn": "Vertex AI",
+    "category": "infra",
+    "tags": ["cloud", "api"],
+    "description": "Google Cloud 的一站式机器学习与模型服务平台。",
+    "order": 7
+  },
+  {
+    "iconId": "AzureAI",
+    "nameCn": "Azure AI",
+    "category": "infra",
+    "tags": ["cloud", "api"],
+    "description": "微软 Azure 的 AI 服务集合，含 OpenAI 模型托管。",
+    "order": 8
+  },
+  {
+    "iconId": "SiliconCloud",
+    "nameCn": "硅基流动 SiliconCloud",
+    "category": "infra",
+    "tags": ["inference", "chinese", "api"],
+    "description": "国产模型即服务平台，主打高性价比中文推理。",
+    "order": 9
+  },
+  {
+    "iconId": "ModelScope",
+    "nameCn": "魔搭 ModelScope",
+    "category": "infra",
+    "tags": ["model-hub", "chinese", "community"],
+    "description": "阿里开源的模型社区与数据集平台，中文模型齐全。",
+    "order": 10
+  },
+  {
+    "iconId": "AlibabaCloud",
+    "nameCn": "阿里云",
+    "category": "infra",
+    "tags": ["cloud", "chinese"],
+    "description": "阿里云百炼与 PAI 平台，提供模型训练与推理全链路。",
+    "order": 11
+  },
+  {
+    "iconId": "Volcengine",
+    "nameCn": "火山引擎",
+    "category": "infra",
+    "tags": ["cloud", "chinese"],
+    "description": "字节跳动的云与大模型服务平台，方舟系列模型入口。",
+    "order": 12
+  },
+  {
+    "iconId": "TencentCloud",
+    "nameCn": "腾讯云",
+    "category": "infra",
+    "tags": ["cloud", "chinese"],
+    "description": "腾讯云 TI 平台与混元模型服务，覆盖训练到部署。",
+    "order": 13
+  },
+  {
+    "iconId": "Cloudflare",
+    "nameCn": "Cloudflare",
+    "category": "infra",
+    "tags": ["edge", "cloud", "hosting"],
+    "description": "边缘网络与 Workers AI，可在全球节点运行推理。",
+    "order": 14
+  },
+  {
+    "iconId": "Vercel",
+    "nameCn": "Vercel",
+    "category": "infra",
+    "tags": ["hosting", "sdk", "frontend"],
+    "description": "前端托管与 AI SDK 提供方，适合快速上线 AI 应用。",
+    "order": 15
+  },
+  {
+    "iconId": "DeepInfra",
+    "nameCn": "DeepInfra",
+    "category": "infra",
+    "tags": ["inference", "api"],
+    "description": "按量付费的开源模型推理服务，兼容 OpenAI 接口。",
+    "order": 16
+  },
+  {
+    "iconId": "Novita",
+    "nameCn": "Novita",
+    "category": "infra",
+    "tags": ["inference", "cloud", "api"],
+    "description": "GPU 云与模型 API 服务，图像与语言模型均有覆盖。",
+    "order": 17
+  },
+  {
+    "iconId": "Higress",
+    "nameCn": "Higress",
+    "category": "infra",
+    "tags": ["cloud", "open-source", "chinese"],
+    "description": "阿里开源的 AI 原生网关，支持模型代理与插件编排。",
+    "order": 18
+  }
+]

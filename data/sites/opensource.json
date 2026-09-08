@@ -1,0 +1,134 @@
+[
+  {
+    "iconId": "Github",
+    "nameCn": "GitHub",
+    "category": "opensource",
+    "tags": ["community", "code-assistant"],
+    "description": "全球最大的开源代码托管平台，内置 Copilot 与 Actions。",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "iconId": "Ollama",
+    "nameCn": "Ollama",
+    "category": "opensource",
+    "tags": ["local", "inference", "open-source"],
+    "description": "一行命令在本地运行开源大模型，支持多平台与 GPU。",
+    "featured": true,
+    "order": 2
+  },
+  {
+    "iconId": "HuggingFace",
+    "nameCn": "Hugging Face",
+    "category": "opensource",
+    "tags": ["model-hub", "open-source", "community"],
+    "description": "开源模型与数据集的中央枢纽，被称为 AI 界的 GitHub。",
+    "featured": true,
+    "order": 3
+  },
+  {
+    "iconId": "OpenWebUI",
+    "nameCn": "Open WebUI",
+    "category": "opensource",
+    "tags": ["self-hosted", "open-source", "chatbot"],
+    "description": "可自托管的 AI 对话前端，兼容 Ollama 与 OpenAI 接口。",
+    "featured": true,
+    "order": 4
+  },
+  {
+    "iconId": "LmStudio",
+    "nameCn": "LM Studio",
+    "category": "opensource",
+    "tags": ["local", "desktop", "inference"],
+    "description": "桌面端本地大模型管理工具，内置模型市场与对话界面。",
+    "order": 5
+  },
+  {
+    "iconId": "LobeHub",
+    "nameCn": "LobeHub",
+    "category": "opensource",
+    "tags": ["open-source", "chatbot", "chinese"],
+    "description": "开源的多模型聊天客户端，插件与角色市场丰富。",
+    "order": 6
+  },
+  {
+    "iconId": "CherryStudio",
+    "nameCn": "Cherry Studio",
+    "category": "opensource",
+    "tags": ["desktop", "open-source", "chinese"],
+    "description": "支持多模型与本地知识库的桌面 AI 客户端。",
+    "order": 7
+  },
+  {
+    "iconId": "Vllm",
+    "nameCn": "vLLM",
+    "category": "opensource",
+    "tags": ["inference", "open-source"],
+    "description": "高吞吐低延迟的开源大模型推理引擎。",
+    "order": 8
+  },
+  {
+    "iconId": "Unsloth",
+    "nameCn": "Unsloth",
+    "category": "opensource",
+    "tags": ["fine-tuning", "open-source"],
+    "description": "显存友好、速度极快的开源模型微调框架。",
+    "order": 9
+  },
+  {
+    "iconId": "Xinference",
+    "nameCn": "Xinference",
+    "category": "opensource",
+    "tags": ["inference", "open-source", "chinese"],
+    "description": "一站式开源模型推理平台，支持分布式多机部署。",
+    "order": 10
+  },
+  {
+    "iconId": "LlamaIndex",
+    "nameCn": "LlamaIndex",
+    "category": "opensource",
+    "tags": ["rag", "framework", "open-source"],
+    "description": "专注数据索引与检索增强的开源应用框架。",
+    "order": 11
+  },
+  {
+    "iconId": "Langfuse",
+    "nameCn": "Langfuse",
+    "category": "opensource",
+    "tags": ["observability", "open-source"],
+    "description": "开源的 LLM 应用可观测与评估平台，支持自托管。",
+    "order": 12
+  },
+  {
+    "iconId": "Gradio",
+    "nameCn": "Gradio",
+    "category": "opensource",
+    "tags": ["framework", "open-source", "frontend"],
+    "description": "几行 Python 即可为模型搭建可分享的 Web 演示界面。",
+    "order": 13
+  },
+  {
+    "iconId": "SillyTavern",
+    "nameCn": "SillyTavern",
+    "category": "opensource",
+    "tags": ["self-hosted", "open-source"],
+    "description": "面向角色扮演的开源对话前端，支持多家模型后端。",
+    "order": 14
+  },
+  {
+    "iconId": "Colab",
+    "nameCn": "Google Colab",
+    "category": "opensource",
+    "tags": ["notebook", "free", "cloud"],
+    "description": "免费 GPU 的云端 Jupyter 环境，适合模型实验与教学。",
+    "order": 15
+  },
+  {
+    "iconId": "Smithery",
+    "nameCn": "Smithery",
+    "category": "opensource",
+    "tags": ["mcp", "directory"],
+    "description": "MCP 服务器的注册表与托管平台。",
+    "order": 16
+  }
+]

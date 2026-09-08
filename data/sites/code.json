@@ -1,0 +1,165 @@
+[
+  {
+    "iconId": "Cursor",
+    "nameCn": "Cursor",
+    "category": "code",
+    "tags": ["ide", "code-assistant"],
+    "description": "AI 优先的代码编辑器，支持全库上下文与多文件改写。",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "iconId": "GithubCopilot",
+    "nameCn": "GitHub Copilot",
+    "category": "code",
+    "tags": ["ide", "code-assistant"],
+    "description": "GitHub 与 OpenAI 联合推出的 AI 编码助手与代理模式。",
+    "featured": true,
+    "order": 2
+  },
+  {
+    "iconId": "ClaudeCode",
+    "nameCn": "Claude Code",
+    "category": "code",
+    "tags": ["cli", "agent", "code-assistant"],
+    "description": "Anthropic 的终端编程 Agent，可直接读写并改写代码库。",
+    "featured": true,
+    "order": 3
+  },
+  {
+    "iconId": "Windsurf",
+    "nameCn": "Windsurf",
+    "category": "code",
+    "tags": ["ide", "code-assistant"],
+    "description": "Codeium 推出的 AI IDE，主打 Cascade 智能体协作流。",
+    "order": 4
+  },
+  {
+    "iconId": "Trae",
+    "nameCn": "Trae",
+    "category": "code",
+    "tags": ["ide", "chinese", "free"],
+    "description": "字节跳动推出的 AI 集成开发环境，国内版免费使用。",
+    "order": 5
+  },
+  {
+    "iconId": "CodeBuddy",
+    "nameCn": "CodeBuddy",
+    "category": "code",
+    "tags": ["ide", "agent", "chinese"],
+    "description": "腾讯出品的 AI 编程助手，支持工程级理解与重构。",
+    "order": 6
+  },
+  {
+    "iconId": "Cline",
+    "nameCn": "Cline",
+    "category": "code",
+    "tags": ["agent", "ide", "open-source"],
+    "description": "VS Code 中的自主编程插件，每一步操作都可人工确认。",
+    "order": 7
+  },
+  {
+    "iconId": "RooCode",
+    "nameCn": "Roo Code",
+    "category": "code",
+    "tags": ["agent", "ide", "open-source"],
+    "description": "社区驱动的自主编码插件，支持多模式智能体切换。",
+    "order": 8
+  },
+  {
+    "iconId": "Devin",
+    "nameCn": "Devin",
+    "category": "code",
+    "tags": ["agent", "cloud"],
+    "description": "Cognition 推出的云端 AI 软件工程师，可独立交付任务。",
+    "order": 9
+  },
+  {
+    "iconId": "Lovable",
+    "nameCn": "Lovable",
+    "category": "code",
+    "tags": ["agent", "frontend"],
+    "description": "用对话生成完整全栈应用的 AI 开发平台。",
+    "order": 10
+  },
+  {
+    "iconId": "V0",
+    "nameCn": "v0",
+    "category": "code",
+    "tags": ["frontend", "agent"],
+    "description": "Vercel 出品的 UI 生成工具，把描述直接变成前端代码。",
+    "order": 11
+  },
+  {
+    "iconId": "Replit",
+    "nameCn": "Replit",
+    "category": "code",
+    "tags": ["ide", "cloud"],
+    "description": "云端集成开发环境，内置 AI 编码与一键部署能力。",
+    "order": 12
+  },
+  {
+    "iconId": "CodeGeeX",
+    "nameCn": "CodeGeeX",
+    "category": "code",
+    "tags": ["code-assistant", "chinese", "open-source"],
+    "description": "智谱开源的代码生成模型与多 IDE 插件。",
+    "order": 13
+  },
+  {
+    "iconId": "Qoder",
+    "nameCn": "Qoder",
+    "category": "code",
+    "tags": ["ide", "agent"],
+    "description": "阿里出品的 AI 编程平台，面向真实工程协作场景。",
+    "order": 14
+  },
+  {
+    "iconId": "Codex",
+    "nameCn": "OpenAI Codex",
+    "category": "code",
+    "tags": ["cli", "agent", "code-assistant"],
+    "description": "OpenAI 的云端软件工程 Agent，可并行处理多个任务。",
+    "order": 15
+  },
+  {
+    "iconId": "KiloCode",
+    "nameCn": "Kilo Code",
+    "category": "code",
+    "tags": ["agent", "ide", "open-source"],
+    "description": "开源的 VS Code 智能编码插件，支持自定义模式。",
+    "order": 16
+  },
+  {
+    "iconId": "Kiro",
+    "nameCn": "Kiro",
+    "category": "code",
+    "tags": ["ide", "agent"],
+    "description": "AWS 推出的规范驱动 AI IDE，强调先设计后编码。",
+    "order": 17
+  },
+  {
+    "iconId": "CodeFlicker",
+    "nameCn": "CodeFlicker",
+    "category": "code",
+    "tags": ["ide", "chinese"],
+    "description": "腾讯云 AI 代码助手，支持补全、问答与代码审查。",
+    "order": 18
+  },
+  {
+    "iconId": "OpenCode",
+    "nameCn": "OpenCode",
+    "category": "code",
+    "tags": ["cli", "open-source"],
+    "description": "开源的终端编码 Agent，支持任意模型供应商接入。",
+    "order": 19
+  },
+  {
+    "iconId": "Greptile",
+    "nameCn": "Greptile",
+    "category": "code",
+    "tags": ["code-assistant", "rag"],
+    "description": "面向代码库的 AI 问答引擎，可跨仓库检索与解释。",
+    "order": 20
+  }
+]

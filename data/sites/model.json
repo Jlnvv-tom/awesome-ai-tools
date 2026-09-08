@@ -1,0 +1,131 @@
+[
+  {
+    "iconId": "Anthropic",
+    "nameCn": "Anthropic",
+    "category": "model",
+    "tags": ["llm", "safety", "api"],
+    "description": "Claude 系列模型的研发公司，专注 AI 安全与对齐。",
+    "featured": true,
+    "order": 1
+  },
+  {
+    "iconId": "Mistral",
+    "nameCn": "Mistral AI",
+    "category": "model",
+    "tags": ["llm", "open-source", "api"],
+    "description": "欧洲开源大模型厂商，模型轻量且推理成本低。",
+    "order": 2
+  },
+  {
+    "iconId": "Meta",
+    "nameCn": "Meta Llama",
+    "category": "model",
+    "tags": ["llm", "open-source"],
+    "description": "Llama 系列开源模型，社区微调生态最庞大。",
+    "order": 3
+  },
+  {
+    "iconId": "DeepMind",
+    "nameCn": "Google DeepMind",
+    "category": "model",
+    "tags": ["llm", "multimodal"],
+    "description": "Gemini 系列模型的研发机构，前沿研究实力领先。",
+    "order": 4
+  },
+  {
+    "iconId": "XAI",
+    "nameCn": "xAI",
+    "category": "model",
+    "tags": ["llm", "api"],
+    "description": "马斯克创立的 AI 公司，Grok 系列模型与 Colossus 集群。",
+    "order": 5
+  },
+  {
+    "iconId": "Zhipu",
+    "nameCn": "智谱 AI",
+    "category": "model",
+    "tags": ["llm", "chinese", "api"],
+    "description": "GLM 系列模型厂商，提供 GLM-4 与开源基座模型。",
+    "order": 6
+  },
+  {
+    "iconId": "Moonshot",
+    "nameCn": "月之暗面",
+    "category": "model",
+    "tags": ["llm", "chinese", "long-context"],
+    "description": "Kimi 的研发公司，主打长上下文与智能体能力。",
+    "order": 7
+  },
+  {
+    "iconId": "Minimax",
+    "nameCn": "MiniMax",
+    "category": "model",
+    "tags": ["llm", "chinese", "voice"],
+    "description": "国内多模态模型厂商，语音与视频生成能力突出。",
+    "order": 8
+  },
+  {
+    "iconId": "Stepfun",
+    "nameCn": "阶跃星辰",
+    "category": "model",
+    "tags": ["llm", "chinese", "multimodal"],
+    "description": "Step 系列多模态模型研发商，主打端到端理解生成。",
+    "order": 9
+  },
+  {
+    "iconId": "Baichuan",
+    "nameCn": "百川智能",
+    "category": "model",
+    "tags": ["llm", "chinese", "open-source"],
+    "description": "百川系列模型厂商，开源基座与行业模型并行。",
+    "order": 10
+  },
+  {
+    "iconId": "ZeroOne",
+    "nameCn": "零一万物",
+    "category": "model",
+    "tags": ["llm", "chinese", "open-source"],
+    "description": "Yi 系列模型研发商，提供开源基座与微调模型。",
+    "order": 11
+  },
+  {
+    "iconId": "Cohere",
+    "nameCn": "Cohere",
+    "category": "model",
+    "tags": ["llm", "api", "embedding"],
+    "description": "面向企业的模型与检索服务，多语种语义理解见长。",
+    "order": 12
+  },
+  {
+    "iconId": "SenseNova",
+    "nameCn": "商汤日日新",
+    "category": "model",
+    "tags": ["llm", "chinese", "multimodal"],
+    "description": "商汤的多模态大模型体系，覆盖视觉与语言任务。",
+    "order": 13
+  },
+  {
+    "iconId": "InternLM",
+    "nameCn": "InternLM 书生·浦语",
+    "category": "model",
+    "tags": ["llm", "chinese", "open-source"],
+    "description": "上海人工智能实验室开源的千亿参数级模型体系。",
+    "order": 14
+  },
+  {
+    "iconId": "Nvidia",
+    "nameCn": "NVIDIA Nemotron",
+    "category": "model",
+    "tags": ["llm", "open-source", "reasoning"],
+    "description": "英伟达的开源推理模型与训练数据体系。",
+    "order": 15
+  },
+  {
+    "iconId": "Gemma",
+    "nameCn": "Gemma",
+    "category": "model",
+    "tags": ["llm", "open-source"],
+    "description": "Google 的轻量开源模型，适合本地与端侧部署。",
+    "order": 16
+  }
+]

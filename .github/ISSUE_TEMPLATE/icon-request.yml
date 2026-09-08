@@ -1,0 +1,43 @@
+name: 申请补充图标
+description: 图标库暂未收录某个 AI 品牌，需要我们先向上游申请
+title: '[Icon Request] '
+labels: ['icon', 'upstream']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        本站图标全部来自上游开源项目 [lobehub/lobe-icons](https://github.com/lobehub/lobe-icons)。
+        我们可以代你向上游提交申请，也可以由你直接提交（更快）。
+
+  - type: input
+    id: brand
+    attributes:
+      label: 品牌 / 产品名
+      placeholder: Example AI
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: 官网地址
+      placeholder: https://example.ai
+    validations:
+      required: true
+
+  - type: input
+    id: logo
+    attributes:
+      label: 官方 Logo / 品牌色来源
+      description: 官方品牌资产页或 Logo 文件直链，便于上游制图
+      placeholder: https://example.ai/brand
+
+  - type: checkboxes
+    id: upstream
+    attributes:
+      label: 提交方式
+      options:
+        - label: 我已确认 https://lobehub.com/icons 中不存在该图标
+          required: true
+        - label: 我希望维护者代为向上游提交
+          required: false

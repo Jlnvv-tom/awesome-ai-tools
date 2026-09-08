@@ -1,0 +1,55 @@
+name: Sync Icons
+
+on:
+  schedule:
+    # 每周一 03:00 UTC
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    name: 同步上游图标元数据
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+
+      - name: 拉取上游图标元数据
+        run: pnpm sync:icons
+
+      - name: 重建搜索索引
+        run: pnpm build:search
+
+      - name: 数据校验
+        run: pnpm validate:data
+
+      - name: 创建同步 PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/sync-icons
+          title: 'chore(data): sync icons from lobehub/lobe-icons'
+          commit-message: 'chore(data): sync icons from lobehub/lobe-icons'
+          body: |
+            由 Sync Icons 工作流自动生成。
+
+            - 数据源：lobehub/lobe-icons `src/toc.json`
+            - 变更文件：`src/data/icons.generated.ts`、`src/data/search-index.generated.ts`
+
+            请 Maintainer 复核统计信息后合并。
+          labels: data, automated
+          delete-branch: true

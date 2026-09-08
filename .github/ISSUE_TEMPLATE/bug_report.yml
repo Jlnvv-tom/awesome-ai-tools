@@ -1,0 +1,44 @@
+name: 问题反馈
+description: 报告链接失效、信息错误或页面异常
+title: '[Bug] '
+labels: ['bug']
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 问题类型
+      options:
+        - 官网链接失效 / 错误
+        - 站点信息有误（名称、简介、分类、标签）
+        - 图标显示异常
+        - 页面样式或交互异常
+        - 其他
+    validations:
+      required: true
+
+  - type: input
+    id: site
+    attributes:
+      label: 相关工具
+      description: 工具名称或详情页地址
+      placeholder: https://awesome-ai-tool.vercel.app/site/perplexity
+
+  - type: textarea
+    id: detail
+    attributes:
+      label: 问题描述
+      description: 你期望看到什么？实际看到了什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 依据（可选）
+      description: 若是信息错误，请提供正确信息来源，例如官网截图或官方页面链接
+
+  - type: input
+    id: env
+    attributes:
+      label: 环境（可选）
+      placeholder: macOS 15 / Chrome 130 / 移动端
