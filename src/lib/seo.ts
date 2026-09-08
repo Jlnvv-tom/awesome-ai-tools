@@ -10,7 +10,7 @@ export const SITE_DESCRIPTION =
 /** 站点根地址，部署到 Vercel 时可用 VERCEL_URL / NEXT_PUBLIC_SITE_URL 覆盖 */
 export function getSiteUrl(): string {
   const raw = process.env.NEXT_PUBLIC_SITE_URL ?? process.env.VERCEL_URL;
-  if (!raw) return 'https://awesome-ai-tool.vercel.app';
+  if (!raw) return 'https://awesome-ai-tools.vercel.app';
   return raw.startsWith('http') ? raw : `https://${raw}`;
 }
 

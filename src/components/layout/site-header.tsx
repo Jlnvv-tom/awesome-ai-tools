@@ -83,7 +83,7 @@ export function SiteHeader({ navItems }: { navItems: NavItem[] }) {
           <ThemeToggle />
           <Button variant="ghost" size="icon" asChild>
             <a
-              href="https://github.com/awesome-ai-tool/awesome-ai-tool"
+              href="https://github.com/awesome-ai-tools/awesome-ai-tools"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="在 GitHub 上查看本项目"

@@ -37,7 +37,7 @@
 ## 举报
 
 如发现违反准则的行为，请通过 Issue 或邮件联系项目维护者
-（`hello@awesome-ai-tool.dev`）。所有投诉都会被审阅与调查，
+（`hello@awesome-ai-tools.dev`）。所有投诉都会被审阅与调查，
 并在保护举报者隐私的前提下作出回应。
 
 ## 归因

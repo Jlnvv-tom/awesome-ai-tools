@@ -14,7 +14,7 @@
 如果你发现了安全问题，**请不要在公开 Issue 中披露**。请通过以下任一方式私密报告：
 
 - GitHub Security Advisories：仓库 → Security → Report a vulnerability
-- 邮件：`security@awesome-ai-tool.dev`
+- 邮件：`security@awesome-ai-tools.dev`
 
 请在报告中包含：
 

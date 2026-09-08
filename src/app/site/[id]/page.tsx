@@ -129,7 +129,7 @@ export default async function SitePage({ params }: PageProps) {
                 </Button>
                 <Button asChild variant="outline">
                   <a
-                    href={`https://github.com/awesome-ai-tool/awesome-ai-tool/issues/new?template=bug_report.yml&title=${encodeURIComponent(`[数据修正] ${site.name}`)}`}
+                    href={`https://github.com/awesome-ai-tools/awesome-ai-tools/issues/new?template=bug_report.yml&title=${encodeURIComponent(`[数据修正] ${site.name}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -194,7 +194,7 @@ export default async function SitePage({ params }: PageProps) {
               <div className="mt-3">
                 <Button asChild variant="outline" size="sm">
                   <a
-                    href="https://github.com/awesome-ai-tool/awesome-ai-tool/blob/main/CONTRIBUTING.md"
+                    href="https://github.com/awesome-ai-tools/awesome-ai-tools/blob/main/CONTRIBUTING.md"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

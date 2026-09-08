@@ -4,15 +4,15 @@ import Link from 'next/link';
 const LINKS = [
   {
     label: '提交新工具',
-    href: 'https://github.com/awesome-ai-tool/awesome-ai-tool/issues/new?template=new-site.yml',
+    href: 'https://github.com/awesome-ai-tools/awesome-ai-tools/issues/new?template=new-site.yml',
   },
   {
     label: '贡献指南',
-    href: 'https://github.com/awesome-ai-tool/awesome-ai-tool/blob/main/CONTRIBUTING.md',
+    href: 'https://github.com/awesome-ai-tools/awesome-ai-tools/blob/main/CONTRIBUTING.md',
   },
   {
     label: '路线图',
-    href: 'https://github.com/awesome-ai-tool/awesome-ai-tool/blob/main/ROADMAP.md',
+    href: 'https://github.com/awesome-ai-tools/awesome-ai-tools/blob/main/ROADMAP.md',
   },
   { label: 'LobeHub Icons', href: 'https://lobehub.com/icons' },
 ];
@@ -56,7 +56,7 @@ export function SiteFooter({ total }: { total: number }) {
           <p className="flex items-center gap-1">
             Made with <Heart className="h-3 w-3 text-primary" /> by the community
             <a
-              href="https://github.com/awesome-ai-tool/awesome-ai-tool"
+              href="https://github.com/awesome-ai-tools/awesome-ai-tools"
               target="_blank"
               rel="noopener noreferrer"
               className="ml-2 inline-flex items-center gap-1 hover:text-foreground"

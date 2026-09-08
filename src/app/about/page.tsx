@@ -77,7 +77,7 @@ export default function AboutPage() {
 
       <div className="mt-8 flex flex-wrap gap-3">
         <a
-          href="https://github.com/awesome-ai-tool/awesome-ai-tool"
+          href="https://github.com/awesome-ai-tools/awesome-ai-tools"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex h-10 items-center gap-2 rounded-full bg-gradient-to-r from-primary to-primary-soft px-5 text-sm font-medium text-primary-foreground shadow-glow transition-all hover:brightness-110"
@@ -85,7 +85,7 @@ export default function AboutPage() {
           <Github className="h-4 w-4" />在 GitHub 上 Star
         </a>
         <a
-          href="https://github.com/awesome-ai-tool/awesome-ai-tool/blob/main/CONTRIBUTING.md"
+          href="https://github.com/awesome-ai-tools/awesome-ai-tools/blob/main/CONTRIBUTING.md"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex h-10 items-center gap-2 rounded-full border border-border px-5 text-sm font-medium transition-colors hover:border-primary/60 hover:bg-primary/10"
