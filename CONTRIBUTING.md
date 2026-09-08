@@ -23,7 +23,7 @@
 ## 快速开始
 
 ```bash
-git clone https://github.com/awesome-ai-tools/awesome-ai-tools.git
+git clone https://github.com/Jlnvv-tom/awesome-ai-tools.git
 cd awesome-ai-tools
 pnpm install
 pnpm dev          # http://localhost:3000

@@ -50,7 +50,7 @@
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/awesome-ai-tools/awesome-ai-tools.git
+git clone https://github.com/Jlnvv-tom/awesome-ai-tools.git
 cd awesome-ai-tools
 
 # 2. 安装依赖（推荐 pnpm 10+）
@@ -154,7 +154,7 @@ data/sites/*.json（人工维护的覆盖项）───────────
 我们欢迎任何形式的贡献，尤其是**补充与修正站点信息**（零编程门槛）：
 
 1. 阅读 [CONTRIBUTING.md](./CONTRIBUTING.md)；
-2. 使用 [新增站点 Issue 模板](https://github.com/awesome-ai-tools/awesome-ai-tools/issues/new?template=new-site.yml) 或直接改 `data/sites/*.json` 提 PR；
+2. 使用 [新增站点 Issue 模板](https://github.com/Jlnvv-tom/awesome-ai-tools/issues/new?template=new-site.yml) 或直接改 `data/sites/*.json` 提 PR；
 3. PR 会自动生成 Vercel 预览链接，校验通过后由 Maintainer 合并。
 
 提交信息请遵循 [Conventional Commits](https://www.conventionalcommits.org/)，数据类变更推荐使用 `data:` 前缀。
@@ -167,5 +167,5 @@ data/sites/*.json（人工维护的覆盖项）───────────
 ## 许可证与版权
 
 - 代码与数据：[MIT License](./LICENSE)
-- 品牌图标与商标：归各自权利主体所有，本项目仅作导航引用，不主张任何权利。若你是权利人且不希望被收录，请通过 [Issue](https://github.com/awesome-ai-tools/awesome-ai-tools/issues/new?template=bug_report.yml) 联系我们，我们会在 48 小时内处理。
+- 品牌图标与商标：归各自权利主体所有，本项目仅作导航引用，不主张任何权利。若你是权利人且不希望被收录，请通过 [Issue](https://github.com/Jlnvv-tom/awesome-ai-tools/issues/new?template=bug_report.yml) 联系我们，我们会在 48 小时内处理。
 - 图标数据源：[lobehub/lobe-icons](https://github.com/lobehub/lobe-icons)（MIT）

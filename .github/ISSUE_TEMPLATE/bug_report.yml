@@ -21,7 +21,7 @@ body:
     attributes:
       label: 相关工具
       description: 工具名称或详情页地址
-      placeholder: https://awesome-ai-tool.vercel.app/site/perplexity
+      placeholder: https://awesome-ai-tools.vercel.app/site/perplexity
 
   - type: textarea
     id: detail
