@@ -161,5 +161,75 @@
     "tags": ["image-generation", "anime"],
     "description": "主打二次元风格的图像生成与故事创作平台。",
     "order": 20
+  },
+  {
+    "iconId": "BriaAI",
+    "nameCn": "BRIA AI",
+    "category": "image",
+    "tags": ["image-generation", "licensed"],
+    "description": "提供合规授权数据的图像生成模型与编辑接口。"
+  },
+  {
+    "iconId": "Flux",
+    "nameCn": "Flux",
+    "category": "image",
+    "tags": ["image-generation", "api"],
+    "description": "Black Forest Labs 的图像生成模型，提示词还原度高。"
+  },
+  {
+    "iconId": "Glif",
+    "nameCn": "Glif",
+    "category": "image",
+    "tags": ["image-generation", "workflow"],
+    "description": "可拼接图像生成流程的无代码创作与分享平台。"
+  },
+  {
+    "iconId": "Lightricks",
+    "nameCn": "Lightricks",
+    "category": "image",
+    "tags": ["image-generation", "editing"],
+    "description": "面向图像与视频的生成式编辑工具厂商。"
+  },
+  {
+    "iconId": "Meshy",
+    "nameCn": "Meshy",
+    "category": "image",
+    "tags": ["design", "api"],
+    "description": "由文本或图片生成三维模型的创作工具。"
+  },
+  {
+    "iconId": "Reve",
+    "nameCn": "Reve",
+    "category": "image",
+    "tags": ["image-generation"],
+    "description": "注重提示词理解与文字排版效果的图像生成工具。"
+  },
+  {
+    "iconId": "Tripo",
+    "nameCn": "Tripo",
+    "category": "image",
+    "tags": ["design", "api"],
+    "description": "文本与图片转三维模型的平台，支持导出常用格式。"
+  },
+  {
+    "iconId": "VectorizerAI",
+    "nameCn": "Vectorizer.AI",
+    "category": "image",
+    "tags": ["design", "api"],
+    "description": "把位图自动转换为可缩放矢量图的在线工具。"
+  },
+  {
+    "iconId": "Adobe",
+    "nameCn": "Adobe",
+    "category": "image",
+    "tags": ["design", "multimodal"],
+    "description": "创意软件厂商，Firefly 系列提供图像生成与编辑能力。"
+  },
+  {
+    "iconId": "DeepAI",
+    "nameCn": "DeepAI",
+    "category": "image",
+    "tags": ["image-generation", "api"],
+    "description": "提供图像、文本与视频生成接口的在线模型服务。"
   }
 ]

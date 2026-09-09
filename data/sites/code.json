@@ -161,5 +161,54 @@
     "tags": ["code-assistant", "rag"],
     "description": "面向代码库的 AI 问答引擎，可跨仓库检索与解释。",
     "order": 20
+  },
+  {
+    "iconId": "Amp",
+    "nameCn": "Amp",
+    "category": "code",
+    "tags": ["code-assistant", "agent"],
+    "description": "面向终端的编程智能体，可长时间自主执行编码任务。"
+  },
+  {
+    "iconId": "Junie",
+    "nameCn": "Junie（JetBrains）",
+    "category": "code",
+    "tags": ["code-assistant", "ide"],
+    "description": "JetBrains 推出的编码智能体，可在 IDE 内执行开发任务。"
+  },
+  {
+    "iconId": "Kwaipilot",
+    "nameCn": "Kwaipilot",
+    "category": "code",
+    "tags": ["code-assistant", "chinese"],
+    "description": "快手出品的编程助手，支持代码补全与技术问题解答。"
+  },
+  {
+    "iconId": "Magic",
+    "nameCn": "Magic",
+    "category": "code",
+    "tags": ["code-assistant", "agent"],
+    "description": "面向大型代码库的开发平台，支持跨仓库重构与迁移。"
+  },
+  {
+    "iconId": "Phind",
+    "nameCn": "Phind",
+    "category": "code",
+    "tags": ["code-assistant", "rag"],
+    "description": "面向开发者的问答引擎，可联网检索并给出可运行代码。"
+  },
+  {
+    "iconId": "Poolside",
+    "nameCn": "Poolside",
+    "category": "code",
+    "tags": ["code-assistant", "model-hub"],
+    "description": "专注软件工程的模型与编程智能体平台。"
+  },
+  {
+    "iconId": "Zencoder",
+    "nameCn": "Zencoder",
+    "category": "code",
+    "tags": ["code-assistant", "ide"],
+    "description": "AI 编码智能体，可在主流 IDE 中修复缺陷并生成测试。"
   }
 ]

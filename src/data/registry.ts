@@ -5,6 +5,7 @@
  * - `data/categories.json` / `data/tags.json` 为受控词表；
  * - `data/sites/*.json` 为人工维护的站点覆盖项，按分类分片，新增分片需在此登记。
  */
+import { ADDED_AT, ADDED_AT_FALLBACK } from '@/data/added-at.generated';
 import categoriesJson from '@data/categories.json';
 import tagsJson from '@data/tags.json';
 
@@ -24,6 +25,12 @@ import type { Category, SiteOverride } from '@/types/site';
 export const CATEGORIES = categoriesJson as Category[];
 
 export const TAGS = tagsJson as string[];
+
+/** iconId → 收录日期（YYYY-MM-DD），由 `pnpm backfill:added-at` 按 git 历史生成 */
+export const ADDED_AT_MAP = ADDED_AT;
+
+/** 收录日期兜底值（未纳入 git 历史的新同步条目取最近一次同步日期） */
+export const ADDED_AT_DEFAULT = ADDED_AT_FALLBACK;
 
 export const SITE_OVERRIDES: SiteOverride[] = [
   ...chatSites,

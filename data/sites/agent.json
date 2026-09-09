@@ -21,7 +21,7 @@
     "iconId": "N8n",
     "nameCn": "n8n",
     "category": "agent",
-    "tags": ["automation", "open-source", "workflow"],
+    "tags": ["workflow", "open-source"],
     "description": "可自托管的自动化工作流平台，原生支持 AI 节点。",
     "featured": true,
     "order": 3
@@ -38,7 +38,7 @@
     "iconId": "CrewAI",
     "nameCn": "CrewAI",
     "category": "agent",
-    "tags": ["framework", "open-source", "orchestration"],
+    "tags": ["framework", "open-source", "workflow"],
     "description": "多智能体协作框架，用角色分工编排复杂任务。",
     "order": 5
   },
@@ -62,7 +62,7 @@
     "iconId": "Zapier",
     "nameCn": "Zapier",
     "category": "agent",
-    "tags": ["automation"],
+    "tags": ["workflow"],
     "description": "连接数千款 SaaS 的自动化平台，支持 AI 编排。",
     "order": 8
   },
@@ -70,7 +70,7 @@
     "iconId": "Make",
     "nameCn": "Make",
     "category": "agent",
-    "tags": ["automation", "workflow"],
+    "tags": ["workflow"],
     "description": "可视化自动化编排平台，擅长复杂分支与数据处理。",
     "order": 9
   },
@@ -94,7 +94,7 @@
     "iconId": "LangGraph",
     "nameCn": "LangGraph",
     "category": "agent",
-    "tags": ["framework", "orchestration", "open-source"],
+    "tags": ["framework", "workflow", "open-source"],
     "description": "用状态机方式构建可控、可恢复的 Agent 应用。",
     "order": 12
   },
@@ -126,8 +126,57 @@
     "iconId": "Flowith",
     "nameCn": "Flowith",
     "category": "agent",
-    "tags": ["canvas", "workflow"],
+    "tags": ["workflow"],
     "description": "无限画布上的 AI 创作与任务编排工具。",
     "order": 16
+  },
+  {
+    "iconId": "CopilotKit",
+    "nameCn": "CopilotKit",
+    "category": "agent",
+    "tags": ["agent", "framework"],
+    "description": "为应用内嵌 AI 助手与智能体的前端开发框架。"
+  },
+  {
+    "iconId": "GeminiCLI",
+    "nameCn": "Gemini CLI",
+    "category": "agent",
+    "tags": ["cli", "agent"],
+    "description": "Google 的命令行智能体，可在终端调用 Gemini 完成任务。"
+  },
+  {
+    "iconId": "LangSmith",
+    "nameCn": "LangSmith",
+    "category": "agent",
+    "tags": ["observability", "framework"],
+    "description": "LangChain 的调试与评估平台，用于观测智能体运行过程。"
+  },
+  {
+    "iconId": "MyShell",
+    "nameCn": "MyShell",
+    "category": "agent",
+    "tags": ["agent", "voice"],
+    "description": "可创建与分享 AI 智能体的平台，支持语音交互。"
+  },
+  {
+    "iconId": "Phidata",
+    "nameCn": "Phidata",
+    "category": "agent",
+    "tags": ["framework", "agent"],
+    "description": "用于构建带工具与记忆的多智能体系统的开发框架。"
+  },
+  {
+    "iconId": "PydanticAI",
+    "nameCn": "Pydantic AI",
+    "category": "agent",
+    "tags": ["framework", "agent"],
+    "description": "基于 Pydantic 的智能体框架，强调类型安全与可观测性。"
+  },
+  {
+    "iconId": "Venice",
+    "nameCn": "Venice",
+    "category": "agent",
+    "tags": ["agent", "chatbot"],
+    "description": "强调隐私的 AI 平台，可调用多种开源模型对话。"
   }
 ]

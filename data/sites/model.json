@@ -127,5 +127,103 @@
     "tags": ["llm", "open-source"],
     "description": "Google 的轻量开源模型，适合本地与端侧部署。",
     "order": 16
+  },
+  {
+    "iconId": "Ai2",
+    "nameCn": "Ai2",
+    "category": "model",
+    "tags": ["llm", "open-source"],
+    "description": "艾伦人工智能研究院，开源了 Tülu 等模型与数据集。"
+  },
+  {
+    "iconId": "Arcee",
+    "nameCn": "Arcee",
+    "category": "model",
+    "tags": ["llm", "fine-tuning"],
+    "description": "专注企业场景的小模型训练与微调平台。"
+  },
+  {
+    "iconId": "Aya",
+    "nameCn": "Aya",
+    "category": "model",
+    "tags": ["llm", "open-source"],
+    "description": "Cohere 的多语言开源模型，覆盖百余种语言。"
+  },
+  {
+    "iconId": "BAAI",
+    "nameCn": "智源研究院",
+    "category": "model",
+    "tags": ["llm", "chinese", "open-source"],
+    "description": "北京智源人工智能研究院，开源 BGE 与悟道系列模型。"
+  },
+  {
+    "iconId": "CommandA",
+    "nameCn": "Command A",
+    "category": "model",
+    "tags": ["llm", "long-context"],
+    "description": "Cohere 的企业级模型，主打长上下文与工具调用。"
+  },
+  {
+    "iconId": "Dbrx",
+    "nameCn": "DBRX",
+    "category": "model",
+    "tags": ["llm", "open-source"],
+    "description": "Databricks 开源的通用大模型，采用混合专家架构。"
+  },
+  {
+    "iconId": "Inflection",
+    "nameCn": "Inflection",
+    "category": "model",
+    "tags": ["llm", "chatbot"],
+    "description": "Pi 对话助手的开发团队，主打情感陪伴式交互。"
+  },
+  {
+    "iconId": "Liquid",
+    "nameCn": "Liquid AI",
+    "category": "model",
+    "tags": ["llm", "reasoning"],
+    "description": "基于液态神经网络的模型厂商，主打高效推理。"
+  },
+  {
+    "iconId": "PaLM",
+    "nameCn": "PaLM",
+    "category": "model",
+    "tags": ["llm", "multimodal"],
+    "description": "Google 的早期大语言模型，为 Gemini 奠定基础。"
+  },
+  {
+    "iconId": "Skywork",
+    "nameCn": "天工",
+    "category": "model",
+    "tags": ["llm", "chinese", "open-source"],
+    "description": "昆仑万维的模型系列，开源版本可商用。"
+  },
+  {
+    "iconId": "TII",
+    "nameCn": "TII Falcon",
+    "category": "model",
+    "tags": ["llm", "open-source"],
+    "description": "阿联酋技术创新研究院的开源大模型系列。"
+  },
+  {
+    "iconId": "Upstage",
+    "nameCn": "Upstage",
+    "category": "model",
+    "tags": ["llm", "rag"],
+    "description": "韩国团队的企业模型与文档理解服务商。"
+  },
+  {
+    "iconId": "XiaomiMiMo",
+    "nameCn": "小米 MiMo",
+    "category": "model",
+    "tags": ["llm", "chinese", "reasoning"],
+    "description": "小米的推理模型，主打数学与代码任务表现。"
+  },
+  {
+    "iconId": "Yandex",
+    "nameCn": "Yandex",
+    "category": "model",
+    "tags": ["llm", "multimodal"],
+    "description": "俄罗斯搜索引擎厂商，推出 YandexGPT 系列模型。"
   }
 ]

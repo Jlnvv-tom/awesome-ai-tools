@@ -116,7 +116,7 @@
     "iconId": "Vercel",
     "nameCn": "Vercel",
     "category": "infra",
-    "tags": ["hosting", "sdk", "frontend"],
+    "tags": ["hosting", "framework", "frontend"],
     "description": "前端托管与 AI SDK 提供方，适合快速上线 AI 应用。",
     "order": 15
   },
@@ -143,5 +143,159 @@
     "tags": ["cloud", "open-source", "chinese"],
     "description": "阿里开源的 AI 原生网关，支持模型代理与插件编排。",
     "order": 18
+  },
+  {
+    "iconId": "Ai360",
+    "nameCn": "360 智脑",
+    "category": "infra",
+    "tags": ["cloud", "chinese", "llm"],
+    "description": "360 的大模型与 AI 云服务，提供推理与智能体能力。"
+  },
+  {
+    "iconId": "Alibaba",
+    "nameCn": "阿里巴巴",
+    "category": "infra",
+    "tags": ["cloud", "chinese"],
+    "description": "国内云服务商，提供通义系列模型与 AI 基础设施。"
+  },
+  {
+    "iconId": "AntGroup",
+    "nameCn": "蚂蚁集团",
+    "category": "infra",
+    "tags": ["cloud", "chinese"],
+    "description": "推出百灵大模型与面向金融场景的智能体平台。"
+  },
+  {
+    "iconId": "Anyscale",
+    "nameCn": "Anyscale",
+    "category": "infra",
+    "tags": ["cloud", "inference"],
+    "description": "Ray 的商业化平台，用于分布式训练与推理。"
+  },
+  {
+    "iconId": "Apple",
+    "nameCn": "Apple",
+    "category": "infra",
+    "tags": ["cloud", "multimodal"],
+    "description": "提供端侧与私有云模型能力，支撑 Apple 智能功能。"
+  },
+  {
+    "iconId": "Aws",
+    "nameCn": "AWS",
+    "category": "infra",
+    "tags": ["cloud", "hosting"],
+    "description": "亚马逊云科技，提供 Bedrock 等托管模型与推理服务。"
+  },
+  {
+    "iconId": "Azure",
+    "nameCn": "Microsoft Azure",
+    "category": "infra",
+    "tags": ["cloud", "hosting"],
+    "description": "微软云平台，提供 Azure OpenAI 与模型托管服务。"
+  },
+  {
+    "iconId": "BaiduCloud",
+    "nameCn": "百度智能云",
+    "category": "infra",
+    "tags": ["cloud", "chinese", "inference"],
+    "description": "提供千帆模型平台与文心系列模型的推理服务。"
+  },
+  {
+    "iconId": "Bailian",
+    "nameCn": "阿里云百炼",
+    "category": "infra",
+    "tags": ["cloud", "chinese", "agent"],
+    "description": "阿里云的一站式模型服务平台，支持应用与智能体搭建。"
+  },
+  {
+    "iconId": "ByteDance",
+    "nameCn": "字节跳动",
+    "category": "infra",
+    "tags": ["cloud", "chinese"],
+    "description": "推出豆包与扣子等模型应用，并对外提供算力服务。"
+  },
+  {
+    "iconId": "Cerebras",
+    "nameCn": "Cerebras",
+    "category": "infra",
+    "tags": ["cloud", "inference"],
+    "description": "晶圆级芯片厂商，提供高速推理的云服务。"
+  },
+  {
+    "iconId": "Fal",
+    "nameCn": "Fal",
+    "category": "infra",
+    "tags": ["cloud", "inference"],
+    "description": "面向生成式媒体的推理平台，适合图像与视频场景。"
+  },
+  {
+    "iconId": "Google",
+    "nameCn": "Google",
+    "category": "infra",
+    "tags": ["cloud", "multimodal"],
+    "description": "Gemini 系列的研发方，提供 AI Studio 与模型接口。"
+  },
+  {
+    "iconId": "GoogleCloud",
+    "nameCn": "Google Cloud",
+    "category": "infra",
+    "tags": ["cloud", "hosting"],
+    "description": "提供 Vertex AI 平台，支持模型训练与托管部署。"
+  },
+  {
+    "iconId": "Huawei",
+    "nameCn": "华为",
+    "category": "infra",
+    "tags": ["cloud", "chinese"],
+    "description": "推出盘古大模型与昇腾算力，提供行业 AI 解决方案。"
+  },
+  {
+    "iconId": "HuaweiCloud",
+    "nameCn": "华为云",
+    "category": "infra",
+    "tags": ["cloud", "chinese", "hosting"],
+    "description": "提供盘古模型服务与 AI 开发平台 ModelArts。"
+  },
+  {
+    "iconId": "IFlyTekCloud",
+    "nameCn": "讯飞开放平台",
+    "category": "infra",
+    "tags": ["cloud", "chinese", "voice"],
+    "description": "科大讯飞的开放平台，提供语音识别与星火模型接口。"
+  },
+  {
+    "iconId": "Lambda",
+    "nameCn": "Lambda Labs",
+    "category": "infra",
+    "tags": ["cloud", "hosting"],
+    "description": "面向 AI 团队的 GPU 云主机与推理服务提供商。"
+  },
+  {
+    "iconId": "Qiniu",
+    "nameCn": "七牛云",
+    "category": "infra",
+    "tags": ["cloud", "chinese"],
+    "description": "国内云服务商，提供模型推理与音视频 AI 能力。"
+  },
+  {
+    "iconId": "SambaNova",
+    "nameCn": "SambaNova",
+    "category": "infra",
+    "tags": ["cloud", "inference"],
+    "description": "提供自研芯片加速的模型训练与推理云服务。"
+  },
+  {
+    "iconId": "Tencent",
+    "nameCn": "腾讯",
+    "category": "infra",
+    "tags": ["cloud", "chinese"],
+    "description": "推出混元大模型，并通过腾讯云对外提供服务。"
+  },
+  {
+    "iconId": "WorkersAI",
+    "nameCn": "Cloudflare Workers AI",
+    "category": "infra",
+    "tags": ["cloud", "edge", "inference"],
+    "description": "在边缘网络运行模型推理的 Serverless 服务。"
   }
 ]

@@ -89,6 +89,8 @@ export interface Site {
   color: string;
   /** 数据是否由人工维护（false 表示由脚本自动派生） */
   curated: boolean;
+  /** 收录日期（YYYY-MM-DD）：覆盖项 > git 回填映射 > 项目初始化日期 */
+  addedAt: string;
 }
 
 /** 人工维护的站点覆盖项：字段全部可选，与自动派生结果做浅合并 */
@@ -104,6 +106,8 @@ export interface SiteOverride {
   order?: number;
   /** 设为 false 可从导航中隐藏该条目 */
   visible?: boolean;
+  /** 覆盖自动回填的收录日期（YYYY-MM-DD），新收录条目由贡献者或同步脚本填写 */
+  addedAt?: string;
 }
 
 /** 首页统计信息 */

@@ -12,7 +12,7 @@
     "iconId": "Obsidian",
     "nameCn": "Obsidian",
     "category": "writing",
-    "tags": ["notes", "local", "productivity"],
+    "tags": ["notes", "self-hosted", "productivity"],
     "description": "本地优先的双链笔记工具，插件生态极其活跃。",
     "order": 2
   },

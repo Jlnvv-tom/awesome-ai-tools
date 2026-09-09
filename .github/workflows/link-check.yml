@@ -1,0 +1,35 @@
+name: Link Check
+
+on:
+  schedule:
+    # 每周一 04:00 UTC（与图标同步任务 03:00 错开）
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
+
+jobs:
+  check:
+    name: 官网可达性巡检
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        # pnpm 版本由 package.json 的 packageManager 字段决定
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+
+      - name: 巡检官网可达性
+        run: pnpm check:links --output=link-check-report.json
+
+      - name: 上传巡检报告
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-check-report
+          path: link-check-report.json
+          retention-days: 30

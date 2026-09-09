@@ -9,6 +9,7 @@ import { z } from 'zod';
 
 export const HEX_COLOR = /^#[0-9a-f]{6}$/;
 export const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+export const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 const TRACKING_PARAMS = ['utm_', 'ref=', 'ref_', 'aff', 'spm', 'from=', 'share_'];
 
@@ -65,6 +66,7 @@ export const SiteSchema = z.object({
   order: z.number().int().min(0).max(9999),
   color: z.string().regex(HEX_COLOR),
   curated: z.boolean(),
+  addedAt: z.string().regex(ISO_DATE, '收录日期必须是 YYYY-MM-DD'),
 });
 
 export const SiteOverrideSchema = z
@@ -83,6 +85,7 @@ export const SiteOverrideSchema = z
     featured: z.boolean().optional(),
     order: z.number().int().min(0).max(9999).optional(),
     visible: z.boolean().optional(),
+    addedAt: z.string().regex(ISO_DATE, '收录日期必须是 YYYY-MM-DD').optional(),
   })
   .strict();
 

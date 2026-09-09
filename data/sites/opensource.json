@@ -12,7 +12,7 @@
     "iconId": "Ollama",
     "nameCn": "Ollama",
     "category": "opensource",
-    "tags": ["local", "inference", "open-source"],
+    "tags": ["self-hosted", "inference", "open-source"],
     "description": "一行命令在本地运行开源大模型，支持多平台与 GPU。",
     "featured": true,
     "order": 2
@@ -39,7 +39,7 @@
     "iconId": "LmStudio",
     "nameCn": "LM Studio",
     "category": "opensource",
-    "tags": ["local", "desktop", "inference"],
+    "tags": ["self-hosted", "desktop", "inference"],
     "description": "桌面端本地大模型管理工具，内置模型市场与对话界面。",
     "order": 5
   },
@@ -119,7 +119,7 @@
     "iconId": "Colab",
     "nameCn": "Google Colab",
     "category": "opensource",
-    "tags": ["notebook", "free", "cloud"],
+    "tags": ["notes", "free", "cloud"],
     "description": "免费 GPU 的云端 Jupyter 环境，适合模型实验与教学。",
     "order": 15
   },
@@ -127,8 +127,85 @@
     "iconId": "Smithery",
     "nameCn": "Smithery",
     "category": "opensource",
-    "tags": ["mcp", "directory"],
+    "tags": ["mcp", "aggregator"],
     "description": "MCP 服务器的注册表与托管平台。",
     "order": 16
+  },
+  {
+    "iconId": "Ace",
+    "nameCn": "ACE-Step",
+    "category": "opensource",
+    "tags": ["music", "open-source"],
+    "description": "开源的音乐生成模型，可按提示词创作完整曲目。"
+  },
+  {
+    "iconId": "Ai21",
+    "nameCn": "AI21 Labs",
+    "category": "opensource",
+    "tags": ["llm", "long-context"],
+    "description": "Jamba 系列模型的开发商，主打长上下文与高效推理。"
+  },
+  {
+    "iconId": "Bilibili",
+    "nameCn": "哔哩哔哩",
+    "category": "opensource",
+    "tags": ["community", "chinese"],
+    "description": "国内视频社区，开源了 Index 系列文本与视频生成模型。"
+  },
+  {
+    "iconId": "Coqui",
+    "nameCn": "Coqui",
+    "category": "opensource",
+    "tags": ["tts", "open-source"],
+    "description": "开源的语音合成工具箱，支持多语言与声音克隆。"
+  },
+  {
+    "iconId": "Goose",
+    "nameCn": "Goose",
+    "category": "opensource",
+    "tags": ["agent", "open-source"],
+    "description": "Block 开源的本地智能体，可在终端调用工具完成任务。"
+  },
+  {
+    "iconId": "IBM",
+    "nameCn": "IBM Granite",
+    "category": "opensource",
+    "tags": ["llm", "open-source"],
+    "description": "IBM 的企业级开源模型系列，强调合规与可审计。"
+  },
+  {
+    "iconId": "LLaVA",
+    "nameCn": "LLaVA",
+    "category": "opensource",
+    "tags": ["multimodal", "open-source"],
+    "description": "开源的多模态模型，可理解图片并结合语言回答。"
+  },
+  {
+    "iconId": "Rwkv",
+    "nameCn": "RWKV",
+    "category": "opensource",
+    "tags": ["llm", "open-source"],
+    "description": "结合 RNN 与 Transformer 优势的开源架构，推理成本低。"
+  },
+  {
+    "iconId": "Unstructured",
+    "nameCn": "Unstructured",
+    "category": "opensource",
+    "tags": ["rag", "open-source"],
+    "description": "把各类文档解析为结构化数据的开源工具库。"
+  },
+  {
+    "iconId": "Yi",
+    "nameCn": "零一万物 Yi",
+    "category": "opensource",
+    "tags": ["llm", "open-source", "chinese"],
+    "description": "零一万物开源的双语模型系列，覆盖多尺寸版本。"
+  },
+  {
+    "iconId": "NousResearch",
+    "nameCn": "Nous Research",
+    "category": "opensource",
+    "tags": ["open-source", "model-hub"],
+    "description": "开源模型研究团队，发布 Hermes 系列微调模型。"
   }
 ]

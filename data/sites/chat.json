@@ -157,5 +157,33 @@
     "tags": ["chatbot", "voice"],
     "description": "Inflection 出品的陪伴式对话助手，支持语音交流。",
     "order": 19
+  },
+  {
+    "iconId": "AgnesAI",
+    "nameCn": "Agnes AI",
+    "category": "chat",
+    "tags": ["chatbot", "agent"],
+    "description": "支持多智能体协作的对话助手，可完成调研与写作任务。"
+  },
+  {
+    "iconId": "AkashChat",
+    "nameCn": "AkashChat",
+    "category": "chat",
+    "tags": ["chatbot", "open-source"],
+    "description": "Akash 网络上的开源对话助手，可自由切换底层模型。"
+  },
+  {
+    "iconId": "ChatGLM",
+    "nameCn": "ChatGLM 智谱清言",
+    "category": "chat",
+    "tags": ["chatbot", "chinese", "open-source"],
+    "description": "智谱开源的中英双语对话模型，支持本地部署与微调。"
+  },
+  {
+    "iconId": "ZAI",
+    "nameCn": "Z.ai",
+    "category": "chat",
+    "tags": ["chatbot", "chinese"],
+    "description": "智谱面向个人用户的对话与智能体入口。"
   }
 ]

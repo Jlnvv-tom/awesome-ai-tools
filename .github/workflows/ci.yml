@@ -43,6 +43,9 @@ jobs:
       - name: 单元测试
         run: pnpm test
 
+      - name: 校验收录时间映射为最新
+        run: pnpm backfill:added-at --check
+
       - name: 校验生成文件是否为最新
         run: |
           pnpm build:search

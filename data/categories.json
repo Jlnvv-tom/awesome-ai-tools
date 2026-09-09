@@ -30,7 +30,8 @@
       "akashchat",
       "agnes",
       "pi.dev",
-      "chat"
+      "chat",
+      "z.ai"
     ]
   },
   {
@@ -116,7 +117,9 @@
       "tripo",
       "lightricks",
       "image",
-      "design"
+      "design",
+      "adobe",
+      "deepai"
     ]
   },
   {
@@ -191,7 +194,23 @@
       "agent",
       "workflow",
       "automation",
-      "orchestration"
+      "orchestration",
+      "airjelly",
+      "antigravity",
+      "askverdict",
+      "celesto",
+      "langsmith",
+      "moxt",
+      "myshell",
+      "openclaw",
+      "phidata",
+      "player2",
+      "slock",
+      "sync.so",
+      "tinyhumans",
+      "venice.ai",
+      "geminicli",
+      "hermes"
     ]
   },
   {
@@ -262,7 +281,8 @@
       "smithery",
       "huggingface",
       "open-source",
-      "self-hosted"
+      "self-hosted",
+      "pollinations"
     ]
   },
   {
@@ -307,7 +327,55 @@
       "snowflake",
       "cloud",
       "inference",
-      "hosting"
+      "hosting",
+      "302.ai",
+      "ai.360.com",
+      "aihubmix",
+      "ai-maas",
+      "aleph-alpha",
+      "alibaba.com",
+      "anspire",
+      "antgroup.com",
+      "anyscale",
+      "apertis",
+      "apple.com",
+      "atlascloud",
+      "baidu.com",
+      "baseten",
+      "burncloud",
+      "bytedance.com",
+      "centml",
+      "cerebras",
+      "crusoe",
+      "fal.ai",
+      "featherless",
+      "friendli",
+      "google.com",
+      "gitee",
+      "huawei.com",
+      "hyperbolic",
+      "infermatic",
+      "infini-ai",
+      "inference.net",
+      "kluster",
+      "lepton",
+      "menlo",
+      "newapi.ai",
+      "nlpcloud",
+      "nova.amazon.com",
+      "parasail",
+      "ppinfra",
+      "sambanova",
+      "sophnet",
+      "speedai",
+      "straico",
+      "streamlake",
+      "targon",
+      "tencent.com",
+      "worldrouter",
+      "xpay.sh",
+      "xfyun",
+      "bailian"
     ]
   },
   {
@@ -349,7 +417,25 @@
       "arcee",
       "liquid",
       "model",
-      "llm"
+      "llm",
+      "aionlabs",
+      "aya (cohere)",
+      "commanda",
+      "dbrx",
+      "deepcogito",
+      "dphn",
+      "essential",
+      "inception",
+      "inflection",
+      "llmapi",
+      "morphllm",
+      "palm2",
+      "pruna",
+      "relace",
+      "submodel",
+      "voyageai",
+      "xiaomimimo",
+      "palm (google)"
     ]
   }
 ]

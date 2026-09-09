@@ -1,6 +1,13 @@
 import { HomeExplorer } from '@/app/home-explorer';
 import { HomeHero } from '@/app/home-hero';
-import { getCategoriesWithCount, getAllSites, getStats } from '@/lib/sites';
+import { HomeNewArrivals } from '@/app/home-new-arrivals';
+import {
+  getCategoriesWithCount,
+  getAllSites,
+  getRecentSites,
+  getStats,
+  isWithinDays,
+} from '@/lib/sites';
 import { buildCollectionJsonLd, SITE_DESCRIPTION, SITE_NAME } from '@/lib/seo';
 
 /** 首页为静态生成，每小时增量更新一次 */
@@ -11,9 +18,13 @@ export default function HomePage() {
   const categories = getCategoriesWithCount();
   const stats = getStats();
 
+  const recent = getRecentSites({ days: 7, limit: 8 });
+  const hasNewThisWeek = recent.some((site) => isWithinDays(site.addedAt, 7));
+
   return (
     <>
       <HomeHero stats={stats} />
+      <HomeNewArrivals sites={recent} withinDays={hasNewThisWeek} />
       <HomeExplorer sites={sites} categories={categories} />
       <script
         type="application/ld+json"

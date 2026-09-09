@@ -1,3 +1,4 @@
+# 允许执行 postinstall 构建脚本的依赖（esbuild / unrs-resolver 需要安装原生二进制）
 allowBuilds:
-  esbuild: set this to true or false
-  unrs-resolver: set this to true or false
+  esbuild: true
+  unrs-resolver: true

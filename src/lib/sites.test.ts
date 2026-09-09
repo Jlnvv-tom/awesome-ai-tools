@@ -1,14 +1,16 @@
 import { describe, expect, it } from 'vitest';
 
 import { ICON_META } from '@/data/icons.generated';
-import { CATEGORIES } from '@/data/registry';
+import { ADDED_AT_MAP, CATEGORIES } from '@/data/registry';
 import {
   getAllSites,
   getFeaturedSites,
+  getRecentSites,
   getRelatedSites,
   getSiteById,
   getSitesByCategory,
   getStats,
+  isWithinDays,
   resolveCategory,
   slugify,
 } from '@/lib/sites';
@@ -92,6 +94,37 @@ describe('getAllSites', () => {
     for (const site of getAllSites()) {
       expect(slugs.has(site.category)).toBe(true);
     }
+  });
+});
+
+describe('收录时间', () => {
+  it('每个条目都带合法的收录日期', () => {
+    for (const site of getAllSites()) {
+      expect(site.addedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    }
+  });
+
+  it('未显式覆盖时取 git 回填映射', () => {
+    const site = getSiteById('openai');
+    if (!site) throw new Error('缺少 openai 条目');
+    expect(site.addedAt).toBe(ADDED_AT_MAP[site.iconId]);
+  });
+
+  it('isWithinDays 以运行时间为基准判断', () => {
+    const today = new Date().toISOString().slice(0, 10);
+    expect(isWithinDays(today, 7)).toBe(true);
+    expect(isWithinDays('2000-01-01', 7)).toBe(false);
+  });
+
+  it('最近收录按日期倒序且受 limit 约束', () => {
+    const recent = getRecentSites({ days: 3650, limit: 5 });
+    expect(recent.length).toBeLessThanOrEqual(5);
+    const days = recent.map((site) => site.addedAt);
+    expect([...days].sort().reverse()).toEqual(days);
+  });
+
+  it('时间窗口内无新增时降级为最近收录，不返回空', () => {
+    expect(getRecentSites({ days: 1, limit: 4 }).length).toBeGreaterThan(0);
   });
 });
 

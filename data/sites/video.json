@@ -70,7 +70,7 @@
     "iconId": "Suno",
     "nameCn": "Suno",
     "category": "video",
-    "tags": ["music", "audio"],
+    "tags": ["music", "voice"],
     "description": "输入歌词即可生成完整人声歌曲的 AI 音乐平台。",
     "featured": true,
     "order": 9
@@ -128,8 +128,43 @@
     "iconId": "AssemblyAI",
     "nameCn": "AssemblyAI",
     "category": "video",
-    "tags": ["speech-to-text", "api"],
+    "tags": ["tts", "api"],
     "description": "面向开发者的语音识别与音频理解 API 服务。",
     "order": 16
+  },
+  {
+    "iconId": "AiStudio",
+    "nameCn": "Google AI Studio",
+    "category": "video",
+    "tags": ["multimodal", "free"],
+    "description": "Google 的网页端模型实验台，可直接调用 Gemini 系列模型。"
+  },
+  {
+    "iconId": "Haiper",
+    "nameCn": "Haiper",
+    "category": "video",
+    "tags": ["video-generation"],
+    "description": "支持文本与图片生成视频的创作平台，镜头表现丰富。"
+  },
+  {
+    "iconId": "LiveKit",
+    "nameCn": "LiveKit",
+    "category": "video",
+    "tags": ["realtime", "open-source"],
+    "description": "开源的实时音视频框架，常用于构建语音智能体。"
+  },
+  {
+    "iconId": "Luma",
+    "nameCn": "Luma",
+    "category": "video",
+    "tags": ["video-generation"],
+    "description": "支持文本与图片生成视频，并提供三维场景捕捉能力。"
+  },
+  {
+    "iconId": "Viggle",
+    "nameCn": "Viggle",
+    "category": "video",
+    "tags": ["video-generation"],
+    "description": "通过动作驱动角色动画的视频生成工具。"
   }
 ]

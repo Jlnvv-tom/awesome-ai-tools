@@ -36,7 +36,7 @@
     "iconId": "Kagi",
     "nameCn": "Kagi",
     "category": "search",
-    "tags": ["ai-search", "search-engine"],
+    "tags": ["ai-search"],
     "description": "无广告的付费搜索引擎，支持结果自定义排序与聚焦。",
     "order": 5
   },
@@ -52,7 +52,7 @@
     "iconId": "SearXNG",
     "nameCn": "SearXNG",
     "category": "search",
-    "tags": ["open-source", "search-engine", "self-hosted"],
+    "tags": ["open-source", "ai-search", "self-hosted"],
     "description": "可自托管的元搜索引擎，聚合多源结果且不追踪用户。",
     "order": 7
   },
@@ -76,7 +76,7 @@
     "iconId": "Bing",
     "nameCn": "Microsoft Bing",
     "category": "search",
-    "tags": ["search-engine", "chatbot"],
+    "tags": ["ai-search", "chatbot"],
     "description": "微软搜索引擎，内置 Copilot 对话式搜索体验。",
     "order": 10
   },
@@ -84,7 +84,7 @@
     "iconId": "Brave",
     "nameCn": "Brave",
     "category": "search",
-    "tags": ["search-engine", "browser-extension"],
+    "tags": ["ai-search", "browser-extension"],
     "description": "注重隐私的浏览器与独立搜索索引，提供搜索 API。",
     "order": 11
   },
@@ -92,7 +92,7 @@
     "iconId": "McpSo",
     "nameCn": "MCP.so",
     "category": "search",
-    "tags": ["directory", "mcp"],
+    "tags": ["aggregator", "mcp"],
     "description": "MCP 服务器与客户端的收录目录站。",
     "order": 12
   },
@@ -103,5 +103,33 @@
     "tags": ["open-source", "crawler"],
     "description": "把任意站点内容转成 RSS 订阅源的开源项目。",
     "order": 13
+  },
+  {
+    "iconId": "Browserless",
+    "nameCn": "Browserless",
+    "category": "search",
+    "tags": ["crawler", "api"],
+    "description": "为自动化与抓取场景提供托管浏览器与接口服务。"
+  },
+  {
+    "iconId": "DocSearch",
+    "nameCn": "DocSearch",
+    "category": "search",
+    "tags": ["api", "open-source"],
+    "description": "Algolia 面向技术文档的免费站内搜索方案。"
+  },
+  {
+    "iconId": "Glama",
+    "nameCn": "Glama",
+    "category": "search",
+    "tags": ["aggregator", "mcp"],
+    "description": "AI 模型与 MCP 服务器的聚合目录与评测平台。"
+  },
+  {
+    "iconId": "Search1API",
+    "nameCn": "Search1API",
+    "category": "search",
+    "tags": ["ai-search", "api"],
+    "description": "面向智能体的搜索与抓取接口，支持多数据源聚合。"
   }
 ]

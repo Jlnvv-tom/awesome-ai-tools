@@ -62,22 +62,24 @@ SiteOverride[]│                                （未覆盖的字段取派生�
 | `order`       | number   | ✅   | 0–9999，越小越靠前                                                              |
 | `color`       | string   | ✅   | 小写 hex                                                                        |
 | `curated`     | boolean  | ✅   | 是否人工维护                                                                    |
+| `addedAt`     | string   | ✅   | 收录日期 `YYYY-MM-DD`；`override.addedAt` > git 回填映射 > 兜底日期             |
 
 ## 4. SiteOverride（人工维护，全部字段可选）
 
 存储位置：`data/sites/<category>.json`，数组形式。
 
-| 字段              | 类型     | 说明                                         |
-| ----------------- | -------- | -------------------------------------------- |
-| `iconId`          | string   | **必填**，关联到 IconMeta.id                 |
-| `name` / `nameCn` | string   | 覆盖展示名                                   |
-| `url`             | string   | 覆盖官网地址（上游 `desc` 缺失或错误时使用） |
-| `category`        | string   | 覆盖自动归类结果                             |
-| `tags`            | string[] | 覆盖标签                                     |
-| `description`     | string   | 覆盖简介                                     |
-| `featured`        | boolean  | 是否精选                                     |
-| `order`           | number   | 排序权重                                     |
-| `visible`         | boolean  | `false` 表示从导航中隐藏该条目               |
+| 字段              | 类型     | 说明                                                   |
+| ----------------- | -------- | ------------------------------------------------------ |
+| `iconId`          | string   | **必填**，关联到 IconMeta.id                           |
+| `name` / `nameCn` | string   | 覆盖展示名                                             |
+| `url`             | string   | 覆盖官网地址（上游 `desc` 缺失或错误时使用）           |
+| `category`        | string   | 覆盖自动归类结果                                       |
+| `tags`            | string[] | 覆盖标签                                               |
+| `description`     | string   | 覆盖简介                                               |
+| `featured`        | boolean  | 是否精选                                               |
+| `order`           | number   | 排序权重                                               |
+| `visible`         | boolean  | `false` 表示从导航中隐藏该条目                         |
+| `addedAt`         | string   | 覆盖回填的收录日期（`YYYY-MM-DD`），新收录条目建议填写 |
 
 ### 示例
 
@@ -134,6 +136,7 @@ SiteOverride[]│                                （未覆盖的字段取派生�
 | ❌ error | `categories.json` 中 `slug` 重复                      |
 | ⚠️ warn  | 同一 `url` 被多个条目引用                             |
 | ⚠️ warn  | 条目缺少中文名或简介仍为派生兜底文案                  |
+| ❌ error | `site.addedAt` 缺失或格式非法（必须为 `YYYY-MM-DD`）  |
 | ⚠️ warn  | 图标元数据中未被任何站点引用（新收录图标，待补信息）  |
 
 > error 会导致进程以非 0 退出并阻断 CI；warn 仅提示，不阻断。

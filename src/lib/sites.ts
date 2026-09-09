@@ -1,5 +1,5 @@
 import { ICON_META } from '@/data/icons.generated';
-import { CATEGORIES, SITE_OVERRIDES, TAGS } from '@/data/registry';
+import { ADDED_AT_DEFAULT, ADDED_AT_MAP, CATEGORIES, SITE_OVERRIDES, TAGS } from '@/data/registry';
 import type { Category, IconGroup, IconMeta, Site, SiteOverride, SiteStats } from '@/types/site';
 
 /**
@@ -22,6 +22,11 @@ const GROUP_FALLBACK_CATEGORY: Record<IconGroup, string> = {
 };
 
 const DEFAULT_ORDER = 9999;
+
+/** 以 base 为基准向前推 days 天，返回 YYYY-MM-DD（ISO 日期可直接字典序比较） */
+function dayBefore(base: Date, days: number): string {
+  return new Date(base.getTime() - days * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+}
 
 /** OpenAI → openai；用于路由与 id */
 export function slugify(id: string): string {
@@ -79,6 +84,7 @@ function buildSite(meta: IconMeta, override: SiteOverride | undefined, categorie
     order: override?.order ?? DEFAULT_ORDER,
     color: meta.color,
     curated: Boolean(override),
+    addedAt: override?.addedAt ?? ADDED_AT_MAP[meta.id] ?? ADDED_AT_DEFAULT,
   };
 
   if (override?.name) site.name = override.name;
@@ -113,6 +119,31 @@ export function getAllSites(): Site[] {
 function byRank(a: Site, b: Site): number {
   if (a.order !== b.order) return a.order - b.order;
   return a.name.localeCompare(b.name);
+}
+
+/** 判断收录日期是否落在最近 days 天内（以运行时间为基准） */
+export function isWithinDays(day: string, days: number): boolean {
+  return day >= dayBefore(new Date(), days);
+}
+
+/**
+ * 最近收录的站点。
+ *
+ * 默认取最近 7 天新增；窗口内无新增时降级为「最近收录」的若干条，避免首页出现空白区块。
+ * 排序规则：收录日期倒序，同日按 order 与名称。
+ */
+export function getRecentSites(options: { days?: number; limit?: number } = {}): Site[] {
+  const { days = 7, limit = 8 } = options;
+  const byAddedAtDesc = (a: Site, b: Site) => {
+    if (a.addedAt !== b.addedAt) return a.addedAt < b.addedAt ? 1 : -1;
+    return byRank(a, b);
+  };
+
+  const sites = getAllSites();
+  const fresh = sites.filter((site) => isWithinDays(site.addedAt, days));
+  const pool = fresh.length > 0 ? fresh : sites;
+
+  return [...pool].sort(byAddedAtDesc).slice(0, limit);
 }
 
 /** 首页精选 */
