@@ -9,6 +9,12 @@
 /** 图标上游分组（与 @lobehub/icons toc 保持一致） */
 export type IconGroup = 'model' | 'provider' | 'application';
 
+/** 定价模式；`unknown` 表示尚未补充，不等同于「不确定是否免费」 */
+export type PricingState = 'free' | 'freemium' | 'paid' | 'unknown';
+
+/** 三态：是 / 否 / 待补充（避免用 false 表达「未填」） */
+export type TriState = 'yes' | 'no' | 'unknown';
+
 /** 图标支持的变体标记 */
 export interface IconVariantFlags {
   hasAvatar: boolean;
@@ -91,6 +97,12 @@ export interface Site {
   curated: boolean;
   /** 收录日期（YYYY-MM-DD）：覆盖项 > git 回填映射 > 项目初始化日期 */
   addedAt: string;
+  /** 定价模式，unknown 表示待补充 */
+  pricing: PricingState;
+  /** 是否开源 */
+  openSource: TriState;
+  /** 是否支持中文 */
+  chineseSupport: TriState;
 }
 
 /** 人工维护的站点覆盖项：字段全部可选，与自动派生结果做浅合并 */
@@ -108,6 +120,12 @@ export interface SiteOverride {
   visible?: boolean;
   /** 覆盖自动回填的收录日期（YYYY-MM-DD），新收录条目由贡献者或同步脚本填写 */
   addedAt?: string;
+  /** 定价模式 */
+  pricing?: PricingState;
+  /** 是否开源 */
+  openSource?: TriState;
+  /** 是否支持中文 */
+  chineseSupport?: TriState;
 }
 
 /** 首页统计信息 */

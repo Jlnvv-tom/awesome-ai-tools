@@ -68,41 +68,46 @@
     "iconId": "SiliconCloud",
     "nameCn": "硅基流动 SiliconCloud",
     "category": "infra",
-    "tags": ["inference", "chinese", "api"],
+    "tags": ["inference", "api"],
     "description": "国产模型即服务平台，主打高性价比中文推理。",
-    "order": 9
+    "order": 9,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "ModelScope",
     "nameCn": "魔搭 ModelScope",
     "category": "infra",
-    "tags": ["model-hub", "chinese", "community"],
+    "tags": ["model-hub", "community"],
     "description": "阿里开源的模型社区与数据集平台，中文模型齐全。",
-    "order": 10
+    "order": 10,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "AlibabaCloud",
     "nameCn": "阿里云",
     "category": "infra",
-    "tags": ["cloud", "chinese"],
+    "tags": ["cloud"],
     "description": "阿里云百炼与 PAI 平台，提供模型训练与推理全链路。",
-    "order": 11
+    "order": 11,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Volcengine",
     "nameCn": "火山引擎",
     "category": "infra",
-    "tags": ["cloud", "chinese"],
+    "tags": ["cloud"],
     "description": "字节跳动的云与大模型服务平台，方舟系列模型入口。",
-    "order": 12
+    "order": 12,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "TencentCloud",
     "nameCn": "腾讯云",
     "category": "infra",
-    "tags": ["cloud", "chinese"],
+    "tags": ["cloud"],
     "description": "腾讯云 TI 平台与混元模型服务，覆盖训练到部署。",
-    "order": 13
+    "order": 13,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Cloudflare",
@@ -140,30 +145,35 @@
     "iconId": "Higress",
     "nameCn": "Higress",
     "category": "infra",
-    "tags": ["cloud", "open-source", "chinese"],
+    "tags": ["cloud"],
     "description": "阿里开源的 AI 原生网关，支持模型代理与插件编排。",
-    "order": 18
+    "order": 18,
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Ai360",
     "nameCn": "360 智脑",
     "category": "infra",
-    "tags": ["cloud", "chinese", "llm"],
-    "description": "360 的大模型与 AI 云服务，提供推理与智能体能力。"
+    "tags": ["cloud", "llm"],
+    "description": "360 的大模型与 AI 云服务，提供推理与智能体能力。",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Alibaba",
     "nameCn": "阿里巴巴",
     "category": "infra",
-    "tags": ["cloud", "chinese"],
-    "description": "国内云服务商，提供通义系列模型与 AI 基础设施。"
+    "tags": ["cloud"],
+    "description": "国内云服务商，提供通义系列模型与 AI 基础设施。",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "AntGroup",
     "nameCn": "蚂蚁集团",
     "category": "infra",
-    "tags": ["cloud", "chinese"],
-    "description": "推出百灵大模型与面向金融场景的智能体平台。"
+    "tags": ["cloud"],
+    "description": "推出百灵大模型与面向金融场景的智能体平台。",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Anyscale",
@@ -197,22 +207,25 @@
     "iconId": "BaiduCloud",
     "nameCn": "百度智能云",
     "category": "infra",
-    "tags": ["cloud", "chinese", "inference"],
-    "description": "提供千帆模型平台与文心系列模型的推理服务。"
+    "tags": ["cloud", "inference"],
+    "description": "提供千帆模型平台与文心系列模型的推理服务。",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Bailian",
     "nameCn": "阿里云百炼",
     "category": "infra",
-    "tags": ["cloud", "chinese", "agent"],
-    "description": "阿里云的一站式模型服务平台，支持应用与智能体搭建。"
+    "tags": ["cloud", "agent"],
+    "description": "阿里云的一站式模型服务平台，支持应用与智能体搭建。",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "ByteDance",
     "nameCn": "字节跳动",
     "category": "infra",
-    "tags": ["cloud", "chinese"],
-    "description": "推出豆包与扣子等模型应用，并对外提供算力服务。"
+    "tags": ["cloud"],
+    "description": "推出豆包与扣子等模型应用，并对外提供算力服务。",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Cerebras",
@@ -246,22 +259,25 @@
     "iconId": "Huawei",
     "nameCn": "华为",
     "category": "infra",
-    "tags": ["cloud", "chinese"],
-    "description": "推出盘古大模型与昇腾算力，提供行业 AI 解决方案。"
+    "tags": ["cloud"],
+    "description": "推出盘古大模型与昇腾算力，提供行业 AI 解决方案。",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "HuaweiCloud",
     "nameCn": "华为云",
     "category": "infra",
-    "tags": ["cloud", "chinese", "hosting"],
-    "description": "提供盘古模型服务与 AI 开发平台 ModelArts。"
+    "tags": ["cloud", "hosting"],
+    "description": "提供盘古模型服务与 AI 开发平台 ModelArts。",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "IFlyTekCloud",
     "nameCn": "讯飞开放平台",
     "category": "infra",
-    "tags": ["cloud", "chinese", "voice"],
-    "description": "科大讯飞的开放平台，提供语音识别与星火模型接口。"
+    "tags": ["cloud", "voice"],
+    "description": "科大讯飞的开放平台，提供语音识别与星火模型接口。",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Lambda",
@@ -274,8 +290,9 @@
     "iconId": "Qiniu",
     "nameCn": "七牛云",
     "category": "infra",
-    "tags": ["cloud", "chinese"],
-    "description": "国内云服务商，提供模型推理与音视频 AI 能力。"
+    "tags": ["cloud"],
+    "description": "国内云服务商，提供模型推理与音视频 AI 能力。",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "SambaNova",
@@ -288,8 +305,9 @@
     "iconId": "Tencent",
     "nameCn": "腾讯",
     "category": "infra",
-    "tags": ["cloud", "chinese"],
-    "description": "推出混元大模型，并通过腾讯云对外提供服务。"
+    "tags": ["cloud"],
+    "description": "推出混元大模型，并通过腾讯云对外提供服务。",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "WorkersAI",

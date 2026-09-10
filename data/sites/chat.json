@@ -30,37 +30,43 @@
     "iconId": "DeepSeek",
     "nameCn": "DeepSeek 深度求索",
     "category": "chat",
-    "tags": ["chatbot", "llm", "open-source", "chinese"],
+    "tags": ["chatbot", "llm"],
     "description": "国产开源大模型，推理与代码能力突出，性价比极高。",
     "featured": true,
-    "order": 4
+    "order": 4,
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Qwen",
     "nameCn": "通义千问",
     "category": "chat",
-    "tags": ["chatbot", "llm", "chinese", "open-source"],
+    "tags": ["chatbot", "llm"],
     "description": "阿里通义千问大模型，开源生态完善，中文表现优秀。",
     "featured": true,
-    "order": 5
+    "order": 5,
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Doubao",
     "nameCn": "豆包",
     "category": "chat",
-    "tags": ["chatbot", "chinese"],
+    "tags": ["chatbot"],
     "description": "字节跳动推出的 AI 对话助手，支持多场景插件。",
     "featured": true,
-    "order": 6
+    "order": 6,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Kimi",
     "nameCn": "Kimi",
     "category": "chat",
-    "tags": ["chatbot", "chinese", "long-context"],
+    "tags": ["chatbot", "long-context"],
     "description": "月之暗面出品的对话助手，以超长上下文阅读见长。",
     "featured": true,
-    "order": 7
+    "order": 7,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Grok",
@@ -74,41 +80,46 @@
     "iconId": "Yuanbao",
     "nameCn": "腾讯元宝",
     "category": "chat",
-    "tags": ["chatbot", "chinese"],
+    "tags": ["chatbot"],
     "description": "腾讯推出的 AI 助手，支持多模型切换与文件解析。",
-    "order": 9
+    "order": 9,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Wenxin",
     "nameCn": "文心一言",
     "category": "chat",
-    "tags": ["chatbot", "chinese"],
+    "tags": ["chatbot"],
     "description": "百度文心大模型旗下的中文对话与创作助手。",
-    "order": 10
+    "order": 10,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Qingyan",
     "nameCn": "智谱清言",
     "category": "chat",
-    "tags": ["chatbot", "chinese"],
+    "tags": ["chatbot"],
     "description": "智谱 AI 推出的中文对话助手，支持 GLM 系列模型。",
-    "order": 11
+    "order": 11,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Hunyuan",
     "nameCn": "腾讯混元",
     "category": "chat",
-    "tags": ["llm", "chinese"],
+    "tags": ["llm"],
     "description": "腾讯自研的混元大模型，覆盖对话、图像与代码。",
-    "order": 12
+    "order": 12,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Spark",
     "nameCn": "讯飞星火",
     "category": "chat",
-    "tags": ["llm", "chinese"],
+    "tags": ["llm"],
     "description": "科大讯飞星火大模型，语音与中文理解能力突出。",
-    "order": 13
+    "order": 13,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Copilot",
@@ -146,9 +157,10 @@
     "iconId": "LongCat",
     "nameCn": "LongCat",
     "category": "chat",
-    "tags": ["chatbot", "chinese"],
+    "tags": ["chatbot"],
     "description": "美团推出的 AI 对话助手，支持长文本与工具调用。",
-    "order": 18
+    "order": 18,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Pi",
@@ -169,21 +181,25 @@
     "iconId": "AkashChat",
     "nameCn": "AkashChat",
     "category": "chat",
-    "tags": ["chatbot", "open-source"],
-    "description": "Akash 网络上的开源对话助手，可自由切换底层模型。"
+    "tags": ["chatbot"],
+    "description": "Akash 网络上的开源对话助手，可自由切换底层模型。",
+    "openSource": "yes"
   },
   {
     "iconId": "ChatGLM",
     "nameCn": "ChatGLM 智谱清言",
     "category": "chat",
-    "tags": ["chatbot", "chinese", "open-source"],
-    "description": "智谱开源的中英双语对话模型，支持本地部署与微调。"
+    "tags": ["chatbot"],
+    "description": "智谱开源的中英双语对话模型，支持本地部署与微调。",
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "ZAI",
     "nameCn": "Z.ai",
     "category": "chat",
-    "tags": ["chatbot", "chinese"],
-    "description": "智谱面向个人用户的对话与智能体入口。"
+    "tags": ["chatbot"],
+    "description": "智谱面向个人用户的对话与智能体入口。",
+    "chineseSupport": "yes"
   }
 ]

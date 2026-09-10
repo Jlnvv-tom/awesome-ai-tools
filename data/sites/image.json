@@ -54,17 +54,19 @@
     "iconId": "ComfyUI",
     "nameCn": "ComfyUI",
     "category": "image",
-    "tags": ["workflow", "open-source", "self-hosted"],
+    "tags": ["workflow", "self-hosted"],
     "description": "节点式图像生成工作流工具，可完全本地部署。",
-    "order": 7
+    "order": 7,
+    "openSource": "yes"
   },
   {
     "iconId": "Automatic",
     "nameCn": "Stable Diffusion WebUI",
     "category": "image",
-    "tags": ["open-source", "self-hosted"],
+    "tags": ["self-hosted"],
     "description": "最流行的 Stable Diffusion 本地 Web 界面。",
-    "order": 8
+    "order": 8,
+    "openSource": "yes"
   },
   {
     "iconId": "Civitai",
@@ -78,9 +80,10 @@
     "iconId": "Stability",
     "nameCn": "Stability AI",
     "category": "image",
-    "tags": ["image-generation", "open-source"],
+    "tags": ["image-generation"],
     "description": "Stable Diffusion 系列的研发公司。",
-    "order": 10
+    "order": 10,
+    "openSource": "yes"
   },
   {
     "iconId": "AdobeFirefly",
@@ -102,17 +105,19 @@
     "iconId": "Kolors",
     "nameCn": "快手可图",
     "category": "image",
-    "tags": ["image-generation", "chinese"],
+    "tags": ["image-generation"],
     "description": "快手推出的中文图像生成大模型。",
-    "order": 13
+    "order": 13,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Jimeng",
     "nameCn": "即梦",
     "category": "image",
-    "tags": ["image-generation", "chinese"],
+    "tags": ["image-generation"],
     "description": "字节跳动的 AI 创作平台，支持图片与视频生成。",
-    "order": 14
+    "order": 14,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "NanoBanana",
@@ -126,9 +131,11 @@
     "iconId": "CogView",
     "nameCn": "CogView",
     "category": "image",
-    "tags": ["image-generation", "chinese", "open-source"],
+    "tags": ["image-generation"],
     "description": "智谱开源的中英双语图像生成模型。",
-    "order": 16
+    "order": 16,
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Figma",

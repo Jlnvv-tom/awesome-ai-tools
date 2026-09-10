@@ -15,6 +15,10 @@ const TRACKING_PARAMS = ['utm_', 'ref=', 'ref_', 'aff', 'spm', 'from=', 'share_'
 
 export const IconGroupSchema = z.enum(['model', 'provider', 'application']);
 
+export const PricingStateSchema = z.enum(['free', 'freemium', 'paid', 'unknown']);
+
+export const TriStateSchema = z.enum(['yes', 'no', 'unknown']);
+
 export const IconVariantFlagsSchema = z.object({
   hasAvatar: z.boolean(),
   hasBrand: z.boolean(),
@@ -67,6 +71,9 @@ export const SiteSchema = z.object({
   color: z.string().regex(HEX_COLOR),
   curated: z.boolean(),
   addedAt: z.string().regex(ISO_DATE, '收录日期必须是 YYYY-MM-DD'),
+  pricing: PricingStateSchema,
+  openSource: TriStateSchema,
+  chineseSupport: TriStateSchema,
 });
 
 export const SiteOverrideSchema = z
@@ -86,6 +93,9 @@ export const SiteOverrideSchema = z
     order: z.number().int().min(0).max(9999).optional(),
     visible: z.boolean().optional(),
     addedAt: z.string().regex(ISO_DATE, '收录日期必须是 YYYY-MM-DD').optional(),
+    pricing: PricingStateSchema.optional(),
+    openSource: TriStateSchema.optional(),
+    chineseSupport: TriStateSchema.optional(),
   })
   .strict();
 

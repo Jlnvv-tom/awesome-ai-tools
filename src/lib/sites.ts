@@ -85,6 +85,9 @@ function buildSite(meta: IconMeta, override: SiteOverride | undefined, categorie
     color: meta.color,
     curated: Boolean(override),
     addedAt: override?.addedAt ?? ADDED_AT_MAP[meta.id] ?? ADDED_AT_DEFAULT,
+    pricing: override?.pricing ?? 'unknown',
+    openSource: override?.openSource ?? 'unknown',
+    chineseSupport: override?.chineseSupport ?? 'unknown',
   };
 
   if (override?.name) site.name = override.name;

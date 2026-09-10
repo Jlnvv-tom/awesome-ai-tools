@@ -1,9 +1,12 @@
-import { ArrowLeft, ExternalLink, Link2, Pencil, Sparkles } from 'lucide-react';
+import { ArrowLeft, Link2, Pencil, Sparkles } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { BrandIcon } from '@/components/site/brand-icon';
+import { OutboundLink } from '@/components/site/outbound-link';
+import { SiteMetaBadges } from '@/components/site/site-meta-badges';
+import { VisitTracker } from '@/components/site/visit-tracker';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { getAllSites, getCategory, getIconMeta, getRelatedSites, getSiteById } from '@/lib/sites';
@@ -50,6 +53,7 @@ export default async function SitePage({ params }: PageProps) {
 
   return (
     <>
+      <VisitTracker siteId={site.id} />
       <div className="container pb-16 pt-10">
         <nav className="mb-6 flex items-center gap-1.5 text-xs text-muted-foreground">
           <Link href="/" className="transition-colors hover:text-foreground">
@@ -115,18 +119,10 @@ export default async function SitePage({ params }: PageProps) {
               <p className="text-sm text-muted-foreground">{site.name}</p>
               <p className="max-w-2xl text-sm leading-relaxed">{site.description}</p>
 
+              <SiteMetaBadges site={site} className="pt-1" />
+
               <div className="flex flex-wrap items-center gap-2 pt-1">
-                <Button asChild size="lg">
-                  <a
-                    href={site.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`在新窗口打开 ${site.nameCn ?? site.name} 官网`}
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                    前往官网
-                  </a>
-                </Button>
+                <OutboundLink siteId={site.id} url={site.url} name={site.nameCn ?? site.name} />
                 <Button asChild variant="outline">
                   <a
                     href={`https://github.com/Jlnvv-tom/awesome-ai-tools/issues/new?template=bug_report.yml&title=${encodeURIComponent(`[数据修正] ${site.name}`)}`}

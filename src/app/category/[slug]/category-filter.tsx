@@ -1,20 +1,20 @@
 'use client';
 
-import { LayoutGrid, Rows3 } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
 import { SiteCard } from '@/components/site/site-card';
+import { SiteRow } from '@/components/site/site-row';
+import { SiteViewToggle } from '@/components/site/site-view-toggle';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/cn';
+import { useViewMode } from '@/lib/view-mode';
 import type { Site } from '@/types/site';
-
-type ViewMode = 'grid' | 'list';
 
 /** 分类页筛选工具条（页面私有客户端组件） */
 export function CategoryFilter({ sites }: { sites: Site[] }) {
   const [activeTag, setActiveTag] = useState<string | null>(null);
-  const [view, setView] = useState<ViewMode>('grid');
+  const { view, setView } = useViewMode();
 
   const tags = useMemo(() => {
     const counter = new Map<string, number>();
@@ -36,6 +36,7 @@ export function CategoryFilter({ sites }: { sites: Site[] }) {
           <button
             type="button"
             onClick={() => setActiveTag(null)}
+            aria-pressed={activeTag === null}
             className={cn(
               'shrink-0 rounded-full border px-3 py-1 text-xs transition-colors',
               activeTag === null
@@ -50,6 +51,7 @@ export function CategoryFilter({ sites }: { sites: Site[] }) {
               key={tag}
               type="button"
               onClick={() => setActiveTag(tag === activeTag ? null : tag)}
+              aria-pressed={activeTag === tag}
               className={cn(
                 'shrink-0 rounded-full border px-3 py-1 text-xs transition-colors',
                 activeTag === tag
@@ -62,24 +64,7 @@ export function CategoryFilter({ sites }: { sites: Site[] }) {
           ))}
         </div>
 
-        <div className="flex shrink-0 items-center gap-1">
-          <Button
-            variant={view === 'grid' ? 'secondary' : 'ghost'}
-            size="icon"
-            onClick={() => setView('grid')}
-            aria-label="网格视图"
-          >
-            <LayoutGrid className="h-4 w-4" />
-          </Button>
-          <Button
-            variant={view === 'list' ? 'secondary' : 'ghost'}
-            size="icon"
-            onClick={() => setView('list')}
-            aria-label="列表视图"
-          >
-            <Rows3 className="h-4 w-4" />
-          </Button>
-        </div>
+        <SiteViewToggle view={view} onChange={setView} />
       </div>
 
       {filtered.length === 0 ? (
@@ -98,8 +83,8 @@ export function CategoryFilter({ sites }: { sites: Site[] }) {
       ) : (
         <ul className="space-y-2">
           {filtered.map((site) => (
-            <li key={site.id} className="glass-card p-3">
-              <SiteCard site={site} showTags />
+            <li key={site.id}>
+              <SiteRow site={site} />
             </li>
           ))}
         </ul>

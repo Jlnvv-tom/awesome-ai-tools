@@ -3,52 +3,58 @@
     "iconId": "Dify",
     "nameCn": "Dify",
     "category": "agent",
-    "tags": ["workflow", "open-source", "rag"],
+    "tags": ["workflow", "rag"],
     "description": "开源的 LLM 应用开发平台，可视化编排 Agent 与知识库。",
     "featured": true,
-    "order": 1
+    "order": 1,
+    "openSource": "yes"
   },
   {
     "iconId": "Coze",
     "nameCn": "扣子 Coze",
     "category": "agent",
-    "tags": ["workflow", "chinese"],
+    "tags": ["workflow"],
     "description": "字节跳动的 AI Bot 开发平台，可一键发布到多平台。",
     "featured": true,
-    "order": 2
+    "order": 2,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "N8n",
     "nameCn": "n8n",
     "category": "agent",
-    "tags": ["workflow", "open-source"],
+    "tags": ["workflow"],
     "description": "可自托管的自动化工作流平台，原生支持 AI 节点。",
     "featured": true,
-    "order": 3
+    "order": 3,
+    "openSource": "yes"
   },
   {
     "iconId": "LangChain",
     "nameCn": "LangChain",
     "category": "agent",
-    "tags": ["framework", "open-source"],
+    "tags": ["framework"],
     "description": "最流行的 LLM 应用开发框架，生态组件极其丰富。",
-    "order": 4
+    "order": 4,
+    "openSource": "yes"
   },
   {
     "iconId": "CrewAI",
     "nameCn": "CrewAI",
     "category": "agent",
-    "tags": ["framework", "open-source", "workflow"],
+    "tags": ["framework", "workflow"],
     "description": "多智能体协作框架，用角色分工编排复杂任务。",
-    "order": 5
+    "order": 5,
+    "openSource": "yes"
   },
   {
     "iconId": "MCP",
     "nameCn": "Model Context Protocol",
     "category": "agent",
-    "tags": ["protocol", "open-source", "mcp"],
+    "tags": ["protocol", "mcp"],
     "description": "Anthropic 提出的模型上下文协议，统一工具接入标准。",
-    "order": 6
+    "order": 6,
+    "openSource": "yes"
   },
   {
     "iconId": "Manus",
@@ -78,49 +84,56 @@
     "iconId": "OpenHands",
     "nameCn": "OpenHands",
     "category": "agent",
-    "tags": ["open-source", "code-assistant"],
+    "tags": ["code-assistant"],
     "description": "开源的软件开发 Agent 平台，可自主改代码跑测试。",
-    "order": 10
+    "order": 10,
+    "openSource": "yes"
   },
   {
     "iconId": "FastGPT",
     "nameCn": "FastGPT",
     "category": "agent",
-    "tags": ["rag", "open-source", "chinese"],
+    "tags": ["rag"],
     "description": "开箱即用的知识库问答平台，支持可视化编排工作流。",
-    "order": 11
+    "order": 11,
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "LangGraph",
     "nameCn": "LangGraph",
     "category": "agent",
-    "tags": ["framework", "workflow", "open-source"],
+    "tags": ["framework", "workflow"],
     "description": "用状态机方式构建可控、可恢复的 Agent 应用。",
-    "order": 12
+    "order": 12,
+    "openSource": "yes"
   },
   {
     "iconId": "Mastra",
     "nameCn": "Mastra",
     "category": "agent",
-    "tags": ["framework", "open-source"],
+    "tags": ["framework"],
     "description": "TypeScript 原生的 AI Agent 开发框架。",
-    "order": 13
+    "order": 13,
+    "openSource": "yes"
   },
   {
     "iconId": "Agui",
     "nameCn": "AG-UI",
     "category": "agent",
-    "tags": ["protocol", "open-source", "frontend"],
+    "tags": ["protocol", "frontend"],
     "description": "面向前端的 Agent 交互协议，统一流式 UI 事件格式。",
-    "order": 14
+    "order": 14,
+    "openSource": "yes"
   },
   {
     "iconId": "MetaGPT",
     "nameCn": "MetaGPT",
     "category": "agent",
-    "tags": ["framework", "open-source"],
+    "tags": ["framework"],
     "description": "把标准流程交给多角色智能体协作完成的开源框架。",
-    "order": 15
+    "order": 15,
+    "openSource": "yes"
   },
   {
     "iconId": "Flowith",

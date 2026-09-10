@@ -12,17 +12,19 @@
     "iconId": "Mistral",
     "nameCn": "Mistral AI",
     "category": "model",
-    "tags": ["llm", "open-source", "api"],
+    "tags": ["llm", "api"],
     "description": "欧洲开源大模型厂商，模型轻量且推理成本低。",
-    "order": 2
+    "order": 2,
+    "openSource": "yes"
   },
   {
     "iconId": "Meta",
     "nameCn": "Meta Llama",
     "category": "model",
-    "tags": ["llm", "open-source"],
+    "tags": ["llm"],
     "description": "Llama 系列开源模型，社区微调生态最庞大。",
-    "order": 3
+    "order": 3,
+    "openSource": "yes"
   },
   {
     "iconId": "DeepMind",
@@ -44,49 +46,57 @@
     "iconId": "Zhipu",
     "nameCn": "智谱 AI",
     "category": "model",
-    "tags": ["llm", "chinese", "api"],
+    "tags": ["llm", "api"],
     "description": "GLM 系列模型厂商，提供 GLM-4 与开源基座模型。",
-    "order": 6
+    "order": 6,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Moonshot",
     "nameCn": "月之暗面",
     "category": "model",
-    "tags": ["llm", "chinese", "long-context"],
+    "tags": ["llm", "long-context"],
     "description": "Kimi 的研发公司，主打长上下文与智能体能力。",
-    "order": 7
+    "order": 7,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Minimax",
     "nameCn": "MiniMax",
     "category": "model",
-    "tags": ["llm", "chinese", "voice"],
+    "tags": ["llm", "voice"],
     "description": "国内多模态模型厂商，语音与视频生成能力突出。",
-    "order": 8
+    "order": 8,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Stepfun",
     "nameCn": "阶跃星辰",
     "category": "model",
-    "tags": ["llm", "chinese", "multimodal"],
+    "tags": ["llm", "multimodal"],
     "description": "Step 系列多模态模型研发商，主打端到端理解生成。",
-    "order": 9
+    "order": 9,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Baichuan",
     "nameCn": "百川智能",
     "category": "model",
-    "tags": ["llm", "chinese", "open-source"],
+    "tags": ["llm"],
     "description": "百川系列模型厂商，开源基座与行业模型并行。",
-    "order": 10
+    "order": 10,
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "ZeroOne",
     "nameCn": "零一万物",
     "category": "model",
-    "tags": ["llm", "chinese", "open-source"],
+    "tags": ["llm"],
     "description": "Yi 系列模型研发商，提供开源基座与微调模型。",
-    "order": 11
+    "order": 11,
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Cohere",
@@ -100,40 +110,46 @@
     "iconId": "SenseNova",
     "nameCn": "商汤日日新",
     "category": "model",
-    "tags": ["llm", "chinese", "multimodal"],
+    "tags": ["llm", "multimodal"],
     "description": "商汤的多模态大模型体系，覆盖视觉与语言任务。",
-    "order": 13
+    "order": 13,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "InternLM",
     "nameCn": "InternLM 书生·浦语",
     "category": "model",
-    "tags": ["llm", "chinese", "open-source"],
+    "tags": ["llm"],
     "description": "上海人工智能实验室开源的千亿参数级模型体系。",
-    "order": 14
+    "order": 14,
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Nvidia",
     "nameCn": "NVIDIA Nemotron",
     "category": "model",
-    "tags": ["llm", "open-source", "reasoning"],
+    "tags": ["llm", "reasoning"],
     "description": "英伟达的开源推理模型与训练数据体系。",
-    "order": 15
+    "order": 15,
+    "openSource": "yes"
   },
   {
     "iconId": "Gemma",
     "nameCn": "Gemma",
     "category": "model",
-    "tags": ["llm", "open-source"],
+    "tags": ["llm"],
     "description": "Google 的轻量开源模型，适合本地与端侧部署。",
-    "order": 16
+    "order": 16,
+    "openSource": "yes"
   },
   {
     "iconId": "Ai2",
     "nameCn": "Ai2",
     "category": "model",
-    "tags": ["llm", "open-source"],
-    "description": "艾伦人工智能研究院，开源了 Tülu 等模型与数据集。"
+    "tags": ["llm"],
+    "description": "艾伦人工智能研究院，开源了 Tülu 等模型与数据集。",
+    "openSource": "yes"
   },
   {
     "iconId": "Arcee",
@@ -146,15 +162,18 @@
     "iconId": "Aya",
     "nameCn": "Aya",
     "category": "model",
-    "tags": ["llm", "open-source"],
-    "description": "Cohere 的多语言开源模型，覆盖百余种语言。"
+    "tags": ["llm"],
+    "description": "Cohere 的多语言开源模型，覆盖百余种语言。",
+    "openSource": "yes"
   },
   {
     "iconId": "BAAI",
     "nameCn": "智源研究院",
     "category": "model",
-    "tags": ["llm", "chinese", "open-source"],
-    "description": "北京智源人工智能研究院，开源 BGE 与悟道系列模型。"
+    "tags": ["llm"],
+    "description": "北京智源人工智能研究院，开源 BGE 与悟道系列模型。",
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "CommandA",
@@ -167,8 +186,9 @@
     "iconId": "Dbrx",
     "nameCn": "DBRX",
     "category": "model",
-    "tags": ["llm", "open-source"],
-    "description": "Databricks 开源的通用大模型，采用混合专家架构。"
+    "tags": ["llm"],
+    "description": "Databricks 开源的通用大模型，采用混合专家架构。",
+    "openSource": "yes"
   },
   {
     "iconId": "Inflection",
@@ -195,15 +215,18 @@
     "iconId": "Skywork",
     "nameCn": "天工",
     "category": "model",
-    "tags": ["llm", "chinese", "open-source"],
-    "description": "昆仑万维的模型系列，开源版本可商用。"
+    "tags": ["llm"],
+    "description": "昆仑万维的模型系列，开源版本可商用。",
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "TII",
     "nameCn": "TII Falcon",
     "category": "model",
-    "tags": ["llm", "open-source"],
-    "description": "阿联酋技术创新研究院的开源大模型系列。"
+    "tags": ["llm"],
+    "description": "阿联酋技术创新研究院的开源大模型系列。",
+    "openSource": "yes"
   },
   {
     "iconId": "Upstage",
@@ -216,8 +239,9 @@
     "iconId": "XiaomiMiMo",
     "nameCn": "小米 MiMo",
     "category": "model",
-    "tags": ["llm", "chinese", "reasoning"],
-    "description": "小米的推理模型，主打数学与代码任务表现。"
+    "tags": ["llm", "reasoning"],
+    "description": "小米的推理模型，主打数学与代码任务表现。",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Yandex",

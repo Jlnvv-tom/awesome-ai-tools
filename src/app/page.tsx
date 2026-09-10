@@ -1,5 +1,6 @@
 import { HomeExplorer } from '@/app/home-explorer';
 import { HomeHero } from '@/app/home-hero';
+import { HomeMyFavorites } from '@/app/home-my-favorites';
 import { HomeNewArrivals } from '@/app/home-new-arrivals';
 import {
   getCategoriesWithCount,
@@ -25,6 +26,7 @@ export default function HomePage() {
     <>
       <HomeHero stats={stats} />
       <HomeNewArrivals sites={recent} withinDays={hasNewThisWeek} />
+      <HomeMyFavorites sites={sites} />
       <HomeExplorer sites={sites} categories={categories} />
       <script
         type="application/ld+json"

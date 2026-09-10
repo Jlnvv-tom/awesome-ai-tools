@@ -1,7 +1,7 @@
-import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 
 import { BrandIcon } from '@/components/site/brand-icon';
+import { FavoriteButton } from '@/components/site/favorite-button';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/cn';
 import type { Site } from '@/types/site';
@@ -10,20 +10,33 @@ export interface SiteCardProps {
   site: Site;
   /** 是否显示标签（首页网格可关闭以节省空间） */
   showTags?: boolean;
+  /** 是否显示收藏按钮 */
+  showFavorite?: boolean;
 }
 
-export function SiteCard({ site, showTags = true }: SiteCardProps) {
+/**
+ * 站点卡片。
+ *
+ * 结构为「容器 + 覆盖式主链接（stretched-link）」，收藏按钮以更高层级置于链接之上，
+ * 避免交互元素嵌套（button 套在 a 内）带来的非法 DOM 与键盘/读屏问题。
+ */
+export function SiteCard({ site, showTags = true, showFavorite = true }: SiteCardProps) {
+  const displayName = site.nameCn ?? site.name;
+
   return (
-    <Link
-      href={`/site/${site.id}`}
+    <div
       className={cn(
         'glass-card group relative flex h-full flex-col gap-3 p-4 transition-all duration-200 ease-out',
         'hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-glow',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
       )}
-      aria-label={`${site.nameCn ?? site.name} 官网直达`}
     >
-      <div className="flex items-start gap-3">
+      <Link
+        href={`/site/${site.id}`}
+        className="absolute inset-0 z-10 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        aria-label={`查看 ${displayName} 详情`}
+      />
+
+      <div className="flex items-start gap-3 pr-8">
         <span
           className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-muted/40 transition-transform duration-200 group-hover:scale-105"
           style={{ boxShadow: `0 8px 24px -12px ${site.color}` }}
@@ -32,11 +45,9 @@ export function SiteCard({ site, showTags = true }: SiteCardProps) {
         </span>
 
         <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-semibold leading-tight">{site.nameCn ?? site.name}</p>
+          <p className="truncate text-sm font-semibold leading-tight">{displayName}</p>
           <p className="truncate text-xs text-muted-foreground">{site.name}</p>
         </div>
-
-        <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
       </div>
 
       <p className="line-clamp-2 text-xs leading-relaxed text-muted-foreground">
@@ -52,6 +63,12 @@ export function SiteCard({ site, showTags = true }: SiteCardProps) {
           ))}
         </div>
       )}
-    </Link>
+
+      {showFavorite && (
+        <div className="absolute right-3 top-3 z-20">
+          <FavoriteButton siteId={site.id} siteName={displayName} />
+        </div>
+      )}
+    </div>
   );
 }

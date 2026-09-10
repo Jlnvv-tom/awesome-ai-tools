@@ -44,33 +44,37 @@
     "iconId": "Bocha",
     "nameCn": "博查",
     "category": "search",
-    "tags": ["ai-search", "chinese", "api"],
+    "tags": ["ai-search", "api"],
     "description": "国产 AI 搜索 API，中文网页覆盖与时新性表现良好。",
-    "order": 6
+    "order": 6,
+    "chineseSupport": "yes"
   },
   {
     "iconId": "SearXNG",
     "nameCn": "SearXNG",
     "category": "search",
-    "tags": ["open-source", "ai-search", "self-hosted"],
+    "tags": ["ai-search", "self-hosted"],
     "description": "可自托管的元搜索引擎，聚合多源结果且不追踪用户。",
-    "order": 7
+    "order": 7,
+    "openSource": "yes"
   },
   {
     "iconId": "Firecrawl",
     "nameCn": "Firecrawl",
     "category": "search",
-    "tags": ["crawler", "open-source", "api"],
+    "tags": ["crawler", "api"],
     "description": "把任意网站抓取并清洗为大模型友好的结构化数据。",
-    "order": 8
+    "order": 8,
+    "openSource": "yes"
   },
   {
     "iconId": "Jina",
     "nameCn": "Jina AI",
     "category": "search",
-    "tags": ["embedding", "open-source", "api"],
+    "tags": ["embedding", "api"],
     "description": "多模态向量与重排序模型，提供检索基础设施。",
-    "order": 9
+    "order": 9,
+    "openSource": "yes"
   },
   {
     "iconId": "Bing",
@@ -100,9 +104,10 @@
     "iconId": "RSSHub",
     "nameCn": "RSSHub",
     "category": "search",
-    "tags": ["open-source", "crawler"],
+    "tags": ["crawler"],
     "description": "把任意站点内容转成 RSS 订阅源的开源项目。",
-    "order": 13
+    "order": 13,
+    "openSource": "yes"
   },
   {
     "iconId": "Browserless",
@@ -115,8 +120,9 @@
     "iconId": "DocSearch",
     "nameCn": "DocSearch",
     "category": "search",
-    "tags": ["api", "open-source"],
-    "description": "Algolia 面向技术文档的免费站内搜索方案。"
+    "tags": ["api"],
+    "description": "Algolia 面向技术文档的免费站内搜索方案。",
+    "openSource": "yes"
   },
   {
     "iconId": "Glama",

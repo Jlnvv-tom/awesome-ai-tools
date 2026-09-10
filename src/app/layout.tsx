@@ -5,7 +5,9 @@ import './globals.css';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { SiteHeader } from '@/components/layout/site-header';
 import { ThemeProvider } from '@/components/layout/theme-provider';
+import { PersonalizationProvider } from '@/components/personalization-provider';
 import { SearchProvider } from '@/components/search/search-provider';
+import { ShortcutsProvider } from '@/components/shortcuts/shortcuts-provider';
 import { getCategoriesWithCount } from '@/lib/sites';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, getSiteUrl } from '@/lib/seo';
 
@@ -47,11 +49,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="zh-CN" suppressHydrationWarning>
       <body className="min-h-screen bg-background">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:text-primary-foreground"
+        >
+          跳到主内容
+        </a>
         <ThemeProvider>
           <SearchProvider>
-            <SiteHeader navItems={navItems} />
-            <main className="pt-16">{children}</main>
-            <SiteFooter total={categories.reduce((sum, item) => sum + item.count, 0)} />
+            <ShortcutsProvider>
+              <PersonalizationProvider>
+                <SiteHeader navItems={navItems} />
+                <main id="main" className="pt-16">
+                  {children}
+                </main>
+                <SiteFooter total={categories.reduce((sum, item) => sum + item.count, 0)} />
+              </PersonalizationProvider>
+            </ShortcutsProvider>
           </SearchProvider>
         </ThemeProvider>
       </body>

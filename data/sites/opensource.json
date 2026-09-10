@@ -12,28 +12,31 @@
     "iconId": "Ollama",
     "nameCn": "Ollama",
     "category": "opensource",
-    "tags": ["self-hosted", "inference", "open-source"],
+    "tags": ["self-hosted", "inference"],
     "description": "一行命令在本地运行开源大模型，支持多平台与 GPU。",
     "featured": true,
-    "order": 2
+    "order": 2,
+    "openSource": "yes"
   },
   {
     "iconId": "HuggingFace",
     "nameCn": "Hugging Face",
     "category": "opensource",
-    "tags": ["model-hub", "open-source", "community"],
+    "tags": ["model-hub", "community"],
     "description": "开源模型与数据集的中央枢纽，被称为 AI 界的 GitHub。",
     "featured": true,
-    "order": 3
+    "order": 3,
+    "openSource": "yes"
   },
   {
     "iconId": "OpenWebUI",
     "nameCn": "Open WebUI",
     "category": "opensource",
-    "tags": ["self-hosted", "open-source", "chatbot"],
+    "tags": ["self-hosted", "chatbot"],
     "description": "可自托管的 AI 对话前端，兼容 Ollama 与 OpenAI 接口。",
     "featured": true,
-    "order": 4
+    "order": 4,
+    "openSource": "yes"
   },
   {
     "iconId": "LmStudio",
@@ -47,81 +50,94 @@
     "iconId": "LobeHub",
     "nameCn": "LobeHub",
     "category": "opensource",
-    "tags": ["open-source", "chatbot", "chinese"],
+    "tags": ["chatbot"],
     "description": "开源的多模型聊天客户端，插件与角色市场丰富。",
-    "order": 6
+    "order": 6,
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "CherryStudio",
     "nameCn": "Cherry Studio",
     "category": "opensource",
-    "tags": ["desktop", "open-source", "chinese"],
+    "tags": ["desktop"],
     "description": "支持多模型与本地知识库的桌面 AI 客户端。",
-    "order": 7
+    "order": 7,
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Vllm",
     "nameCn": "vLLM",
     "category": "opensource",
-    "tags": ["inference", "open-source"],
+    "tags": ["inference"],
     "description": "高吞吐低延迟的开源大模型推理引擎。",
-    "order": 8
+    "order": 8,
+    "openSource": "yes"
   },
   {
     "iconId": "Unsloth",
     "nameCn": "Unsloth",
     "category": "opensource",
-    "tags": ["fine-tuning", "open-source"],
+    "tags": ["fine-tuning"],
     "description": "显存友好、速度极快的开源模型微调框架。",
-    "order": 9
+    "order": 9,
+    "openSource": "yes"
   },
   {
     "iconId": "Xinference",
     "nameCn": "Xinference",
     "category": "opensource",
-    "tags": ["inference", "open-source", "chinese"],
+    "tags": ["inference"],
     "description": "一站式开源模型推理平台，支持分布式多机部署。",
-    "order": 10
+    "order": 10,
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "LlamaIndex",
     "nameCn": "LlamaIndex",
     "category": "opensource",
-    "tags": ["rag", "framework", "open-source"],
+    "tags": ["rag", "framework"],
     "description": "专注数据索引与检索增强的开源应用框架。",
-    "order": 11
+    "order": 11,
+    "openSource": "yes"
   },
   {
     "iconId": "Langfuse",
     "nameCn": "Langfuse",
     "category": "opensource",
-    "tags": ["observability", "open-source"],
+    "tags": ["observability"],
     "description": "开源的 LLM 应用可观测与评估平台，支持自托管。",
-    "order": 12
+    "order": 12,
+    "openSource": "yes"
   },
   {
     "iconId": "Gradio",
     "nameCn": "Gradio",
     "category": "opensource",
-    "tags": ["framework", "open-source", "frontend"],
+    "tags": ["framework", "frontend"],
     "description": "几行 Python 即可为模型搭建可分享的 Web 演示界面。",
-    "order": 13
+    "order": 13,
+    "openSource": "yes"
   },
   {
     "iconId": "SillyTavern",
     "nameCn": "SillyTavern",
     "category": "opensource",
-    "tags": ["self-hosted", "open-source"],
+    "tags": ["self-hosted"],
     "description": "面向角色扮演的开源对话前端，支持多家模型后端。",
-    "order": 14
+    "order": 14,
+    "openSource": "yes"
   },
   {
     "iconId": "Colab",
     "nameCn": "Google Colab",
     "category": "opensource",
-    "tags": ["notes", "free", "cloud"],
+    "tags": ["notes", "cloud"],
     "description": "免费 GPU 的云端 Jupyter 环境，适合模型实验与教学。",
-    "order": 15
+    "order": 15,
+    "pricing": "free"
   },
   {
     "iconId": "Smithery",
@@ -135,8 +151,9 @@
     "iconId": "Ace",
     "nameCn": "ACE-Step",
     "category": "opensource",
-    "tags": ["music", "open-source"],
-    "description": "开源的音乐生成模型，可按提示词创作完整曲目。"
+    "tags": ["music"],
+    "description": "开源的音乐生成模型，可按提示词创作完整曲目。",
+    "openSource": "yes"
   },
   {
     "iconId": "Ai21",
@@ -149,63 +166,73 @@
     "iconId": "Bilibili",
     "nameCn": "哔哩哔哩",
     "category": "opensource",
-    "tags": ["community", "chinese"],
-    "description": "国内视频社区，开源了 Index 系列文本与视频生成模型。"
+    "tags": ["community"],
+    "description": "国内视频社区，开源了 Index 系列文本与视频生成模型。",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "Coqui",
     "nameCn": "Coqui",
     "category": "opensource",
-    "tags": ["tts", "open-source"],
-    "description": "开源的语音合成工具箱，支持多语言与声音克隆。"
+    "tags": ["tts"],
+    "description": "开源的语音合成工具箱，支持多语言与声音克隆。",
+    "openSource": "yes"
   },
   {
     "iconId": "Goose",
     "nameCn": "Goose",
     "category": "opensource",
-    "tags": ["agent", "open-source"],
-    "description": "Block 开源的本地智能体，可在终端调用工具完成任务。"
+    "tags": ["agent"],
+    "description": "Block 开源的本地智能体，可在终端调用工具完成任务。",
+    "openSource": "yes"
   },
   {
     "iconId": "IBM",
     "nameCn": "IBM Granite",
     "category": "opensource",
-    "tags": ["llm", "open-source"],
-    "description": "IBM 的企业级开源模型系列，强调合规与可审计。"
+    "tags": ["llm"],
+    "description": "IBM 的企业级开源模型系列，强调合规与可审计。",
+    "openSource": "yes"
   },
   {
     "iconId": "LLaVA",
     "nameCn": "LLaVA",
     "category": "opensource",
-    "tags": ["multimodal", "open-source"],
-    "description": "开源的多模态模型，可理解图片并结合语言回答。"
+    "tags": ["multimodal"],
+    "description": "开源的多模态模型，可理解图片并结合语言回答。",
+    "openSource": "yes"
   },
   {
     "iconId": "Rwkv",
     "nameCn": "RWKV",
     "category": "opensource",
-    "tags": ["llm", "open-source"],
-    "description": "结合 RNN 与 Transformer 优势的开源架构，推理成本低。"
+    "tags": ["llm"],
+    "description": "结合 RNN 与 Transformer 优势的开源架构，推理成本低。",
+    "openSource": "yes"
   },
   {
     "iconId": "Unstructured",
     "nameCn": "Unstructured",
     "category": "opensource",
-    "tags": ["rag", "open-source"],
-    "description": "把各类文档解析为结构化数据的开源工具库。"
+    "tags": ["rag"],
+    "description": "把各类文档解析为结构化数据的开源工具库。",
+    "openSource": "yes"
   },
   {
     "iconId": "Yi",
     "nameCn": "零一万物 Yi",
     "category": "opensource",
-    "tags": ["llm", "open-source", "chinese"],
-    "description": "零一万物开源的双语模型系列，覆盖多尺寸版本。"
+    "tags": ["llm"],
+    "description": "零一万物开源的双语模型系列，覆盖多尺寸版本。",
+    "openSource": "yes",
+    "chineseSupport": "yes"
   },
   {
     "iconId": "NousResearch",
     "nameCn": "Nous Research",
     "category": "opensource",
-    "tags": ["open-source", "model-hub"],
-    "description": "开源模型研究团队，发布 Hermes 系列微调模型。"
+    "tags": ["model-hub"],
+    "description": "开源模型研究团队，发布 Hermes 系列微调模型。",
+    "openSource": "yes"
   }
 ]

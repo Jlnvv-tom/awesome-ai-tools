@@ -48,21 +48,24 @@ SiteOverride[]│                                （未覆盖的字段取派生�
 
 ## 3. Site（最终渲染对象）
 
-| 字段          | 类型     | 必填 | 约束                                                                            |
-| ------------- | -------- | ---- | ------------------------------------------------------------------------------- |
-| `id`          | string   | ✅   | `^[a-z0-9]+(-[a-z0-9]+)*$`，全局唯一                                            |
-| `iconId`      | string   | ✅   | 必须存在于 `icons.generated.ts`                                                 |
-| `name`        | string   | ✅   | 1–60 字符                                                                       |
-| `nameCn`      | string   | ➖   | ≤ 30 字符                                                                       |
-| `url`         | string   | ✅   | 必须是 `https://` 开头的可解析 URL；**禁止**带 `utm_*`、`ref`、`aff` 等追踪参数 |
-| `category`    | string   | ✅   | 必须存在于 `data/categories.json` 的 `slug`                                     |
-| `tags`        | string[] | ✅   | 每个标签必须存在于 `data/tags.json`；建议 1–4 个                                |
-| `description` | string   | ✅   | 10–80 字符，陈述事实，禁止营销话术与「最/第一」等绝对表述                       |
-| `featured`    | boolean  | ✅   | 是否进入首页精选                                                                |
-| `order`       | number   | ✅   | 0–9999，越小越靠前                                                              |
-| `color`       | string   | ✅   | 小写 hex                                                                        |
-| `curated`     | boolean  | ✅   | 是否人工维护                                                                    |
-| `addedAt`     | string   | ✅   | 收录日期 `YYYY-MM-DD`；`override.addedAt` > git 回填映射 > 兜底日期             |
+| 字段             | 类型     | 必填 | 约束                                                                            |
+| ---------------- | -------- | ---- | ------------------------------------------------------------------------------- |
+| `id`             | string   | ✅   | `^[a-z0-9]+(-[a-z0-9]+)*$`，全局唯一                                            |
+| `iconId`         | string   | ✅   | 必须存在于 `icons.generated.ts`                                                 |
+| `name`           | string   | ✅   | 1–60 字符                                                                       |
+| `nameCn`         | string   | ➖   | ≤ 30 字符                                                                       |
+| `url`            | string   | ✅   | 必须是 `https://` 开头的可解析 URL；**禁止**带 `utm_*`、`ref`、`aff` 等追踪参数 |
+| `category`       | string   | ✅   | 必须存在于 `data/categories.json` 的 `slug`                                     |
+| `tags`           | string[] | ✅   | 每个标签必须存在于 `data/tags.json`；建议 1–4 个                                |
+| `description`    | string   | ✅   | 10–80 字符，陈述事实，禁止营销话术与「最/第一」等绝对表述                       |
+| `featured`       | boolean  | ✅   | 是否进入首页精选                                                                |
+| `order`          | number   | ✅   | 0–9999，越小越靠前                                                              |
+| `color`          | string   | ✅   | 小写 hex                                                                        |
+| `curated`        | boolean  | ✅   | 是否人工维护                                                                    |
+| `addedAt`        | string   | ✅   | 收录日期 `YYYY-MM-DD`；`override.addedAt` > git 回填映射 > 兜底日期             |
+| `pricing`        | enum     | ✅   | 定价模式：`free` / `freemium` / `paid` / `unknown`（缺省 `unknown` 表示待补充） |
+| `openSource`     | enum     | ✅   | 是否开源：`yes` / `no` / `unknown`（缺省 `unknown`）                            |
+| `chineseSupport` | enum     | ✅   | 是否支持中文：`yes` / `no` / `unknown`（缺省 `unknown`）                        |
 
 ## 4. SiteOverride（人工维护，全部字段可选）
 
@@ -80,6 +83,9 @@ SiteOverride[]│                                （未覆盖的字段取派生�
 | `order`           | number   | 排序权重                                               |
 | `visible`         | boolean  | `false` 表示从导航中隐藏该条目                         |
 | `addedAt`         | string   | 覆盖回填的收录日期（`YYYY-MM-DD`），新收录条目建议填写 |
+| `pricing`         | enum     | 定价模式，取值同 `Site.pricing`                        |
+| `openSource`      | enum     | 是否开源，取值同 `Site.openSource`                     |
+| `chineseSupport`  | enum     | 是否支持中文，取值同 `Site.chineseSupport`             |
 
 ### 示例
 

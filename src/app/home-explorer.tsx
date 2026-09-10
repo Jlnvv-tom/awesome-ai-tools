@@ -5,9 +5,12 @@ import Link from 'next/link';
 import { useMemo, useState } from 'react';
 
 import { SiteCard } from '@/components/site/site-card';
+import { SiteRow } from '@/components/site/site-row';
+import { SiteViewToggle } from '@/components/site/site-view-toggle';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/cn';
 import { searchDocs } from '@/lib/search';
+import { useViewMode } from '@/lib/view-mode';
 import type { Category, SearchDoc, Site } from '@/types/site';
 
 const ALL = 'all';
@@ -36,6 +39,7 @@ export function HomeExplorer({
 }) {
   const [query, setQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>(ALL);
+  const { view, setView } = useViewMode();
 
   const docs = useMemo(() => sites.map(toSearchDoc), [sites]);
 
@@ -61,6 +65,24 @@ export function HomeExplorer({
       .filter((section) => section.items.length > 0);
     return { featured, grouped };
   }, [filtered, categories]);
+
+  /** 按当前视图渲染：网格用卡片，列表用紧凑行 */
+  const renderSites = (items: Site[]) =>
+    view === 'grid' ? (
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {items.map((site) => (
+          <SiteCard key={site.id} site={site} />
+        ))}
+      </div>
+    ) : (
+      <ul className="space-y-2">
+        {items.map((site) => (
+          <li key={site.id}>
+            <SiteRow site={site} />
+          </li>
+        ))}
+      </ul>
+    );
 
   return (
     <section className="container pb-10">
@@ -90,6 +112,7 @@ export function HomeExplorer({
           <button
             type="button"
             onClick={() => setActiveCategory(ALL)}
+            aria-pressed={activeCategory === ALL}
             className={cn(
               'shrink-0 rounded-full border px-3.5 py-1.5 text-xs transition-colors',
               activeCategory === ALL
@@ -104,6 +127,7 @@ export function HomeExplorer({
               key={category.slug}
               type="button"
               onClick={() => setActiveCategory(category.slug)}
+              aria-pressed={activeCategory === category.slug}
               className={cn(
                 'shrink-0 rounded-full border px-3.5 py-1.5 text-xs transition-colors',
                 activeCategory === category.slug
@@ -116,10 +140,13 @@ export function HomeExplorer({
           ))}
         </div>
 
-        <p className="text-xs text-muted-foreground">
-          命中 <span className="font-mono text-primary">{filtered.length}</span> 个工具
-          {matchedIds && <span className="ml-1">（关键词：{query}）</span>}
-        </p>
+        <div className="flex items-center justify-between gap-3">
+          <p className="text-xs text-muted-foreground">
+            命中 <span className="font-mono text-primary">{filtered.length}</span> 个工具
+            {matchedIds && <span className="ml-1">（关键词：{query}）</span>}
+          </p>
+          <SiteViewToggle view={view} onChange={setView} />
+        </div>
       </div>
 
       <div className="mt-10 space-y-12">
@@ -138,11 +165,7 @@ export function HomeExplorer({
                 <p className="text-sm text-muted-foreground">社区维护的高频使用工具</p>
               </div>
             </div>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {sections.featured.map((site) => (
-                <SiteCard key={site.id} site={site} />
-              ))}
-            </div>
+            {renderSites(sections.featured)}
           </div>
         )}
 
@@ -151,11 +174,7 @@ export function HomeExplorer({
             <h2 className="mb-4 text-xl font-semibold tracking-tight">
               {query.trim() !== '' ? '搜索结果' : '分类浏览'}
             </h2>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {filtered.map((site) => (
-                <SiteCard key={site.id} site={site} />
-              ))}
-            </div>
+            {renderSites(filtered)}
           </div>
         )}
 
@@ -184,11 +203,7 @@ export function HomeExplorer({
                   <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
               </div>
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {items.slice(0, 8).map((site) => (
-                  <SiteCard key={site.id} site={site} />
-                ))}
-              </div>
+              {renderSites(items.slice(0, 8))}
             </div>
           ))}
       </div>

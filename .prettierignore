@@ -4,3 +4,6 @@ out
 coverage
 pnpm-lock.yaml
 .DS_Store
+
+# 生成文件由脚本产出，格式由生成器决定，避免与 --check 类校验冲突
+src/data/*.generated.ts

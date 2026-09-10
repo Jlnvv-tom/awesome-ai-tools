@@ -1,10 +1,11 @@
 'use client';
 
-import { Github, Search, Sparkles } from 'lucide-react';
+import { Github, Heart, Search, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import { ThemeToggle } from '@/components/layout/theme-toggle';
+import { useFavorites } from '@/components/personalization-provider';
 import { useSearch } from '@/components/search/search-provider';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/cn';
@@ -17,6 +18,7 @@ export interface NavItem {
 
 export function SiteHeader({ navItems }: { navItems: NavItem[] }) {
   const { setOpen } = useSearch();
+  const { count, ready } = useFavorites();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -79,6 +81,19 @@ export function SiteHeader({ navItems }: { navItems: NavItem[] }) {
             aria-label="搜索 AI 工具"
           >
             <Search className="h-4 w-4" />
+          </Button>
+          <Button variant="ghost" size="icon" asChild className="relative">
+            <Link
+              href="/favorites"
+              aria-label={ready && count > 0 ? `我的收藏，共 ${count} 个` : '我的收藏'}
+            >
+              <Heart className={cn('h-4 w-4', ready && count > 0 && 'fill-current text-primary')} />
+              {ready && count > 0 && (
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 font-mono text-[10px] text-primary-foreground">
+                  {count > 99 ? '99+' : count}
+                </span>
+              )}
+            </Link>
           </Button>
           <ThemeToggle />
           <Button variant="ghost" size="icon" asChild>

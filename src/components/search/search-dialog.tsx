@@ -1,9 +1,10 @@
 'use client';
 
-import { ArrowUpRight, Loader2, Search } from 'lucide-react';
+import { ArrowUpRight, Heart, Loader2, Search } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
+import { useFavorites } from '@/components/personalization-provider';
 import { BrandIcon } from '@/components/site/brand-icon';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { cn } from '@/lib/cn';
@@ -34,7 +35,9 @@ export function SearchDialog({
   const [docs, setDocs] = useState<SearchDoc[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [onlyFavorites, setOnlyFavorites] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { has, count } = useFavorites();
 
   useEffect(() => {
     if (!open || docs) return;
@@ -62,8 +65,9 @@ export function SearchDialog({
 
   const results = useMemo(() => {
     if (!docs) return [];
-    return searchDocs(docs, query, 30);
-  }, [docs, query]);
+    const matched = searchDocs(docs, query, 30);
+    return onlyFavorites ? matched.filter((doc) => has(doc.id)) : matched;
+  }, [docs, query, onlyFavorites, has]);
 
   useEffect(() => setActiveIndex(0), [query]);
 
@@ -109,7 +113,16 @@ export function SearchDialog({
             <p className="px-3 py-6 text-center text-sm text-muted-foreground">正在加载索引…</p>
           )}
 
-          {docs && query.trim() && results.length === 0 && (
+          {docs && onlyFavorites && results.length === 0 && (
+            <div className="px-3 py-10 text-center">
+              <p className="text-sm text-muted-foreground">
+                {query.trim() ? '收藏中没有匹配该关键词的工具' : '还没有收藏任何工具'}
+              </p>
+              <p className="mt-1 text-xs text-muted-foreground">点击工具卡片右上角的心形即可收藏</p>
+            </div>
+          )}
+
+          {docs && !onlyFavorites && query.trim() && results.length === 0 && (
             <div className="px-3 py-10 text-center">
               <p className="text-sm text-muted-foreground">没有匹配「{query}」的工具</p>
               <p className="mt-1 text-xs text-muted-foreground">
@@ -154,9 +167,26 @@ export function SearchDialog({
           )}
         </div>
 
-        <div className="flex items-center justify-between border-t border-border/60 px-5 py-2.5 text-[11px] text-muted-foreground">
+        <div className="flex items-center justify-between gap-3 border-t border-border/60 px-5 py-2.5 text-[11px] text-muted-foreground">
           <span>↑↓ 选择 · Enter 打开 · Esc 关闭</span>
-          <span>{docs ? `${docs.length} 个工具可检索` : '加载中'}</span>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => setOnlyFavorites((value) => !value)}
+              aria-pressed={onlyFavorites}
+              className={cn(
+                'flex items-center gap-1 rounded-full border px-2 py-0.5 transition-colors',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                onlyFavorites
+                  ? 'border-primary/50 bg-primary/15 text-primary'
+                  : 'border-border hover:bg-muted hover:text-foreground',
+              )}
+            >
+              <Heart className={cn('h-3 w-3', onlyFavorites && 'fill-current')} />
+              只看收藏{count > 0 ? ` ${count}` : ''}
+            </button>
+            <span>{docs ? `${docs.length} 个工具可检索` : '加载中'}</span>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
