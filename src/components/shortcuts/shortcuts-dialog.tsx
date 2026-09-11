@@ -1,30 +1,36 @@
 'use client';
 
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
-
-const SHORTCUTS: { keys: string[]; description: string }[] = [
-  { keys: ['⌘', 'K'], description: '打开全局搜索（Windows 为 Ctrl + K）' },
-  { keys: ['↑', '↓'], description: '在搜索结果中上下移动' },
-  { keys: ['Enter'], description: '打开当前选中的工具' },
-  { keys: ['Esc'], description: '关闭弹窗或搜索面板' },
-  { keys: ['?'], description: '打开本快捷键总览' },
-];
+import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/dictionaries';
 
 /** 键盘快捷键总览（? 键唤起） */
 export function ShortcutsDialog({
   open,
   onOpenChange,
+  locale = DEFAULT_LOCALE,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  locale?: Locale;
 }) {
+  const dict = getDictionary(locale).shortcuts;
+
+  const items = [
+    { keys: ['⌘', 'K'], description: dict.openSearch },
+    { keys: ['↑', '↓'], description: dict.move },
+    { keys: ['Enter'], description: dict.open },
+    { keys: ['Esc'], description: dict.close },
+    { keys: ['?'], description: dict.openThis },
+  ];
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
-        <DialogTitle className="text-base font-semibold">键盘快捷键</DialogTitle>
+        <DialogTitle className="text-base font-semibold">{dict.title}</DialogTitle>
 
         <ul className="divide-y divide-border/60">
-          {SHORTCUTS.map((shortcut) => (
+          {items.map((shortcut) => (
             <li
               key={shortcut.description}
               className="flex items-center justify-between gap-4 py-2.5"
@@ -44,9 +50,7 @@ export function ShortcutsDialog({
           ))}
         </ul>
 
-        <p className="text-[11px] text-muted-foreground">
-          快捷键在输入框内不会触发，避免影响正常输入。
-        </p>
+        <p className="text-[11px] text-muted-foreground">{dict.note}</p>
       </DialogContent>
     </Dialog>
   );

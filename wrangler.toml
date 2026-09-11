@@ -1,0 +1,10 @@
+# Cloudflare Pages 镜像配置（国内访问优化）
+#
+# 构建产物由 @cloudflare/next-on-pages 生成到 .vercel/output/static，
+# 本地构建命令：pnpm pages:build
+# 部署命令：npx wrangler pages deploy .vercel/output/static --project-name=awesome-ai-tools
+
+name = "awesome-ai-tools"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"

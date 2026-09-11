@@ -1,5 +1,6 @@
 import { ICON_META } from '@/data/icons.generated';
 import { ADDED_AT_DEFAULT, ADDED_AT_MAP, CATEGORIES, SITE_OVERRIDES, TAGS } from '@/data/registry';
+import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
 import type { Category, IconGroup, IconMeta, Site, SiteOverride, SiteStats } from '@/types/site';
 
 /**
@@ -160,6 +161,16 @@ export function getFeaturedSites(limit?: number): Site[] {
 /** 按 slug 取分类 */
 export function getCategory(slug: string): Category | undefined {
   return CATEGORIES.find((category) => category.slug === slug);
+}
+
+/** 站点展示名：中文站优先中文名，英文站使用英文原名 */
+export function getSiteDisplayName(site: Site, locale: Locale = DEFAULT_LOCALE): string {
+  return locale === 'en' ? site.name : (site.nameCn ?? site.name);
+}
+
+/** 分类展示名：中文站用 name，英文站用 nameEn */
+export function getCategoryName(category: Category, locale: Locale = DEFAULT_LOCALE): string {
+  return locale === 'en' ? category.nameEn : category.name;
 }
 
 /** 按 slug 取站点，并按排序规则返回 */

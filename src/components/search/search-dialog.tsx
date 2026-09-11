@@ -7,30 +7,31 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useFavorites } from '@/components/personalization-provider';
 import { BrandIcon } from '@/components/site/brand-icon';
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
+import { CATEGORIES } from '@/data/registry';
+import { DEFAULT_LOCALE, localePath, type Locale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/dictionaries';
 import { cn } from '@/lib/cn';
 import { loadSearchDocs, searchDocs } from '@/lib/search';
+import { getCategoryName } from '@/lib/sites';
 import type { SearchDoc } from '@/types/site';
-
-const CATEGORY_LABELS: Record<string, string> = {
-  chat: 'AI 对话助手',
-  code: 'AI 编程开发',
-  image: '图像与设计',
-  video: '视频与音频',
-  agent: 'Agent 与自动化',
-  search: '搜索与知识',
-  writing: '写作与办公',
-  opensource: '开源与社区',
-  infra: '云平台与基础设施',
-  model: '大模型与 API',
-};
 
 export function SearchDialog({
   open,
   onOpenChange,
+  locale = DEFAULT_LOCALE,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  locale?: Locale;
 }) {
+  const dict = getDictionary(locale).search;
+
+  /** 分类 slug → 当前语言分类名 */
+  const categoryLabels = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const category of CATEGORIES) map.set(category.slug, getCategoryName(category, locale));
+    return map;
+  }, [locale]);
   const [query, setQuery] = useState('');
   const [docs, setDocs] = useState<SearchDoc[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -83,14 +84,14 @@ export function SearchDialog({
     } else if (event.key === 'Enter' && results[activeIndex]) {
       event.preventDefault();
       onOpenChange(false);
-      window.location.href = `/site/${results[activeIndex].id}`;
+      window.location.href = localePath(locale, `/site/${results[activeIndex].id}`);
     }
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
-        <DialogTitle className="sr-only">搜索 AI 工具</DialogTitle>
+        <DialogTitle className="sr-only">{dict.dialogTitle}</DialogTitle>
 
         <div className="flex items-center gap-3 border-b border-border/60 px-5 py-4">
           <Search className="h-4 w-4 shrink-0 text-muted-foreground" />
@@ -99,8 +100,8 @@ export function SearchDialog({
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="搜索工具名称、标签或简介…"
-            aria-label="搜索 AI 工具"
+            placeholder={dict.placeholder}
+            aria-label={dict.ariaLabel}
             className="h-7 w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
           />
           {!docs && !error && <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />}
@@ -110,24 +111,22 @@ export function SearchDialog({
           {error && <p className="px-3 py-6 text-center text-sm text-destructive">{error}</p>}
 
           {!error && !docs && (
-            <p className="px-3 py-6 text-center text-sm text-muted-foreground">正在加载索引…</p>
+            <p className="px-3 py-6 text-center text-sm text-muted-foreground">{dict.loading}</p>
           )}
 
           {docs && onlyFavorites && results.length === 0 && (
             <div className="px-3 py-10 text-center">
               <p className="text-sm text-muted-foreground">
-                {query.trim() ? '收藏中没有匹配该关键词的工具' : '还没有收藏任何工具'}
+                {query.trim() ? dict.favoriteEmptyWithQuery : dict.favoriteEmpty}
               </p>
-              <p className="mt-1 text-xs text-muted-foreground">点击工具卡片右上角的心形即可收藏</p>
+              <p className="mt-1 text-xs text-muted-foreground">{dict.favoriteHint}</p>
             </div>
           )}
 
           {docs && !onlyFavorites && query.trim() && results.length === 0 && (
             <div className="px-3 py-10 text-center">
-              <p className="text-sm text-muted-foreground">没有匹配「{query}」的工具</p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                换个关键词试试，或到 GitHub 提交收录申请
-              </p>
+              <p className="text-sm text-muted-foreground">{dict.noResult(query)}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{dict.noResultHint}</p>
             </div>
           )}
 
@@ -136,7 +135,7 @@ export function SearchDialog({
               {results.map((doc, index) => (
                 <li key={doc.id}>
                   <Link
-                    href={`/site/${doc.id}`}
+                    href={localePath(locale, `/site/${doc.id}`)}
                     onClick={() => onOpenChange(false)}
                     className={cn(
                       'flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors',
@@ -146,9 +145,9 @@ export function SearchDialog({
                     <BrandIcon iconId={doc.id} name={doc.name} color="#6e56f8" size={26} />
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-sm font-medium">
-                        {doc.nameCn ?? doc.name}
+                        {locale === 'en' ? doc.name : (doc.nameCn ?? doc.name)}
                         <span className="ml-2 text-xs text-muted-foreground">
-                          {CATEGORY_LABELS[doc.category] ?? doc.category}
+                          {categoryLabels.get(doc.category) ?? doc.category}
                         </span>
                       </p>
                       <p className="truncate text-xs text-muted-foreground">{doc.description}</p>
@@ -162,13 +161,13 @@ export function SearchDialog({
 
           {docs && !query.trim() && (
             <p className="px-3 py-8 text-center text-sm text-muted-foreground">
-              输入关键词开始搜索，支持名称、中文名、标签与简介
+              {dict.startTyping}
             </p>
           )}
         </div>
 
         <div className="flex items-center justify-between gap-3 border-t border-border/60 px-5 py-2.5 text-[11px] text-muted-foreground">
-          <span>↑↓ 选择 · Enter 打开 · Esc 关闭</span>
+          <span>{dict.hintKeys}</span>
           <div className="flex items-center gap-3">
             <button
               type="button"
@@ -183,9 +182,10 @@ export function SearchDialog({
               )}
             >
               <Heart className={cn('h-3 w-3', onlyFavorites && 'fill-current')} />
-              只看收藏{count > 0 ? ` ${count}` : ''}
+              {dict.onlyFavorites}
+              {count > 0 ? ` ${count}` : ''}
             </button>
-            <span>{docs ? `${docs.length} 个工具可检索` : '加载中'}</span>
+            <span>{docs ? dict.toolsCount(docs.length) : dict.loading}</span>
           </div>
         </div>
       </DialogContent>

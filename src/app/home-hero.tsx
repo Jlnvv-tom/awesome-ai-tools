@@ -2,10 +2,11 @@ import { Sparkles } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
 import { ICON_SYNCED_AT } from '@/data/icons.generated';
+import type { Dictionary } from '@/i18n/dictionaries';
 import type { SiteStats } from '@/types/site';
 
-/** 首页 Hero：渐变光斑 + 数据统计（页面私有组件，与 page.tsx 就近放置） */
-export function HomeHero({ stats }: { stats: SiteStats }) {
+/** 首页 Hero：渐变光斑 + 数据统计（页面私有组件，文案由外部字典注入） */
+export function HomeHero({ stats, dict }: { stats: SiteStats; dict: Dictionary['hero'] }) {
   const syncedDate = new Date(ICON_SYNCED_AT).toISOString().slice(0, 10);
 
   return (
@@ -19,26 +20,25 @@ export function HomeHero({ stats }: { stats: SiteStats }) {
       <div className="container flex flex-col items-center gap-6 text-center">
         <Badge variant="outline" className="gap-1.5 px-3 py-1">
           <Sparkles className="h-3 w-3 text-primary" />
-          图标数据源自 LobeHub Icons · 同步于 {syncedDate}
+          {dict.syncedAt(syncedDate)}
         </Badge>
 
         <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight md:text-5xl">
-          发现好用的 <span className="gradient-text">AI 工具</span>
+          {dict.titleLead} <span className="gradient-text">{dict.titleHighlight}</span>
           <br className="hidden sm:block" />
-          一个入口直达全部官网
+          {dict.titleTail}
         </h1>
 
         <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
-          收录全球主流 AI 模型、应用与云服务平台，按场景分类整理，支持关键词即时检索与社区共建，
-          帮你从工具海洋里快速找到真正好用的那一个。
+          {dict.description}
         </p>
 
         <dl className="mt-2 flex flex-wrap items-center justify-center gap-8">
           {[
-            { label: '收录工具', value: stats.total },
-            { label: '人工维护', value: stats.curated },
-            { label: '分类', value: stats.categories },
-            { label: '标签', value: stats.tags },
+            { label: dict.stats.tools, value: stats.total },
+            { label: dict.stats.curated, value: stats.curated },
+            { label: dict.stats.categories, value: stats.categories },
+            { label: dict.stats.tags, value: stats.tags },
           ].map((item) => (
             <div key={item.label} className="flex flex-col items-center">
               <dt className="order-2 text-xs text-muted-foreground">{item.label}</dt>

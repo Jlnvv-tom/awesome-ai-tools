@@ -2,13 +2,10 @@ import type { Metadata, Viewport } from 'next';
 
 import './globals.css';
 
-import { SiteFooter } from '@/components/layout/site-footer';
-import { SiteHeader } from '@/components/layout/site-header';
 import { ThemeProvider } from '@/components/layout/theme-provider';
 import { PersonalizationProvider } from '@/components/personalization-provider';
 import { SearchProvider } from '@/components/search/search-provider';
 import { ShortcutsProvider } from '@/components/shortcuts/shortcuts-provider';
-import { getCategoriesWithCount } from '@/lib/sites';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, getSiteUrl } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -29,6 +26,9 @@ export const metadata: Metadata = {
   },
   twitter: { card: 'summary_large_image', title: SITE_NAME, description: SITE_DESCRIPTION },
   robots: { index: true, follow: true },
+  alternates: {
+    types: { 'application/rss+xml': `${getSiteUrl()}/rss.xml` },
+  },
 };
 
 export const viewport: Viewport = {
@@ -38,14 +38,13 @@ export const viewport: Viewport = {
   ],
 };
 
+/**
+ * 根布局：只提供 html 外壳与全局 Provider。
+ *
+ * 页头页脚由各语言分支的布局提供（`(zh)/layout.tsx` 与 `en/layout.tsx`），
+ * 因为只有根布局能声明 `<html>`，而 lang 需要按语言分支纠正（见 HtmlLang）。
+ */
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const categories = getCategoriesWithCount();
-  const navItems = categories.map((category) => ({
-    slug: category.slug,
-    name: category.name,
-    count: category.count,
-  }));
-
   return (
     <html lang="zh-CN" suppressHydrationWarning>
       <body className="min-h-screen bg-background">
@@ -58,13 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           <SearchProvider>
             <ShortcutsProvider>
-              <PersonalizationProvider>
-                <SiteHeader navItems={navItems} />
-                <main id="main" className="pt-16">
-                  {children}
-                </main>
-                <SiteFooter total={categories.reduce((sum, item) => sum + item.count, 0)} />
-              </PersonalizationProvider>
+              <PersonalizationProvider>{children}</PersonalizationProvider>
             </ShortcutsProvider>
           </SearchProvider>
         </ThemeProvider>

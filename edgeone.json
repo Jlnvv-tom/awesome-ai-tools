@@ -1,0 +1,6 @@
+{
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "nodeVersion": "22.11.0",
+  "outputDirectory": ".next"
+}

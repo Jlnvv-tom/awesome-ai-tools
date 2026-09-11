@@ -1,5 +1,7 @@
 node_modules
 .next
+.next-*
+.edgeone
 out
 coverage
 pnpm-lock.yaml

@@ -48,3 +48,19 @@
 - 标签词表 50 → 47（移除已由结构化字段承载的三个标签）
 - `SiteCard` 重构为「容器 + 覆盖式链接」结构，避免交互元素嵌套
 - 分类页列表视图由「卡片堆叠」改为真正的紧凑行式布局
+
+### Added（M4 · 生态与国际化）
+
+- 中英文双语：`/` 中文、`/en` 英文，自建字典（`src/i18n`）与共享视图，顶栏语言切换入口
+- 开放 API：`/api/sites`（category / tag / q / featured / limit / offset）、`/api/categories`（含条目数），带 CORS 与 CDN 缓存头，文档见 `docs/api.md`
+- 数据贡献看板 `/contributors`（中英双语）：git 历史统计的贡献者 + 待认领进度
+- RSS 订阅源 `/rss.xml`（最近新增 20 条），页脚与 `<link rel="alternate">` 提供入口
+- Cloudflare Pages 镜像部署：`wrangler.toml` + `cloudflare-pages.yml`（未配置 secrets 时跳过）
+- 生成脚本 `build:contributors`（幂等 + `--check`）与生成文件 `contributors.generated.ts`
+
+### Changed（M4 · 生态与国际化）
+
+- 路由结构调整为路由组 `(zh)` + `en` 分支，根布局只保留外壳与 Providers
+- 站点/分类展示名按语言选取（`nameCn ?? name` / `nameEn`），英文站简介回退中文原文
+- `sitemap.xml` 输出中英双份 URL 并互相声明 hreflang；详情页与分类页补充 canonical
+- API 路由统一声明 Edge Runtime（兼容 Vercel 与 Cloudflare Pages）

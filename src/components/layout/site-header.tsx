@@ -4,10 +4,13 @@ import { Github, Heart, Search, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
+import { LocaleSwitcher } from '@/components/layout/locale-switcher';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
 import { useFavorites } from '@/components/personalization-provider';
 import { useSearch } from '@/components/search/search-provider';
 import { Button } from '@/components/ui/button';
+import { DEFAULT_LOCALE, localePath, type Locale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/dictionaries';
 import { cn } from '@/lib/cn';
 
 export interface NavItem {
@@ -16,7 +19,14 @@ export interface NavItem {
   count: number;
 }
 
-export function SiteHeader({ navItems }: { navItems: NavItem[] }) {
+export function SiteHeader({
+  navItems,
+  locale = DEFAULT_LOCALE,
+}: {
+  navItems: NavItem[];
+  locale?: Locale;
+}) {
+  const dict = getDictionary(locale).header;
   const { setOpen } = useSearch();
   const { count, ready } = useFavorites();
   const [scrolled, setScrolled] = useState(false);
@@ -38,7 +48,7 @@ export function SiteHeader({ navItems }: { navItems: NavItem[] }) {
       )}
     >
       <div className="container flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2.5" aria-label="返回首页">
+        <Link href={localePath(locale)} className="flex items-center gap-2.5" aria-label="返回首页">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-glow">
             <Sparkles className="h-4 w-4" />
           </span>
@@ -51,7 +61,7 @@ export function SiteHeader({ navItems }: { navItems: NavItem[] }) {
           {navItems.map((item) => (
             <Link
               key={item.slug}
-              href={`/category/${item.slug}`}
+              href={localePath(locale, `/category/${item.slug}`)}
               className="whitespace-nowrap rounded-full px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             >
               {item.name}
@@ -65,10 +75,10 @@ export function SiteHeader({ navItems }: { navItems: NavItem[] }) {
             size="sm"
             className="hidden gap-2 pr-2 sm:inline-flex"
             onClick={() => setOpen(true)}
-            aria-label="搜索 AI 工具"
+            aria-label={dict.searchAria}
           >
             <Search className="h-3.5 w-3.5" />
-            <span className="text-muted-foreground">搜索工具</span>
+            <span className="text-muted-foreground">{dict.search}</span>
             <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
               ⌘K
             </kbd>
@@ -78,14 +88,15 @@ export function SiteHeader({ navItems }: { navItems: NavItem[] }) {
             size="icon"
             className="sm:hidden"
             onClick={() => setOpen(true)}
-            aria-label="搜索 AI 工具"
+            aria-label={dict.searchAria}
           >
             <Search className="h-4 w-4" />
           </Button>
+          <LocaleSwitcher locale={locale} label={dict.switchLanguage} />
           <Button variant="ghost" size="icon" asChild className="relative">
             <Link
-              href="/favorites"
-              aria-label={ready && count > 0 ? `我的收藏，共 ${count} 个` : '我的收藏'}
+              href={localePath(locale, '/favorites')}
+              aria-label={ready && count > 0 ? dict.favoritesWithCount(count) : dict.favorites}
             >
               <Heart className={cn('h-4 w-4', ready && count > 0 && 'fill-current text-primary')} />
               {ready && count > 0 && (
@@ -95,7 +106,7 @@ export function SiteHeader({ navItems }: { navItems: NavItem[] }) {
               )}
             </Link>
           </Button>
-          <ThemeToggle />
+          <ThemeToggle locale={locale} />
           <Button variant="ghost" size="icon" asChild>
             <a
               href="https://github.com/Jlnvv-tom/awesome-ai-tools"

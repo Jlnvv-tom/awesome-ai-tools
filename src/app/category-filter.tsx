@@ -7,12 +7,21 @@ import { SiteRow } from '@/components/site/site-row';
 import { SiteViewToggle } from '@/components/site/site-view-toggle';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/dictionaries';
 import { cn } from '@/lib/cn';
 import { useViewMode } from '@/lib/view-mode';
 import type { Site } from '@/types/site';
 
 /** 分类页筛选工具条（页面私有客户端组件） */
-export function CategoryFilter({ sites }: { sites: Site[] }) {
+export function CategoryFilter({
+  sites,
+  locale = DEFAULT_LOCALE,
+}: {
+  sites: Site[];
+  locale?: Locale;
+}) {
+  const { explorer: dict, common } = getDictionary(locale);
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const { view, setView } = useViewMode();
 
@@ -64,27 +73,31 @@ export function CategoryFilter({ sites }: { sites: Site[] }) {
           ))}
         </div>
 
-        <SiteViewToggle view={view} onChange={setView} />
+        <SiteViewToggle
+          view={view}
+          onChange={setView}
+          labels={{ group: dict.switchView, grid: dict.gridView, list: dict.listView }}
+        />
       </div>
 
       {filtered.length === 0 ? (
         <div className="glass-card flex flex-col items-center gap-2 py-16 text-center">
-          <p className="text-sm text-muted-foreground">该标签下暂无工具，换个标签看看</p>
+          <p className="text-sm text-muted-foreground">{dict.tagEmpty}</p>
           <Button variant="outline" size="sm" onClick={() => setActiveTag(null)}>
-            清除筛选
+            {common.clear}
           </Button>
         </div>
       ) : view === 'grid' ? (
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filtered.map((site) => (
-            <SiteCard key={site.id} site={site} />
+            <SiteCard key={site.id} site={site} locale={locale} />
           ))}
         </div>
       ) : (
         <ul className="space-y-2">
           {filtered.map((site) => (
             <li key={site.id}>
-              <SiteRow site={site} />
+              <SiteRow site={site} locale={locale} />
             </li>
           ))}
         </ul>
@@ -92,8 +105,8 @@ export function CategoryFilter({ sites }: { sites: Site[] }) {
 
       {filtered.length > 0 && (
         <p className="text-center text-xs text-muted-foreground">
-          共 {filtered.length} 个工具
-          {activeTag && <Badge className="ml-2">已按「{activeTag}」筛选</Badge>}
+          {dict.total(filtered.length)}
+          {activeTag && <Badge className="ml-2">{dict.filteredBy(activeTag)}</Badge>}
         </p>
       )}
     </div>

@@ -3,7 +3,9 @@ import Link from 'next/link';
 import { BrandIcon } from '@/components/site/brand-icon';
 import { FavoriteButton } from '@/components/site/favorite-button';
 import { Badge } from '@/components/ui/badge';
+import { DEFAULT_LOCALE, localePath, type Locale } from '@/i18n/config';
 import { cn } from '@/lib/cn';
+import { getSiteDisplayName } from '@/lib/sites';
 import type { Site } from '@/types/site';
 
 export interface SiteCardProps {
@@ -12,6 +14,8 @@ export interface SiteCardProps {
   showTags?: boolean;
   /** 是否显示收藏按钮 */
   showFavorite?: boolean;
+  /** 语言（影响展示名与跳转链接） */
+  locale?: Locale;
 }
 
 /**
@@ -20,8 +24,13 @@ export interface SiteCardProps {
  * 结构为「容器 + 覆盖式主链接（stretched-link）」，收藏按钮以更高层级置于链接之上，
  * 避免交互元素嵌套（button 套在 a 内）带来的非法 DOM 与键盘/读屏问题。
  */
-export function SiteCard({ site, showTags = true, showFavorite = true }: SiteCardProps) {
-  const displayName = site.nameCn ?? site.name;
+export function SiteCard({
+  site,
+  showTags = true,
+  showFavorite = true,
+  locale = DEFAULT_LOCALE,
+}: SiteCardProps) {
+  const displayName = getSiteDisplayName(site, locale);
 
   return (
     <div
@@ -31,9 +40,9 @@ export function SiteCard({ site, showTags = true, showFavorite = true }: SiteCar
       )}
     >
       <Link
-        href={`/site/${site.id}`}
+        href={localePath(locale, `/site/${site.id}`)}
         className="absolute inset-0 z-10 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        aria-label={`查看 ${displayName} 详情`}
+        aria-label={`${locale === 'en' ? 'View' : '查看'} ${displayName} ${locale === 'en' ? 'details' : '详情'}`}
       />
 
       <div className="flex items-start gap-3 pr-8">
@@ -66,7 +75,7 @@ export function SiteCard({ site, showTags = true, showFavorite = true }: SiteCar
 
       {showFavorite && (
         <div className="absolute right-3 top-3 z-20">
-          <FavoriteButton siteId={site.id} siteName={displayName} />
+          <FavoriteButton siteId={site.id} siteName={displayName} locale={locale} />
         </div>
       )}
     </div>

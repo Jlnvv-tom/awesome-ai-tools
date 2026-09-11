@@ -1,8 +1,10 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { ShortcutsDialog } from '@/components/shortcuts/shortcuts-dialog';
+import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
 
 /** 输入态不触发快捷键，避免影响正常打字 */
 function isTypingTarget(target: EventTarget | null): boolean {
@@ -18,6 +20,9 @@ function isTypingTarget(target: EventTarget | null): boolean {
 /** 全局快捷键：`?` 唤起快捷键总览 */
 export function ShortcutsProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  // Provider 位于根布局，无法接收 locale 参数，按路径前缀判断语言
+  const locale: Locale = pathname?.startsWith('/en') ? 'en' : DEFAULT_LOCALE;
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -36,7 +41,7 @@ export function ShortcutsProvider({ children }: { children: React.ReactNode }) {
   return (
     <>
       {children}
-      <ShortcutsDialog open={open} onOpenChange={setOpen} />
+      <ShortcutsDialog open={open} onOpenChange={setOpen} locale={locale} />
     </>
   );
 }

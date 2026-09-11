@@ -9,6 +9,8 @@ import { SiteRow } from '@/components/site/site-row';
 import { SiteViewToggle } from '@/components/site/site-view-toggle';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/cn';
+import { DEFAULT_LOCALE, localePath, type Locale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/dictionaries';
 import { searchDocs } from '@/lib/search';
 import { useViewMode } from '@/lib/view-mode';
 import type { Category, SearchDoc, Site } from '@/types/site';
@@ -33,10 +35,14 @@ function toSearchDoc(site: Site): SearchDoc {
 export function HomeExplorer({
   sites,
   categories,
+  locale = DEFAULT_LOCALE,
 }: {
   sites: Site[];
   categories: (Category & { count: number })[];
+  locale?: Locale;
 }) {
+  // 字典含插值函数，无法从服务端组件序列化传入，客户端自行取字典
+  const dict = getDictionary(locale).explorer;
   const [query, setQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>(ALL);
   const { view, setView } = useViewMode();
@@ -71,14 +77,14 @@ export function HomeExplorer({
     view === 'grid' ? (
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {items.map((site) => (
-          <SiteCard key={site.id} site={site} />
+          <SiteCard key={site.id} site={site} locale={locale} />
         ))}
       </div>
     ) : (
       <ul className="space-y-2">
         {items.map((site) => (
           <li key={site.id}>
-            <SiteRow site={site} />
+            <SiteRow site={site} locale={locale} />
           </li>
         ))}
       </ul>
@@ -92,8 +98,8 @@ export function HomeExplorer({
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="搜索工具名称或关键词，例如：编程、图像、Agent…"
-            aria-label="筛选 AI 工具"
+            placeholder={dict.placeholder}
+            aria-label={dict.ariaLabel}
             className="h-11 w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
           />
           {query && (
@@ -101,7 +107,7 @@ export function HomeExplorer({
               type="button"
               onClick={() => setQuery('')}
               className="rounded-full p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              aria-label="清空搜索"
+              aria-label={dict.clearSearch}
             >
               <X className="h-4 w-4" />
             </button>
@@ -120,7 +126,7 @@ export function HomeExplorer({
                 : 'border-border text-muted-foreground hover:bg-muted hover:text-foreground',
             )}
           >
-            全部 {sites.length}
+            {dict.all} {sites.length}
           </button>
           {categories.map((category) => (
             <button
@@ -142,18 +148,28 @@ export function HomeExplorer({
 
         <div className="flex items-center justify-between gap-3">
           <p className="text-xs text-muted-foreground">
-            命中 <span className="font-mono text-primary">{filtered.length}</span> 个工具
-            {matchedIds && <span className="ml-1">（关键词：{query}）</span>}
+            {dict.hit} <span className="font-mono text-primary">{filtered.length}</span>{' '}
+            {dict.hitUnit}
+            {matchedIds && (
+              <span className="ml-1">
+                （{dict.keywordPrefix}
+                {query}）
+              </span>
+            )}
           </p>
-          <SiteViewToggle view={view} onChange={setView} />
+          <SiteViewToggle
+            view={view}
+            onChange={setView}
+            labels={{ group: dict.switchView, grid: dict.gridView, list: dict.listView }}
+          />
         </div>
       </div>
 
       <div className="mt-10 space-y-12">
         {filtered.length === 0 && (
           <div className="glass-card flex flex-col items-center gap-2 py-16 text-center">
-            <p className="text-sm text-muted-foreground">没有匹配的工具，换个关键词或分类试试</p>
-            <Badge variant="outline">也可以到 GitHub 提交收录申请</Badge>
+            <p className="text-sm text-muted-foreground">{dict.emptyTitle}</p>
+            <Badge variant="outline">{dict.emptyHint}</Badge>
           </div>
         )}
 
@@ -161,8 +177,8 @@ export function HomeExplorer({
           <div>
             <div className="mb-4 flex items-end justify-between">
               <div>
-                <h2 className="text-xl font-semibold tracking-tight">编辑精选</h2>
-                <p className="text-sm text-muted-foreground">社区维护的高频使用工具</p>
+                <h2 className="text-xl font-semibold tracking-tight">{dict.featured}</h2>
+                <p className="text-sm text-muted-foreground">{dict.featuredDesc}</p>
               </div>
             </div>
             {renderSites(sections.featured)}
@@ -172,7 +188,7 @@ export function HomeExplorer({
         {(query.trim() !== '' || activeCategory !== ALL) && (
           <div>
             <h2 className="mb-4 text-xl font-semibold tracking-tight">
-              {query.trim() !== '' ? '搜索结果' : '分类浏览'}
+              {query.trim() !== '' ? dict.searchResults : dict.categoryBrowse}
             </h2>
             {renderSites(filtered)}
           </div>
@@ -196,7 +212,7 @@ export function HomeExplorer({
                   <p className="text-sm text-muted-foreground">{category.description}</p>
                 </div>
                 <Link
-                  href={`/category/${category.slug}`}
+                  href={localePath(locale, `/category/${category.slug}`)}
                   className="flex shrink-0 items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-primary"
                 >
                   查看全部

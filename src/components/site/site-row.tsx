@@ -3,12 +3,14 @@ import Link from 'next/link';
 import { BrandIcon } from '@/components/site/brand-icon';
 import { FavoriteButton } from '@/components/site/favorite-button';
 import { Badge } from '@/components/ui/badge';
+import { DEFAULT_LOCALE, localePath, type Locale } from '@/i18n/config';
 import { cn } from '@/lib/cn';
+import { getSiteDisplayName } from '@/lib/sites';
 import type { Site } from '@/types/site';
 
 /** 列表视图的行式布局：单行紧凑，图标 + 名称 + 简介 + 标签 + 收藏 */
-export function SiteRow({ site }: { site: Site }) {
-  const displayName = site.nameCn ?? site.name;
+export function SiteRow({ site, locale = DEFAULT_LOCALE }: { site: Site; locale?: Locale }) {
+  const displayName = getSiteDisplayName(site, locale);
 
   return (
     <div
@@ -18,9 +20,9 @@ export function SiteRow({ site }: { site: Site }) {
       )}
     >
       <Link
-        href={`/site/${site.id}`}
+        href={localePath(locale, `/site/${site.id}`)}
         className="absolute inset-0 z-10 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        aria-label={`查看 ${displayName} 详情`}
+        aria-label={`${locale === 'en' ? 'View' : '查看'} ${displayName} ${locale === 'en' ? 'details' : '详情'}`}
       />
 
       <span
@@ -44,7 +46,7 @@ export function SiteRow({ site }: { site: Site }) {
       </div>
 
       <div className="relative z-20 shrink-0">
-        <FavoriteButton siteId={site.id} siteName={displayName} />
+        <FavoriteButton siteId={site.id} siteName={displayName} locale={locale} />
       </div>
     </div>
   );

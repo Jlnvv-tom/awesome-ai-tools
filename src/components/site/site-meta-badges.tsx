@@ -1,33 +1,50 @@
 import { CircleDollarSign, GitFork, Languages } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
+import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/dictionaries';
 import { cn } from '@/lib/cn';
 import type { PricingState, Site, TriState } from '@/types/site';
 
-const PRICING: Record<PricingState, { label: string; className: string }> = {
-  free: { label: '免费', className: 'border-emerald-500/40 text-emerald-400' },
-  freemium: { label: '免费增值', className: 'border-sky-500/40 text-sky-400' },
-  paid: { label: '付费', className: 'border-amber-500/40 text-amber-400' },
-  unknown: { label: '定价待补充', className: 'text-muted-foreground' },
+const PRICING_CLASS: Record<PricingState, string> = {
+  free: 'border-emerald-500/40 text-emerald-400',
+  freemium: 'border-sky-500/40 text-sky-400',
+  paid: 'border-amber-500/40 text-amber-400',
+  unknown: 'text-muted-foreground',
 };
 
-const OPEN_SOURCE: Record<TriState, { label: string; className: string }> = {
-  yes: { label: '开源', className: 'border-primary/40 text-primary' },
-  no: { label: '闭源', className: 'text-muted-foreground' },
-  unknown: { label: '开源待补充', className: 'text-muted-foreground' },
+const OPEN_SOURCE_CLASS: Record<TriState, string> = {
+  yes: 'border-primary/40 text-primary',
+  no: 'text-muted-foreground',
+  unknown: 'text-muted-foreground',
 };
 
-const CHINESE: Record<TriState, { label: string; className: string }> = {
-  yes: { label: '支持中文', className: 'border-accent/40 text-accent' },
-  no: { label: '暂不支持中文', className: 'text-muted-foreground' },
-  unknown: { label: '中文待补充', className: 'text-muted-foreground' },
+const CHINESE_CLASS: Record<TriState, string> = {
+  yes: 'border-accent/40 text-accent',
+  no: 'text-muted-foreground',
+  unknown: 'text-muted-foreground',
 };
 
 /** 详情页元信息徽标组：定价 / 是否开源 / 是否支持中文，未填写时显示「待补充」 */
-export function SiteMetaBadges({ site, className }: { site: Site; className?: string }) {
-  const pricing = PRICING[site.pricing];
-  const openSource = OPEN_SOURCE[site.openSource];
-  const chinese = CHINESE[site.chineseSupport];
+export function SiteMetaBadges({
+  site,
+  className,
+  locale = DEFAULT_LOCALE,
+}: {
+  site: Site;
+  className?: string;
+  locale?: Locale;
+}) {
+  const meta = getDictionary(locale).meta;
+  const pricing = { label: meta.pricing[site.pricing], className: PRICING_CLASS[site.pricing] };
+  const openSource = {
+    label: meta.openSource[site.openSource],
+    className: OPEN_SOURCE_CLASS[site.openSource],
+  };
+  const chinese = {
+    label: meta.chinese[site.chineseSupport],
+    className: CHINESE_CLASS[site.chineseSupport],
+  };
 
   return (
     <div className={cn('flex flex-wrap items-center gap-2', className)}>
