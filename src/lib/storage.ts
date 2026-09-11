@@ -13,6 +13,7 @@ export const STORAGE_KEYS = {
   favorites: 'favorites',
   usage: 'usage',
   viewMode: 'view-mode',
+  iconStyle: 'icon-style',
 } as const;
 
 function fullKey(key: string): string {

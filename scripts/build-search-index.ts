@@ -22,6 +22,10 @@ function main() {
     category: site.category,
     tags: site.tags,
     description: site.description,
+    color: site.color,
+    hasColor: site.hasColor,
+    // 仅 id 冲突条目写入，绝大多数条目省略以控制索引体积
+    iconId: site.iconId === site.id ? undefined : site.iconId,
   }));
 
   const body = docs
@@ -33,6 +37,9 @@ function main() {
         `category: ${JSON.stringify(doc.category)}`,
         `tags: ${JSON.stringify(doc.tags)}`,
         `description: ${JSON.stringify(doc.description)}`,
+        `color: ${JSON.stringify(doc.color)}`,
+        `hasColor: ${doc.hasColor}`,
+        doc.iconId ? `iconId: ${JSON.stringify(doc.iconId)}` : null,
       ].filter(Boolean);
       return `  { ${parts.join(', ')} },`;
     })

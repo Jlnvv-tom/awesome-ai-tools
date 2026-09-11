@@ -142,7 +142,13 @@ export function SearchDialog({
                       index === activeIndex ? 'bg-primary/15' : 'hover:bg-muted',
                     )}
                   >
-                    <BrandIcon iconId={doc.id} name={doc.name} color="#6e56f8" size={26} />
+                    <BrandIcon
+                      iconId={doc.iconId ?? doc.id}
+                      name={doc.name}
+                      color={doc.color}
+                      hasColor={doc.hasColor}
+                      size={26}
+                    />
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-sm font-medium">
                         {locale === 'en' ? doc.name : (doc.nameCn ?? doc.name)}

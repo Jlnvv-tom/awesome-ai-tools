@@ -93,6 +93,13 @@ export interface Site {
   order: number;
   /** 品牌色（来自图标元数据，可覆盖） */
   color: string;
+  /**
+   * 是否存在彩色变体（派生自 IconMeta.param.hasColor）。
+   *
+   * 纯派生字段：不可由人工覆盖，因此不进 SiteOverride / Zod；
+   * 客户端不得自行查表获得，须经此处下传，以免把 322 条图标元数据打进 bundle。
+   */
+  hasColor: boolean;
   /** 数据是否由人工维护（false 表示由脚本自动派生） */
   curated: boolean;
   /** 收录日期（YYYY-MM-DD）：覆盖项 > git 回填映射 > 项目初始化日期 */
@@ -144,4 +151,13 @@ export interface SearchDoc {
   category: string;
   tags: string[];
   description: string;
+  /** 品牌主色：图标兜底块与容器垫板都依赖它 */
+  color: string;
+  /** 是否存在彩色变体；false 时不再请求必定 404 的 color 变体 */
+  hasColor: boolean;
+  /**
+   * 上游图标 id，仅在 id 冲突导致它不等于 `id` 时写入，
+   * 其余条目省略以控制索引体积（见 scripts/build-search-index.ts）。
+   */
+  iconId?: string;
 }

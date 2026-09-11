@@ -83,6 +83,10 @@ const zh = {
     toLight: '切换到亮色模式',
     toDark: '切换到暗色模式',
   },
+  iconStyle: {
+    toMono: '切换为单色图标',
+    toColor: '切换为彩色图标',
+  },
   outbound: {
     openSite: (name: string) => `在新窗口打开 ${name} 官网`,
     goSite: '前往官网',
@@ -299,6 +303,10 @@ const en: typeof zh = {
   theme: {
     toLight: 'Switch to light mode',
     toDark: 'Switch to dark mode',
+  },
+  iconStyle: {
+    toMono: 'Switch to monochrome icons',
+    toColor: 'Switch to colored icons',
   },
   outbound: {
     openSite: (name: string) => `Open ${name} official site in a new tab`,

@@ -31,6 +31,7 @@ SiteOverride[]│                                （未覆盖的字段取派生�
 | `featured`    | `false`                                                                                                                               |
 | `order`       | `9999`                                                                                                                                |
 | `color`       | `IconMeta.color`                                                                                                                      |
+| `hasColor`    | `IconMeta.param.hasColor`（决定是否存在 `-color.svg`，**不可覆盖**）                                                                  |
 | `curated`     | `false`                                                                                                                               |
 
 ## 2. IconMeta（生成，禁止手改）
@@ -61,11 +62,15 @@ SiteOverride[]│                                （未覆盖的字段取派生�
 | `featured`       | boolean  | ✅   | 是否进入首页精选                                                                |
 | `order`          | number   | ✅   | 0–9999，越小越靠前                                                              |
 | `color`          | string   | ✅   | 小写 hex                                                                        |
+| `hasColor`       | boolean  | ✅   | 是否存在彩色变体；纯派生字段，不进 SiteOverride / Zod                           |
 | `curated`        | boolean  | ✅   | 是否人工维护                                                                    |
 | `addedAt`        | string   | ✅   | 收录日期 `YYYY-MM-DD`；`override.addedAt` > git 回填映射 > 兜底日期             |
 | `pricing`        | enum     | ✅   | 定价模式：`free` / `freemium` / `paid` / `unknown`（缺省 `unknown` 表示待补充） |
 | `openSource`     | enum     | ✅   | 是否开源：`yes` / `no` / `unknown`（缺省 `unknown`）                            |
 | `chineseSupport` | enum     | ✅   | 是否支持中文：`yes` / `no` / `unknown`（缺省 `unknown`）                        |
+
+> `hasColor` 与 `curated` 同属派生字段：它由 `IconMeta.param.hasColor` 派生，不可人工覆盖，
+> 且必须经服务端下传给客户端 —— 客户端自行查表会把 322 条图标元数据打进 bundle。
 
 ## 4. SiteOverride（人工维护，全部字段可选）
 

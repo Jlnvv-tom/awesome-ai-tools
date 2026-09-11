@@ -4,6 +4,7 @@ import { Github, Heart, Search, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
+import { IconStyleToggle } from '@/components/layout/icon-style-toggle';
 import { LocaleSwitcher } from '@/components/layout/locale-switcher';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
 import { useFavorites } from '@/components/personalization-provider';
@@ -106,6 +107,7 @@ export function SiteHeader({
               )}
             </Link>
           </Button>
+          <IconStyleToggle locale={locale} />
           <ThemeToggle locale={locale} />
           <Button variant="ghost" size="icon" asChild>
             <a

@@ -25,6 +25,9 @@ function toSearchDoc(site: Site): SearchDoc {
     category: site.category,
     tags: site.tags,
     description: site.description,
+    color: site.color,
+    hasColor: site.hasColor,
+    iconId: site.iconId === site.id ? undefined : site.iconId,
   };
 }
 

@@ -84,6 +84,7 @@ function buildSite(meta: IconMeta, override: SiteOverride | undefined, categorie
     featured: override?.featured ?? false,
     order: override?.order ?? DEFAULT_ORDER,
     color: meta.color,
+    hasColor: meta.param.hasColor,
     curated: Boolean(override),
     addedAt: override?.addedAt ?? ADDED_AT_MAP[meta.id] ?? ADDED_AT_DEFAULT,
     pricing: override?.pricing ?? 'unknown',
@@ -196,9 +197,18 @@ export function getSiteById(id: string): Site | undefined {
   return getAllSites().find((site) => site.id === id);
 }
 
-/** 取站点关联的图标元数据 */
+let iconMetaIndex: Map<string, IconMeta> | null = null;
+
+function getIconMetaIndex(): Map<string, IconMeta> {
+  if (!iconMetaIndex) {
+    iconMetaIndex = new Map(ICON_META.map((meta) => [meta.id, meta]));
+  }
+  return iconMetaIndex;
+}
+
+/** 取站点关联的图标元数据（用一次性构建的索引查找，避免列表渲染里的 O(n²) 遍历） */
 export function getIconMeta(iconId: string): IconMeta | undefined {
-  return ICON_META.find((meta) => meta.id === iconId);
+  return getIconMetaIndex().get(iconId);
 }
 
 /** 同分类 / 同标签的相关推荐 */

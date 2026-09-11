@@ -50,6 +50,7 @@
       "featured": true,
       "order": 1,
       "color": "#000000",
+      "hasColor": false,
       "pricing": "freemium",
       "openSource": "no",
       "chineseSupport": "yes",

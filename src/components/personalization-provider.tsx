@@ -3,24 +3,29 @@
 import { createContext, useContext } from 'react';
 
 import { useFavoritesState, type FavoritesValue } from '@/lib/favorites';
+import { useIconStyleState, type IconStyleValue } from '@/lib/icon-style';
 import { useUsageStatsState, type UsageValue } from '@/lib/usage';
 
 const FavoritesContext = createContext<FavoritesValue | null>(null);
 const UsageContext = createContext<UsageValue | null>(null);
+const IconStyleContext = createContext<IconStyleValue | null>(null);
 
 /**
- * 个性化数据 Provider：收藏夹与使用统计。
+ * 个性化偏好与本地数据 Provider：收藏夹、使用统计与图标风格。
  *
- * 二者都来自 localStorage，必须由单一状态源下发，否则顶栏徽标、卡片按钮、
- * 收藏页与「我的常用」区块之间会出现状态不一致。
+ * 三者都来自 localStorage，必须由单一状态源下发，否则顶栏徽标、卡片按钮、
+ * 收藏页、「我的常用」区块与逐个图标之间会出现状态不一致。
  */
 export function PersonalizationProvider({ children }: { children: React.ReactNode }) {
   const favorites = useFavoritesState();
   const usage = useUsageStatsState(favorites.has);
+  const iconStyle = useIconStyleState();
 
   return (
     <FavoritesContext.Provider value={favorites}>
-      <UsageContext.Provider value={usage}>{children}</UsageContext.Provider>
+      <UsageContext.Provider value={usage}>
+        <IconStyleContext.Provider value={iconStyle}>{children}</IconStyleContext.Provider>
+      </UsageContext.Provider>
     </FavoritesContext.Provider>
   );
 }
@@ -38,5 +43,17 @@ export function useFavorites(): FavoritesValue {
 export function useUsageStats(): UsageValue {
   const context = useContext(UsageContext);
   const local = useUsageStatsState(() => false, context === null);
+  return context ?? local;
+}
+
+/**
+ * 图标风格偏好。
+ *
+ * 由 Provider 统一下发而非每个图标各读一次：首页同时存在 300 多个图标，
+ * 各自订阅会造成上百次 localStorage 读取与 storage 监听。
+ */
+export function useIconStyle(): IconStyleValue {
+  const context = useContext(IconStyleContext);
+  const local = useIconStyleState(context === null);
   return context ?? local;
 }

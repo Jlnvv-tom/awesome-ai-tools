@@ -1,8 +1,9 @@
 import { ArrowLeft, Link2, Pencil } from 'lucide-react';
 import Link from 'next/link';
 
-import { OutboundLink } from '@/components/site/outbound-link';
 import { BrandIcon } from '@/components/site/brand-icon';
+import { OutboundLink } from '@/components/site/outbound-link';
+import { SiteIconTile } from '@/components/site/site-icon-tile';
 import { SiteMetaBadges } from '@/components/site/site-meta-badges';
 import { VisitTracker } from '@/components/site/visit-tracker';
 import { Badge } from '@/components/ui/badge';
@@ -71,18 +72,14 @@ export function SiteView({ site, locale = DEFAULT_LOCALE }: { site: Site; locale
           />
 
           <div className="relative flex flex-col gap-6 md:flex-row md:items-start">
-            <span
-              className="flex h-20 w-20 items-center justify-center rounded-2xl border border-white/10 bg-muted/40"
-              style={{ boxShadow: `0 18px 48px -20px ${site.color}` }}
-            >
-              <BrandIcon
-                iconId={site.iconId}
-                name={site.name}
-                color={site.color}
-                size={48}
-                hasColor={meta?.param.hasColor ?? true}
-              />
-            </span>
+            <SiteIconTile
+              iconId={site.iconId}
+              name={site.name}
+              color={site.color}
+              hasColor={site.hasColor}
+              size="lg"
+              interactive={false}
+            />
 
             <div className="min-w-0 flex-1 space-y-3">
               <div className="flex flex-wrap items-center gap-2">
@@ -184,7 +181,13 @@ export function SiteView({ site, locale = DEFAULT_LOCALE }: { site: Site; locale
                   href={localePath(locale, `/site/${item.id}`)}
                   className="glass-card flex items-center gap-3 p-3 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40"
                 >
-                  <BrandIcon iconId={item.iconId} name={item.name} color={item.color} size={30} />
+                  <BrandIcon
+                    iconId={item.iconId}
+                    name={item.name}
+                    color={item.color}
+                    hasColor={item.hasColor}
+                    size={30}
+                  />
                   <div className="min-w-0">
                     <p className="truncate text-sm font-medium">
                       {getSiteDisplayName(item, locale)}

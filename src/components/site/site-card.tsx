@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { BrandIcon } from '@/components/site/brand-icon';
 import { FavoriteButton } from '@/components/site/favorite-button';
+import { SiteIconTile } from '@/components/site/site-icon-tile';
 import { Badge } from '@/components/ui/badge';
 import { DEFAULT_LOCALE, localePath, type Locale } from '@/i18n/config';
 import { cn } from '@/lib/cn';
@@ -46,12 +46,13 @@ export function SiteCard({
       />
 
       <div className="flex items-start gap-3 pr-8">
-        <span
-          className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-muted/40 transition-transform duration-200 group-hover:scale-105"
-          style={{ boxShadow: `0 8px 24px -12px ${site.color}` }}
-        >
-          <BrandIcon iconId={site.iconId} name={site.name} color={site.color} size={26} />
-        </span>
+        <SiteIconTile
+          iconId={site.iconId}
+          name={site.name}
+          color={site.color}
+          hasColor={site.hasColor}
+          size="md"
+        />
 
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-semibold leading-tight">{displayName}</p>

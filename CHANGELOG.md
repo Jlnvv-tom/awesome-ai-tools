@@ -64,3 +64,19 @@
 - 站点/分类展示名按语言选取（`nameCn ?? name` / `nameEn`），英文站简介回退中文原文
 - `sitemap.xml` 输出中英双份 URL 并互相声明 hreflang；详情页与分类页补充 canonical
 - API 路由统一声明 Edge Runtime（兼容 Vercel 与 Cloudflare Pages）
+
+### Added（图标主题适配）
+
+- 图标深浅色适配：105 个单色图标改用 mask + `currentColor` 渲染，浅色近黑 / 深色近白，效果对齐 lobehub 官网
+- 图标容器自适应垫板：白色/极浅品牌色在浅色模式自动加深色垫板，深色品牌色在深色模式自动加浅色垫板
+- 「彩色 / 单色」图标风格开关（顶栏），偏好持久化到 localStorage 并跨标签页同步
+- 渲染决策纯函数 `src/lib/icon-plan.ts` 与品牌色亮度工具 `src/lib/color.ts`（含 22 个单测）
+- ADR 0008 记录该决策、上游调研结论与备选方案
+
+### Changed（图标主题适配）
+
+- `hasColor` 改为服务端派生字段（`Site.hasColor`），四处调用点不再请求必定 404 的彩色变体
+- 图标容器收敛为 `SiteIconTile`，替换站点卡片、列表行与详情页的重复实现
+- 搜索索引增加 `color` / `hasColor` / `iconId`（仅 id 冲突条目）字段，搜索面板不再硬编码兜底色
+- `getIconMeta` 改为一次性构建的 Map 索引，避免列表渲染中的 O(n²) 遍历
+- `.grid-texture` 补齐 `-webkit-mask-image` 前缀
