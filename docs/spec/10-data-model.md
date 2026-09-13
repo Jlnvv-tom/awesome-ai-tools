@@ -6,16 +6,20 @@
 ## 1. 数据来源与合并规则
 
 ```
-@lobehub/icons toc (322 条)
-        │  scripts/sync-icons.ts
-        ▼
-IconMeta[]  ──┐
-              ├─ left join（以 iconId 为键）─→  Site[]
-SiteOverride[]│                                （未覆盖的字段取派生默认值）
+@lobehub/icons toc (322 条)            data/catalog/*.json
+        │  scripts/sync-icons.ts        │（自主收录，人工维护）
+        ▼                                │
+IconMeta[]  ──┐                          │
+              ├─ left join（以 iconId 为键）
+SiteOverride[]│
 （data/sites/*.json）
+              ▼
+           Site[]  ←── 追加自主收录条目（id 去重，见第 5 节）
 ```
 
 **合并优先级**：`SiteOverride` > 派生默认值（来自 `IconMeta`）。
+
+**条目来源**：`lobehub`（图标库派生，可被 override 覆盖）与 `catalog`（自主收录，自身即完整数据）。合并后以 `id` 全局唯一。
 
 **派生规则**（未被覆盖时）：
 
@@ -52,7 +56,8 @@ SiteOverride[]│                                （未覆盖的字段取派生�
 | 字段             | 类型     | 必填 | 约束                                                                            |
 | ---------------- | -------- | ---- | ------------------------------------------------------------------------------- |
 | `id`             | string   | ✅   | `^[a-z0-9]+(-[a-z0-9]+)*$`，全局唯一                                            |
-| `iconId`         | string   | ✅   | 必须存在于 `icons.generated.ts`                                                 |
+| `iconId`         | string   | ✅   | lobehub 条目须为 `IconMeta.id`；自主收录条目为自身 `id`                         |
+| `iconSource`     | enum     | ✅   | 图标来源：`lobehub` / `favicon` / `initial`（派生，不可覆盖）                   |
 | `name`           | string   | ✅   | 1–60 字符                                                                       |
 | `nameCn`         | string   | ➖   | ≤ 30 字符                                                                       |
 | `url`            | string   | ✅   | 必须是 `https://` 开头的可解析 URL；**禁止**带 `utm_*`、`ref`、`aff` 等追踪参数 |
@@ -68,6 +73,8 @@ SiteOverride[]│                                （未覆盖的字段取派生�
 | `pricing`        | enum     | ✅   | 定价模式：`free` / `freemium` / `paid` / `unknown`（缺省 `unknown` 表示待补充） |
 | `openSource`     | enum     | ✅   | 是否开源：`yes` / `no` / `unknown`（缺省 `unknown`）                            |
 | `chineseSupport` | enum     | ✅   | 是否支持中文：`yes` / `no` / `unknown`（缺省 `unknown`）                        |
+| `github`         | string   | ➖   | 开源仓库 `owner/repo`，用于同步 Star 等客观指标                                 |
+| `stars`          | number   | ➖   | GitHub Star 数（派生自 `metrics.generated.ts`，不参与覆盖）                     |
 
 > `hasColor` 与 `curated` 同属派生字段：它由 `IconMeta.param.hasColor` 派生，不可人工覆盖，
 > 且必须经服务端下传给客户端 —— 客户端自行查表会把 322 条图标元数据打进 bundle。
@@ -76,21 +83,22 @@ SiteOverride[]│                                （未覆盖的字段取派生�
 
 存储位置：`data/sites/<category>.json`，数组形式。
 
-| 字段              | 类型     | 说明                                                   |
-| ----------------- | -------- | ------------------------------------------------------ |
-| `iconId`          | string   | **必填**，关联到 IconMeta.id                           |
-| `name` / `nameCn` | string   | 覆盖展示名                                             |
-| `url`             | string   | 覆盖官网地址（上游 `desc` 缺失或错误时使用）           |
-| `category`        | string   | 覆盖自动归类结果                                       |
-| `tags`            | string[] | 覆盖标签                                               |
-| `description`     | string   | 覆盖简介                                               |
-| `featured`        | boolean  | 是否精选                                               |
-| `order`           | number   | 排序权重                                               |
-| `visible`         | boolean  | `false` 表示从导航中隐藏该条目                         |
-| `addedAt`         | string   | 覆盖回填的收录日期（`YYYY-MM-DD`），新收录条目建议填写 |
-| `pricing`         | enum     | 定价模式，取值同 `Site.pricing`                        |
-| `openSource`      | enum     | 是否开源，取值同 `Site.openSource`                     |
-| `chineseSupport`  | enum     | 是否支持中文，取值同 `Site.chineseSupport`             |
+| 字段              | 类型     | 说明                                                     |
+| ----------------- | -------- | -------------------------------------------------------- |
+| `iconId`          | string   | **必填**，关联到 IconMeta.id                             |
+| `name` / `nameCn` | string   | 覆盖展示名                                               |
+| `url`             | string   | 覆盖官网地址（上游 `desc` 缺失或错误时使用）             |
+| `category`        | string   | 覆盖自动归类结果                                         |
+| `tags`            | string[] | 覆盖标签                                                 |
+| `description`     | string   | 覆盖简介                                                 |
+| `featured`        | boolean  | 是否精选                                                 |
+| `order`           | number   | 排序权重                                                 |
+| `visible`         | boolean  | `false` 表示从导航中隐藏该条目                           |
+| `addedAt`         | string   | 覆盖回填的收录日期（`YYYY-MM-DD`），新收录条目建议填写   |
+| `pricing`         | enum     | 定价模式，取值同 `Site.pricing`                          |
+| `openSource`      | enum     | 是否开源，取值同 `Site.openSource`                       |
+| `chineseSupport`  | enum     | 是否支持中文，取值同 `Site.chineseSupport`               |
+| `github`          | string   | 开源仓库 `owner/repo`，填写后由 `sync:metrics` 同步 Star |
 
 ### 示例
 
@@ -117,7 +125,61 @@ SiteOverride[]│                                （未覆盖的字段取派生�
 ]
 ```
 
-## 5. Category
+## 5. CatalogEntry（自主收录，人工维护）
+
+存储位置：`data/catalog/*.json`，数组形式。用于收录**不在 @lobehub/icons 图标库中**的工具。
+
+| 字段             | 类型     | 必填 | 说明                                                  |
+| ---------------- | -------- | ---- | ----------------------------------------------------- |
+| `id`             | string   | ✅   | kebab-case，不得与 lobehub 派生条目的 id 冲突         |
+| `name`           | string   | ✅   | 展示名（英文原名或通用名），1–60 字符                 |
+| `nameCn`         | string   | ➖   | 中文名，≤ 30 字符                                     |
+| `url`            | string   | ✅   | `https://` 开头；禁止追踪参数                         |
+| `category`       | string   | ✅   | 必须存在于 `data/categories.json`                     |
+| `tags`           | string[] | ✅   | 每个标签须在 `data/tags.json` 登记                    |
+| `description`    | string   | ✅   | 10–80 字符，陈述事实                                  |
+| `color`          | string   | ✅   | 品牌主色，小写 hex（供兜底块与容器垫板使用）          |
+| `featured`       | boolean  | ➖   | 是否首页精选，缺省 false                              |
+| `order`          | number   | ➖   | 排序权重，缺省 9999                                   |
+| `addedAt`        | string   | ✅   | 收录日期 `YYYY-MM-DD`                                 |
+| `pricing`        | enum     | ➖   | 同 `Site.pricing`，缺省 `unknown`                     |
+| `openSource`     | enum     | ➖   | 同 `Site.openSource`，缺省 `unknown`                  |
+| `chineseSupport` | enum     | ➖   | 同 `Site.chineseSupport`，缺省 `unknown`              |
+| `github`         | string   | ➖   | 开源仓库 `owner/repo`，由 `sync:metrics` 同步 Star    |
+| `iconId`         | string   | ➖   | 该工具被图标库收录后填入 `IconMeta.id` 以复用官方图标 |
+| `visible`        | boolean  | ➖   | `false` 表示从导航中隐藏                              |
+
+### 派生规则（合并为 `Site` 时）
+
+| 字段         | 派生值                                                              |
+| ------------ | ------------------------------------------------------------------- |
+| `iconId`     | 自身 `id`（除非显式填了 `iconId`）                                  |
+| `iconSource` | 有 `iconId` → `lobehub`；有本地 favicon → `favicon`；否则 `initial` |
+| `curated`    | `true`（自主收录视为人工维护）                                      |
+| 其余可选字段 | 取上方缺省值                                                        |
+
+### 示例
+
+```json
+[
+  {
+    "id": "example-tool",
+    "name": "Example Tool",
+    "nameCn": "示例工具",
+    "url": "https://example.com",
+    "category": "writing",
+    "tags": ["writing"],
+    "description": "面向长文写作的编辑器，支持大纲生成与多语言润色。",
+    "color": "#6e56f8",
+    "addedAt": "2026-09-12",
+    "pricing": "freemium",
+    "openSource": "no",
+    "chineseSupport": "yes"
+  }
+]
+```
+
+## 6. Category
 
 | 字段          | 类型     | 约束                                     |
 | ------------- | -------- | ---------------------------------------- |
@@ -130,17 +192,18 @@ SiteOverride[]│                                （未覆盖的字段取派生�
 | `order`       | number   | 排序权重                                 |
 | `keywords`    | string[] | 自动归类关键词（小写），命中即归入该分类 |
 
-## 6. Tag（受控词表）
+## 7. Tag（受控词表）
 
 `data/tags.json` 为字符串数组。新增标签需在此登记后才能在站点数据中使用，
 `validate:data` 会拦截未登记的标签。
 
-## 7. 校验规则（scripts/validate-data.ts）
+## 8. 校验规则（scripts/validate-data.ts）
 
 | 级别     | 规则                                                  |
 | -------- | ----------------------------------------------------- |
 | ❌ error | Zod schema 校验失败（字段缺失 / 类型错误 / 格式非法） |
-| ❌ error | `site.iconId` 在图标元数据中不存在                    |
+| ❌ error | lobehub 条目的 `site.iconId` 在图标元数据中不存在     |
+| ❌ error | `catalog` 条目与 lobehub 条目的 `id` 冲突             |
 | ❌ error | `site.category` 不在 `categories.json`                |
 | ❌ error | `site.tags` 存在未登记标签                            |
 | ❌ error | `site.id` 重复                                        |

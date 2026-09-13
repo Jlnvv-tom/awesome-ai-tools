@@ -80,3 +80,55 @@ describe('expectedRenderMode', () => {
     expect(expectedRenderMode({ sources: [], fallbackUrl: '' })).toBe('fallback');
   });
 });
+
+describe('resolveIconPlan · 自主收录来源', () => {
+  const CATALOG = {
+    iconId: 'metaso',
+    name: 'Metaso',
+    color: '#6e56f8',
+    style: 'color' as const,
+    hasColor: false,
+  };
+
+  it('favicon 来源只使用本地图标一个候选', () => {
+    const plan = resolveIconPlan({
+      ...CATALOG,
+      iconSource: 'favicon',
+      faviconUrl: '/icons/metaso.png',
+    });
+
+    expect(plan.sources).toEqual([{ url: '/icons/metaso.png', mode: 'img' }]);
+    expect(expectedRenderMode(plan)).toBe('img');
+  });
+
+  it('favicon 来源在单色风格下仍保持原图（不参与单色化）', () => {
+    const plan = resolveIconPlan({
+      ...CATALOG,
+      style: 'mono',
+      iconSource: 'favicon',
+      faviconUrl: '/icons/metaso.svg',
+    });
+
+    expect(plan.sources[0].mode).toBe('img');
+  });
+
+  it('initial 来源没有候选，直接用品牌色首字母块', () => {
+    const plan = resolveIconPlan({ ...CATALOG, color: '#123456', iconSource: 'initial' });
+
+    expect(plan.sources).toHaveLength(0);
+    expect(expectedRenderMode(plan)).toBe('fallback');
+    expect(decodeURIComponent(plan.fallbackUrl)).toContain('#123456');
+  });
+
+  it('声明 favicon 来源但缺少路径时退回图标库逻辑（防御分支）', () => {
+    const plan = resolveIconPlan({
+      ...OPENAI,
+      style: 'color',
+      iconSource: 'favicon',
+      faviconUrl: undefined,
+    });
+
+    expect(plan.sources.length).toBeGreaterThan(0);
+    expect(plan.sources.every((source) => source.mode === 'mask')).toBe(true);
+  });
+});

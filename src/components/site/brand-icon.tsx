@@ -5,9 +5,10 @@ import { useMemo, useState } from 'react';
 import { useIconStyle } from '@/components/personalization-provider';
 import { cn } from '@/lib/cn';
 import { resolveIconPlan } from '@/lib/icon-plan';
+import type { IconSourceKind } from '@/types/site';
 
 export interface BrandIconProps {
-  /** @lobehub/icons 的图标 id（PascalCase） */
+  /** @lobehub/icons 的图标 id（PascalCase）；自主收录条目为其自身 id */
   iconId: string;
   /** 站点名，用于兜底占位图的首字母 */
   name: string;
@@ -15,6 +16,10 @@ export interface BrandIconProps {
   color: string;
   /** 是否拥有 color 变体（服务端派生自 IconMeta.param.hasColor；为 false 时不请求必定 404 的 color 变体） */
   hasColor: boolean;
+  /** 图标来源策略（服务端派生），缺省 `lobehub` */
+  iconSource?: IconSourceKind;
+  /** 本地图标路径，`iconSource` 为 `favicon` 时使用 */
+  faviconUrl?: string;
   /** 像素尺寸 */
   size?: number;
   className?: string;
@@ -32,11 +37,20 @@ export interface BrandIconProps {
  * mask 元素自身收不到 load/error 事件，因此同层挂载一个隐藏 `<img>` 做可达性探测；
  * 它与 mask 使用同一个 URL，命中浏览器缓存，不产生额外请求。
  */
-export function BrandIcon({ iconId, name, color, hasColor, size = 40, className }: BrandIconProps) {
+export function BrandIcon({
+  iconId,
+  name,
+  color,
+  hasColor,
+  iconSource,
+  faviconUrl,
+  size = 40,
+  className,
+}: BrandIconProps) {
   const { style } = useIconStyle();
   const plan = useMemo(
-    () => resolveIconPlan({ iconId, name, color, style, hasColor }),
-    [iconId, name, color, style, hasColor],
+    () => resolveIconPlan({ iconId, name, color, style, hasColor, iconSource, faviconUrl }),
+    [iconId, name, color, style, hasColor, iconSource, faviconUrl],
   );
 
   const [index, setIndex] = useState(0);
@@ -75,7 +89,8 @@ export function BrandIcon({ iconId, name, color, hasColor, size = 40, className 
         loading="lazy"
         decoding="async"
         onError={() => setIndex((value) => value + 1)}
-        className={cn('object-contain', shell)}
+        // 本地 favicon 多为直角图片，轻微圆角让它更像应用图标
+        className={cn('object-contain', iconSource === 'favicon' && 'rounded-[5px]', shell)}
         style={box}
       />
     );

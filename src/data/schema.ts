@@ -10,12 +10,16 @@ import { z } from 'zod';
 export const HEX_COLOR = /^#[0-9a-f]{6}$/;
 export const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 export const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+/** GitHub 仓库标识：owner/repo */
+export const GITHUB_REPO = /^[\w.-]+\/[\w.-]+$/;
 
 const TRACKING_PARAMS = ['utm_', 'ref=', 'ref_', 'aff', 'spm', 'from=', 'share_'];
 
 export const IconGroupSchema = z.enum(['model', 'provider', 'application']);
 
 export const PricingStateSchema = z.enum(['free', 'freemium', 'paid', 'unknown']);
+
+export const IconSourceKindSchema = z.enum(['lobehub', 'favicon', 'initial']);
 
 export const TriStateSchema = z.enum(['yes', 'no', 'unknown']);
 
@@ -55,6 +59,7 @@ export const CategorySchema = z.object({
 export const SiteSchema = z.object({
   id: z.string().regex(SLUG),
   iconId: z.string().min(1),
+  iconSource: IconSourceKindSchema,
   name: z.string().min(1).max(60),
   nameCn: z.string().max(30).optional(),
   url: z
@@ -74,6 +79,7 @@ export const SiteSchema = z.object({
   pricing: PricingStateSchema,
   openSource: TriStateSchema,
   chineseSupport: TriStateSchema,
+  github: z.string().regex(GITHUB_REPO, 'GitHub 仓库格式应为 owner/repo').optional(),
 });
 
 export const SiteOverrideSchema = z
@@ -96,12 +102,47 @@ export const SiteOverrideSchema = z
     pricing: PricingStateSchema.optional(),
     openSource: TriStateSchema.optional(),
     chineseSupport: TriStateSchema.optional(),
+    github: z.string().regex(GITHUB_REPO, 'GitHub 仓库格式应为 owner/repo').optional(),
+  })
+  .strict();
+
+/**
+ * 自主收录条目（`data/catalog/*.json`）。
+ *
+ * 与 SiteOverride 的区别：override 以 iconId 关联 lobehub 条目；
+ * 本 schema 的每个条目自成完整数据源，故 id 必填且不含 iconId 关联语义。
+ */
+export const CatalogEntrySchema = z
+  .object({
+    id: z.string().regex(SLUG),
+    name: z.string().min(1).max(60),
+    nameCn: z.string().max(30).optional(),
+    url: z
+      .string()
+      .url()
+      .refine((value) => value.startsWith('https://'), {
+        message: '官网地址必须使用 https',
+      }),
+    category: z.string().regex(SLUG),
+    tags: z.array(z.string().min(1)).max(8),
+    description: z.string().min(10).max(80),
+    color: z.string().regex(HEX_COLOR, '品牌色必须是小写 #rrggbb'),
+    featured: z.boolean().optional(),
+    order: z.number().int().min(0).max(9999).optional(),
+    addedAt: z.string().regex(ISO_DATE, '收录日期必须是 YYYY-MM-DD'),
+    pricing: PricingStateSchema.optional(),
+    openSource: TriStateSchema.optional(),
+    chineseSupport: TriStateSchema.optional(),
+    github: z.string().regex(GITHUB_REPO, 'GitHub 仓库格式应为 owner/repo').optional(),
+    iconId: z.string().min(1).optional(),
+    visible: z.boolean().optional(),
   })
   .strict();
 
 export const CategoriesFileSchema = z.array(CategorySchema);
 export const TagsFileSchema = z.array(z.string().min(1));
 export const SiteOverridesFileSchema = z.array(SiteOverrideSchema);
+export const CatalogFileSchema = z.array(CatalogEntrySchema);
 
 /** 检测 URL 中是否携带追踪参数（返回命中的参数名） */
 export function findTrackingParams(url: string): string[] {

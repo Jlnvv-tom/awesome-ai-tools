@@ -49,6 +49,12 @@ jobs:
       - name: 校验贡献者统计为最新
         run: pnpm build:contributors --check
 
+      - name: 校验本地图标映射为最新
+        run: pnpm fetch:favicons --check
+
+      - name: 校验客观指标文件结构
+        run: pnpm sync:metrics --check
+
       - name: 校验生成文件是否为最新
         run: |
           pnpm build:search

@@ -6,12 +6,15 @@ import { useMemo, useState } from 'react';
 
 import { SiteCard } from '@/components/site/site-card';
 import { SiteRow } from '@/components/site/site-row';
+import { SiteSortSelect } from '@/components/site/site-sort-select';
 import { SiteViewToggle } from '@/components/site/site-view-toggle';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/cn';
 import { DEFAULT_LOCALE, localePath, type Locale } from '@/i18n/config';
 import { getDictionary } from '@/i18n/dictionaries';
 import { searchDocs } from '@/lib/search';
+import { useSortMode } from '@/lib/sort-mode';
+import { sortSites } from '@/lib/sorting';
 import { useViewMode } from '@/lib/view-mode';
 import type { Category, SearchDoc, Site } from '@/types/site';
 
@@ -28,6 +31,8 @@ function toSearchDoc(site: Site): SearchDoc {
     color: site.color,
     hasColor: site.hasColor,
     iconId: site.iconId === site.id ? undefined : site.iconId,
+    iconSource: site.iconSource === 'lobehub' ? undefined : site.iconSource,
+    faviconUrl: site.faviconUrl,
   };
 }
 
@@ -45,10 +50,11 @@ export function HomeExplorer({
   locale?: Locale;
 }) {
   // 字典含插值函数，无法从服务端组件序列化传入，客户端自行取字典
-  const dict = getDictionary(locale).explorer;
+  const { explorer: dict, sort: sortDict } = getDictionary(locale);
   const [query, setQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>(ALL);
   const { view, setView } = useViewMode();
+  const { sort, setSort } = useSortMode();
 
   const docs = useMemo(() => sites.map(toSearchDoc), [sites]);
 
@@ -60,9 +66,9 @@ export function HomeExplorer({
   const filtered = useMemo(() => {
     const byCategory =
       activeCategory === ALL ? sites : sites.filter((site) => site.category === activeCategory);
-    if (!matchedIds) return byCategory;
-    return byCategory.filter((site) => matchedIds.has(site.id));
-  }, [sites, activeCategory, matchedIds]);
+    const matched = matchedIds ? byCategory.filter((site) => matchedIds.has(site.id)) : byCategory;
+    return sortSites(matched, sort);
+  }, [sites, activeCategory, matchedIds, sort]);
 
   const sections = useMemo(() => {
     const featured = filtered.filter((site) => site.featured);
@@ -160,11 +166,14 @@ export function HomeExplorer({
               </span>
             )}
           </p>
-          <SiteViewToggle
-            view={view}
-            onChange={setView}
-            labels={{ group: dict.switchView, grid: dict.gridView, list: dict.listView }}
-          />
+          <div className="flex shrink-0 items-center gap-2">
+            <SiteSortSelect value={sort} onChange={setSort} labels={sortDict} />
+            <SiteViewToggle
+              view={view}
+              onChange={setView}
+              labels={{ group: dict.switchView, grid: dict.gridView, list: dict.listView }}
+            />
+          </div>
         </div>
       </div>
 

@@ -17,6 +17,8 @@ const eslintConfig = [
       'src/data/*.generated.ts',
       'coverage/**',
       'next-env.d.ts',
+      // ESLint flat config 不读 .gitignore，部署暂存目录需显式忽略（见 deploy:staging）
+      '.edgeone-staging/**',
     ],
   },
   {

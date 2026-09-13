@@ -325,4 +325,10 @@ export const SEARCH_INDEX: SearchDoc[] = [
   { id: "zenmux", name: "ZenMux", category: "model", tags: [], description: "LobeHub Icons 收录的服务商「ZenMux」，点击直达官网。", color: "#000000", hasColor: false, iconId: "ZenMux" },
   { id: "zeroone", name: "01.AI (零一万物)", nameCn: "零一万物", category: "model", tags: ["llm"], description: "Yi 系列模型研发商，提供开源基座与微调模型。", color: "#003425", hasColor: true, iconId: "ZeroOne" },
   { id: "zhipu", name: "Zhipu (智谱)", nameCn: "智谱 AI", category: "model", tags: ["llm","api"], description: "GLM 系列模型厂商，提供 GLM-4 与开源基座模型。", color: "#3859ff", hasColor: true, iconId: "Zhipu" },
+  { id: "aippt", name: "AiPPT", nameCn: "AiPPT", category: "writing", tags: ["productivity"], description: "对话式生成演示文稿的工具，支持导入文档、自动排版与模板替换。", color: "#6e56f8", hasColor: false, iconSource: "favicon", faviconUrl: "/icons/aippt.ico" },
+  { id: "bohrium", name: "Bohrium", nameCn: "玻尔", category: "search", tags: ["ai-search","community"], description: "面向科研场景的 AI 平台，提供文献检索、计算环境与知识库管理。", color: "#6e56f8", hasColor: false, iconSource: "favicon", faviconUrl: "/icons/bohrium.png" },
+  { id: "gaoding-ai", name: "Gaoding AI", nameCn: "稿定AI", category: "image", tags: ["design","editing"], description: "在线设计与图像编辑平台，提供 AI 抠图、绘图、商品图与批量处理能力。", color: "#6e56f8", hasColor: false, iconSource: "favicon", faviconUrl: "/icons/gaoding-ai.ico" },
+  { id: "liblibai", name: "LiblibAI", nameCn: "哩布哩布AI", category: "image", tags: ["image-generation","model-hub","community"], description: "面向创作者的 AI 图像模型社区，提供在线生图与模型托管服务。", color: "#6e56f8", hasColor: false, iconSource: "favicon", faviconUrl: "/icons/liblibai.ico" },
+  { id: "metaso", name: "Metaso", nameCn: "秘塔AI搜索", category: "search", tags: ["ai-search"], description: "无广告的中文 AI 搜索引擎，支持全网检索、学术模式与结构化结果输出。", color: "#6e56f8", hasColor: false, iconSource: "favicon", faviconUrl: "/icons/metaso.png" },
+  { id: "xiaohuanxiong", name: "Raccoon", nameCn: "办公小浣熊", category: "writing", tags: ["productivity"], description: "商汤推出的 AI 办公助手，支持数据分析、文档处理与文案生成。", color: "#6e56f8", hasColor: false, iconSource: "favicon", faviconUrl: "/icons/xiaohuanxiong.svg" },
 ];

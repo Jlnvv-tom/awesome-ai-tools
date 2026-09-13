@@ -72,8 +72,23 @@ describe('resolveCategory', () => {
 });
 
 describe('getAllSites', () => {
-  it('覆盖全部图标元数据', () => {
-    expect(getAllSites().length).toBe(ICON_META.length);
+  it('覆盖全部图标元数据，并追加自主收录条目', () => {
+    const sites = getAllSites();
+    const fromIconLibrary = sites.filter((site) => site.iconSource === 'lobehub');
+    expect(fromIconLibrary).toHaveLength(ICON_META.length);
+    expect(sites.length).toBeGreaterThanOrEqual(ICON_META.length);
+  });
+
+  it('自主收录条目视为人工维护，且图标来源不是图标库', () => {
+    const catalogSites = getAllSites().filter((site) => site.iconSource !== 'lobehub');
+    expect(catalogSites.length).toBeGreaterThan(0);
+
+    for (const site of catalogSites) {
+      expect(site.curated).toBe(true);
+      expect(['favicon', 'initial']).toContain(site.iconSource);
+      // 自主收录条目的 iconId 必须与自身 id 或已登记的图标 id 一致
+      expect(site.iconId.length).toBeGreaterThan(0);
+    }
   });
 
   it('人工覆盖优先于派生结果', () => {
@@ -144,7 +159,9 @@ describe('查询能力', () => {
 
   it('统计信息与实际数据一致', () => {
     const stats = getStats();
-    expect(stats.total).toBe(ICON_META.length);
+    // total 含自主收录条目，因此应等于站点全集而非仅图标库大小
+    expect(stats.total).toBe(getAllSites().length);
+    expect(stats.total).toBeGreaterThanOrEqual(ICON_META.length);
     expect(stats.curated).toBeGreaterThan(0);
     expect(stats.categories).toBe(CATEGORIES.length);
   });

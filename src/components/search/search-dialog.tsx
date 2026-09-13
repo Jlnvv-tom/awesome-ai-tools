@@ -147,6 +147,8 @@ export function SearchDialog({
                       name={doc.name}
                       color={doc.color}
                       hasColor={doc.hasColor}
+                      iconSource={doc.iconSource}
+                      faviconUrl={doc.faviconUrl}
                       size={26}
                     />
                     <div className="min-w-0 flex-1">

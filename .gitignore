@@ -38,4 +38,6 @@ pnpm-debug.log*
 .env
 .edgeone/*
 .tef_dist/*
-  
+
+.edgeone-staging/
+.edgeone-staging.zip

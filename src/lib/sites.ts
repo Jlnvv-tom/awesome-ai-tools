@@ -1,7 +1,25 @@
 import { ICON_META } from '@/data/icons.generated';
-import { ADDED_AT_DEFAULT, ADDED_AT_MAP, CATEGORIES, SITE_OVERRIDES, TAGS } from '@/data/registry';
+import { STARS } from '@/data/metrics.generated';
+import {
+  ADDED_AT_DEFAULT,
+  ADDED_AT_MAP,
+  CATALOG_ENTRIES,
+  CATEGORIES,
+  FAVICON_ID_SET,
+  FAVICONS,
+  SITE_OVERRIDES,
+  TAGS,
+} from '@/data/registry';
 import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
-import type { Category, IconGroup, IconMeta, Site, SiteOverride, SiteStats } from '@/types/site';
+import type {
+  CatalogEntry,
+  Category,
+  IconGroup,
+  IconMeta,
+  Site,
+  SiteOverride,
+  SiteStats,
+} from '@/types/site';
 
 /**
  * 站点数据查询层：把「上游图标元数据」与「人工覆盖数据」合并为 Site[]。
@@ -71,10 +89,16 @@ function deriveDescription(meta: IconMeta): string {
   return `LobeHub Icons 收录的${GROUP_LABEL[meta.group]}「${meta.fullTitle}」，点击直达官网。`;
 }
 
-function buildSite(meta: IconMeta, override: SiteOverride | undefined, categories: Category[]) {
+/** 由 lobehub 图标库派生的条目（可被 SiteOverride 浅覆盖） */
+function buildLobehubSite(
+  meta: IconMeta,
+  override: SiteOverride | undefined,
+  categories: Category[],
+): Site {
   const site: Site = {
     id: slugify(meta.id),
     iconId: meta.id,
+    iconSource: 'lobehub',
     name: meta.fullTitle,
     nameCn: undefined,
     url: meta.url,
@@ -90,12 +114,62 @@ function buildSite(meta: IconMeta, override: SiteOverride | undefined, categorie
     pricing: override?.pricing ?? 'unknown',
     openSource: override?.openSource ?? 'unknown',
     chineseSupport: override?.chineseSupport ?? 'unknown',
+    github: override?.github,
   };
 
   if (override?.name) site.name = override.name;
   if (override?.nameCn) site.nameCn = override.nameCn;
   if (override?.url) site.url = override.url;
   return site;
+}
+
+/**
+ * 自主收录条目（`data/catalog/*.json`）→ Site。
+ *
+ * 图标来源三态：显式填了 `iconId` 说明该工具已被图标库收录，复用官方图标；
+ * 否则看本地 favicon 是否已抓取；都没有则退回品牌色首字母块。
+ */
+function buildCatalogSite(entry: CatalogEntry): Site {
+  const meta = entry.iconId ? getIconMeta(entry.iconId) : undefined;
+
+  let iconSource: Site['iconSource'] = 'initial';
+  if (entry.iconId) iconSource = 'lobehub';
+  else if (FAVICON_ID_SET.has(entry.id)) iconSource = 'favicon';
+
+  return {
+    id: entry.id,
+    iconId: entry.iconId ?? entry.id,
+    iconSource,
+    faviconUrl: iconSource === 'favicon' ? FAVICONS[entry.id] : undefined,
+    name: entry.name,
+    nameCn: entry.nameCn,
+    url: entry.url,
+    category: entry.category,
+    tags: entry.tags,
+    description: entry.description,
+    featured: entry.featured ?? false,
+    order: entry.order ?? DEFAULT_ORDER,
+    color: entry.color,
+    hasColor: meta?.param.hasColor ?? false,
+    // 自主收录条目全部由人工维护（这也让「待认领」统计只覆盖 lobehub 派生条目）
+    curated: true,
+    addedAt: entry.addedAt,
+    pricing: entry.pricing ?? 'unknown',
+    openSource: entry.openSource ?? 'unknown',
+    chineseSupport: entry.chineseSupport ?? 'unknown',
+    github: entry.github,
+  };
+}
+
+/**
+ * 注入客观指标。
+ *
+ * 统一在合并完成后按最终 id 注入，避免 id 冲突重命名（`-xxx` 后缀）后查不到指标。
+ */
+function withStars(sites: Site[]): Site[] {
+  return sites.map((site) =>
+    STARS[site.id] === undefined ? site : { ...site, stars: STARS[site.id] },
+  );
 }
 
 let cache: Site[] | null = null;
@@ -112,13 +186,24 @@ export function getAllSites(): Site[] {
       let id = slugify(meta.id);
       if (usedIds.has(id)) id = `${id}-${meta.id.toLowerCase()}`;
       usedIds.add(id);
-      const site = buildSite(meta, overrideMap.get(meta.id), CATEGORIES);
+      const site = buildLobehubSite(meta, overrideMap.get(meta.id), CATEGORIES);
       return { ...site, id };
     },
   );
 
-  cache = sites;
-  return sites;
+  // 合并自主收录条目（不在 lobehub 图标库中的工具）；id 冲突时以图标库条目为准并留痕
+  for (const entry of CATALOG_ENTRIES) {
+    if (entry.visible === false) continue;
+    if (usedIds.has(entry.id)) {
+      console.error(`[sites] 自主收录条目 id 与已有条目冲突，已跳过：${entry.id}`);
+      continue;
+    }
+    usedIds.add(entry.id);
+    sites.push(buildCatalogSite(entry));
+  }
+
+  cache = withStars(sites);
+  return cache;
 }
 
 function byRank(a: Site, b: Site): number {

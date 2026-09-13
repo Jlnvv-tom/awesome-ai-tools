@@ -26,6 +26,8 @@ function main() {
     hasColor: site.hasColor,
     // 仅 id 冲突条目写入，绝大多数条目省略以控制索引体积
     iconId: site.iconId === site.id ? undefined : site.iconId,
+    iconSource: site.iconSource === 'lobehub' ? undefined : site.iconSource,
+    faviconUrl: site.faviconUrl,
   }));
 
   const body = docs
@@ -40,6 +42,8 @@ function main() {
         `color: ${JSON.stringify(doc.color)}`,
         `hasColor: ${doc.hasColor}`,
         doc.iconId ? `iconId: ${JSON.stringify(doc.iconId)}` : null,
+        doc.iconSource ? `iconSource: ${JSON.stringify(doc.iconSource)}` : null,
+        doc.faviconUrl ? `faviconUrl: ${JSON.stringify(doc.faviconUrl)}` : null,
       ].filter(Boolean);
       return `  { ${parts.join(', ')} },`;
     })

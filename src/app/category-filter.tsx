@@ -4,12 +4,15 @@ import { useMemo, useState } from 'react';
 
 import { SiteCard } from '@/components/site/site-card';
 import { SiteRow } from '@/components/site/site-row';
+import { SiteSortSelect } from '@/components/site/site-sort-select';
 import { SiteViewToggle } from '@/components/site/site-view-toggle';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { DEFAULT_LOCALE, type Locale } from '@/i18n/config';
 import { getDictionary } from '@/i18n/dictionaries';
 import { cn } from '@/lib/cn';
+import { useSortMode } from '@/lib/sort-mode';
+import { sortSites } from '@/lib/sorting';
 import { useViewMode } from '@/lib/view-mode';
 import type { Site } from '@/types/site';
 
@@ -21,9 +24,10 @@ export function CategoryFilter({
   sites: Site[];
   locale?: Locale;
 }) {
-  const { explorer: dict, common } = getDictionary(locale);
+  const { explorer: dict, common, sort: sortDict } = getDictionary(locale);
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const { view, setView } = useViewMode();
+  const { sort, setSort } = useSortMode();
 
   const tags = useMemo(() => {
     const counter = new Map<string, number>();
@@ -34,8 +38,9 @@ export function CategoryFilter({
   }, [sites]);
 
   const filtered = useMemo(
-    () => (activeTag ? sites.filter((site) => site.tags.includes(activeTag)) : sites),
-    [sites, activeTag],
+    () =>
+      sortSites(activeTag ? sites.filter((site) => site.tags.includes(activeTag)) : sites, sort),
+    [sites, activeTag, sort],
   );
 
   return (
@@ -73,11 +78,14 @@ export function CategoryFilter({
           ))}
         </div>
 
-        <SiteViewToggle
-          view={view}
-          onChange={setView}
-          labels={{ group: dict.switchView, grid: dict.gridView, list: dict.listView }}
-        />
+        <div className="flex shrink-0 items-center gap-2">
+          <SiteSortSelect value={sort} onChange={setSort} labels={sortDict} />
+          <SiteViewToggle
+            view={view}
+            onChange={setView}
+            labels={{ group: dict.switchView, grid: dict.gridView, list: dict.listView }}
+          />
+        </div>
       </div>
 
       {filtered.length === 0 ? (

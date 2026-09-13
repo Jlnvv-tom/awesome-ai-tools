@@ -22,6 +22,9 @@
     "audit:curation": "tsx scripts/audit-curation.ts",
     "audit:categories": "tsx scripts/audit-categories.ts",
     "audit:tags": "tsx scripts/audit-tags.ts",
+    "audit:catalog": "tsx scripts/audit-catalog.ts",
+    "fetch:favicons": "tsx scripts/fetch-favicons.ts",
+    "sync:metrics": "tsx scripts/sync-metrics.ts",
     "migrate:meta": "tsx scripts/migrate-meta.ts",
     "build:contributors": "tsx scripts/build-contributors.ts",
     "check:links": "tsx scripts/check-links.ts",
@@ -30,6 +33,9 @@
     "build:search": "tsx scripts/build-search-index.ts",
     "test": "vitest run",
     "test:watch": "vitest",
+    "deploy:staging": "rsync -a --inplace --exclude .DS_Store --exclude node_modules --exclude .next --exclude .next-build --exclude .next-verify --exclude .git --exclude .codebuddy --exclude .edgeone-staging --exclude tsconfig.tsbuildinfo --exclude .vercel ./ .edgeone-staging/",
+    "deploy:preview": "pnpm run deploy:staging && cd .edgeone-staging && edgeone makers deploy . -n awesome-ai-tools -e preview",
+    "deploy": "pnpm run deploy:staging && cd .edgeone-staging && edgeone makers deploy . -n awesome-ai-tools -e production",
     "prepare": "husky || true"
   },
   "lint-staged": {

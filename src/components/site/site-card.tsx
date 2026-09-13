@@ -2,8 +2,10 @@ import Link from 'next/link';
 
 import { FavoriteButton } from '@/components/site/favorite-button';
 import { SiteIconTile } from '@/components/site/site-icon-tile';
+import { SiteStarBadge } from '@/components/site/site-star-badge';
 import { Badge } from '@/components/ui/badge';
 import { DEFAULT_LOCALE, localePath, type Locale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/dictionaries';
 import { cn } from '@/lib/cn';
 import { getSiteDisplayName } from '@/lib/sites';
 import type { Site } from '@/types/site';
@@ -31,6 +33,7 @@ export function SiteCard({
   locale = DEFAULT_LOCALE,
 }: SiteCardProps) {
   const displayName = getSiteDisplayName(site, locale);
+  const dict = getDictionary(locale);
 
   return (
     <div
@@ -51,12 +54,21 @@ export function SiteCard({
           name={site.name}
           color={site.color}
           hasColor={site.hasColor}
+          iconSource={site.iconSource}
+          faviconUrl={site.faviconUrl}
           size="md"
         />
 
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-semibold leading-tight">{displayName}</p>
-          <p className="truncate text-xs text-muted-foreground">{site.name}</p>
+          <div className="flex items-center gap-2">
+            <p className="truncate text-xs text-muted-foreground">{site.name}</p>
+            <SiteStarBadge
+              stars={site.stars}
+              label={dict.star.label(site.stars ?? 0)}
+              className="shrink-0"
+            />
+          </div>
         </div>
       </div>
 

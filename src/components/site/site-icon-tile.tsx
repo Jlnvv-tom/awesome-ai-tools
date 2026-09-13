@@ -6,6 +6,7 @@ import { useIconStyle } from '@/components/personalization-provider';
 import { BrandIcon } from '@/components/site/brand-icon';
 import { cn } from '@/lib/cn';
 import { expectedRenderMode, iconTileClass, resolveIconPlan } from '@/lib/icon-plan';
+import type { IconSourceKind } from '@/types/site';
 
 /** 图标容器尺寸档位：列表行 / 卡片 / 详情页大图 */
 export type IconTileSize = 'sm' | 'md' | 'lg';
@@ -25,6 +26,10 @@ export interface SiteIconTileProps {
   color: string;
   /** 是否存在彩色变体（服务端派生） */
   hasColor: boolean;
+  /** 图标来源策略（服务端派生），缺省 `lobehub` */
+  iconSource?: IconSourceKind;
+  /** 本地图标路径，`iconSource` 为 `favicon` 时使用 */
+  faviconUrl?: string;
   size?: IconTileSize;
   /** 是否在所属 group 悬停时抬升（卡片与列表行为 true） */
   interactive?: boolean;
@@ -44,15 +49,17 @@ export function SiteIconTile({
   name,
   color,
   hasColor,
+  iconSource,
+  faviconUrl,
   size = 'md',
   interactive = true,
   className,
 }: SiteIconTileProps) {
   const { style } = useIconStyle();
   const mode = useMemo(() => {
-    const plan = resolveIconPlan({ iconId, name, color, style, hasColor });
+    const plan = resolveIconPlan({ iconId, name, color, style, hasColor, iconSource, faviconUrl });
     return expectedRenderMode(plan);
-  }, [iconId, name, color, style, hasColor]);
+  }, [iconId, name, color, style, hasColor, iconSource, faviconUrl]);
 
   const preset = SIZE_PRESET[size];
 
@@ -67,7 +74,15 @@ export function SiteIconTile({
       )}
       style={{ boxShadow: `${preset.glow} ${color}` }}
     >
-      <BrandIcon iconId={iconId} name={name} color={color} hasColor={hasColor} size={preset.icon} />
+      <BrandIcon
+        iconId={iconId}
+        name={name}
+        color={color}
+        hasColor={hasColor}
+        iconSource={iconSource}
+        faviconUrl={faviconUrl}
+        size={preset.icon}
+      />
     </span>
   );
 }

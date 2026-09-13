@@ -1,6 +1,7 @@
 import { colorTone } from '@/lib/color';
 import { getIconFallback, getIconUrl } from '@/lib/icon';
 import type { IconStyle } from '@/lib/icon-style';
+import type { IconSourceKind } from '@/types/site';
 
 /**
  * 图标渲染决策（纯函数）。
@@ -20,7 +21,7 @@ export interface IconSource {
 }
 
 export interface IconPlanInput {
-  /** @lobehub/icons 的图标 id（PascalCase） */
+  /** @lobehub/icons 的图标 id（PascalCase）；自主收录条目为其自身 id */
   iconId: string;
   /** 站点名，用于兜底占位图的首字母 */
   name: string;
@@ -30,6 +31,10 @@ export interface IconPlanInput {
   style: IconStyle;
   /** 该图标是否存在彩色变体（服务端派生，禁止在客户端查表获得） */
   hasColor: boolean;
+  /** 图标来源策略，缺省 `lobehub`（兼容既有调用） */
+  iconSource?: IconSourceKind;
+  /** 本地图标路径，`iconSource` 为 `favicon` 时使用 */
+  faviconUrl?: string;
 }
 
 export interface IconPlan {
@@ -42,15 +47,38 @@ export interface IconPlan {
 const BASES = ['unpkg', 'github'] as const;
 
 /**
- * 按「用户风格 × 变体可用性」给出候选序列：
+ * 按「图标来源 × 用户风格 × 变体可用性」给出候选序列：
  *
- * | 风格 | hasColor | 候选 |
- * |---|---|---|
- * | 彩色 | true | unpkg/color → github/color（img）→ unpkg/mono → github/mono（mask）|
- * | 彩色 | false | unpkg/mono → github/mono（mask）|
- * | 单色 | 任意 | unpkg/mono → github/mono（mask）|
+ * | 来源 | 风格 | hasColor | 候选 |
+ * |---|---|---|---|
+ * | lobehub | 彩色 | true | unpkg/color → github/color（img）→ unpkg/mono → github/mono（mask）|
+ * | lobehub | 彩色 | false | unpkg/mono → github/mono（mask）|
+ * | lobehub | 单色 | 任意 | unpkg/mono → github/mono（mask）|
+ * | favicon | 任意 | — | 本地图标（img，单候选；失败直接落到首字母块）|
+ * | initial | 任意 | — | 无候选，直接使用首字母块 |
+ *
+ * favicon 不参与单色化：它是第三方图像，透明通道不可控，
+ * 用 mask 描边可能得到实心方块（见 docs/adr/0009）。
  */
-export function resolveIconPlan({ iconId, name, color, style, hasColor }: IconPlanInput): IconPlan {
+export function resolveIconPlan({
+  iconId,
+  name,
+  color,
+  style,
+  hasColor,
+  iconSource = 'lobehub',
+  faviconUrl,
+}: IconPlanInput): IconPlan {
+  const fallbackUrl = getIconFallback(name, color);
+
+  if (iconSource === 'favicon' && faviconUrl) {
+    return { sources: [{ url: faviconUrl, mode: 'img' }], fallbackUrl };
+  }
+
+  if (iconSource === 'initial') {
+    return { sources: [], fallbackUrl };
+  }
+
   const sources: IconSource[] = [];
 
   if (style === 'color' && hasColor) {
@@ -63,7 +91,7 @@ export function resolveIconPlan({ iconId, name, color, style, hasColor }: IconPl
     sources.push({ url: getIconUrl(iconId, { variant: 'mono', base }), mode: 'mask' });
   }
 
-  return { sources, fallbackUrl: getIconFallback(name, color) };
+  return { sources, fallbackUrl };
 }
 
 /**

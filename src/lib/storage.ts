@@ -14,6 +14,7 @@ export const STORAGE_KEYS = {
   usage: 'usage',
   viewMode: 'view-mode',
   iconStyle: 'icon-style',
+  sortMode: 'sort-mode',
 } as const;
 
 function fullKey(key: string): string {

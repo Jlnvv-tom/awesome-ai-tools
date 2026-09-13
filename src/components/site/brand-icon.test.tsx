@@ -75,3 +75,48 @@ describe('SiteIconTile', () => {
     }
   });
 });
+
+describe('自主收录来源', () => {
+  const CATALOG = {
+    iconId: 'metaso',
+    name: 'Metaso',
+    color: '#6e56f8',
+    hasColor: false,
+    iconSource: 'favicon' as const,
+    faviconUrl: '/icons/metaso.png',
+  };
+
+  it('favicon 来源直接使用本地图标，并施加轻微圆角', () => {
+    const { container } = render(<BrandIcon {...CATALOG} size={26} />);
+    const img = container.querySelector('img') as HTMLImageElement;
+
+    expect(img.getAttribute('src')).toBe('/icons/metaso.png');
+    expect(img.className).toContain('rounded-[5px]');
+  });
+
+  it('缺少本地图标时渲染品牌色首字母块', () => {
+    const { container } = render(
+      <BrandIcon
+        iconId="mystery"
+        name="Mystery"
+        color="#123456"
+        hasColor={false}
+        iconSource="initial"
+        size={26}
+      />,
+    );
+    const img = container.querySelector('img') as HTMLImageElement;
+
+    expect(img.getAttribute('src')).toContain('data:image/svg+xml');
+    expect(decodeURIComponent(img.getAttribute('src') ?? '')).toContain('#123456');
+  });
+
+  it('本地图标来源的容器按品牌色判定垫板，不请求 CDN', () => {
+    const { container } = render(<SiteIconTile {...CATALOG} size="md" />);
+    const tile = container.firstElementChild as HTMLElement;
+    const images = [...container.querySelectorAll('img')].map((node) => node.getAttribute('src'));
+
+    expect(tile.className).toContain('bg-muted/40');
+    expect(images.every((src) => src?.startsWith('/icons/'))).toBe(true);
+  });
+});

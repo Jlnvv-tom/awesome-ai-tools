@@ -77,6 +77,8 @@ export function SiteView({ site, locale = DEFAULT_LOCALE }: { site: Site; locale
               name={site.name}
               color={site.color}
               hasColor={site.hasColor}
+              iconSource={site.iconSource}
+              faviconUrl={site.faviconUrl}
               size="lg"
               interactive={false}
             />
@@ -186,6 +188,8 @@ export function SiteView({ site, locale = DEFAULT_LOCALE }: { site: Site; locale
                     name={item.name}
                     color={item.color}
                     hasColor={item.hasColor}
+                    iconSource={item.iconSource}
+                    faviconUrl={item.faviconUrl}
                     size={30}
                   />
                   <div className="min-w-0">

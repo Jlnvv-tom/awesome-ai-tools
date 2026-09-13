@@ -80,3 +80,22 @@
 - 搜索索引增加 `color` / `hasColor` / `iconId`（仅 id 冲突条目）字段，搜索面板不再硬编码兜底色
 - `getIconMeta` 改为一次性构建的 Map 索引，避免列表渲染中的 O(n²) 遍历
 - `.grid-texture` 补齐 `-webkit-mask-image` 前缀
+
+### Added（M5 · 收录扩容）
+
+- 自主收录数据源：`data/catalog/*.json` 与 `CatalogEntry` 类型 / Zod schema，条目不再局限于图标库
+- 图标来源三级降级：图标库 CDN → 构建期抓取的本地图标（`public/icons/`）→ 品牌色首字母块
+- 官网图标抓取脚本 `fetch:favicons`（增量、并发受限、幂等 `--check`）与投稿模板改造
+- 客观指标同步 `sync:metrics`：GitHub Star 数（仅公开客观数据）与结构校验模式
+- 排序口径切换（默认 / 最新收录 / Star / 名称）与偏好本地持久化
+- Star 徽标组件与 `audit:catalog` 自主收录审计脚本
+- ADR 0009 记录放宽图标来源、自主收录与客观指标口径
+
+### Changed（M5 · 收录扩容）
+
+- `getAllSites()` 合并三类来源并以 `id` 去重，收录量 322 → 328（管线就绪，可持续扩量）
+- `Site` 新增派生字段 `iconSource` / `faviconUrl` / `stars`，`github` 由覆盖项或 catalog 维护
+- `resolveIconPlan()` 支持 favicon 与 initial 来源；favicon 不参与单色化
+- 搜索索引仅在非图标库来源时写入 `iconSource` / `faviconUrl`，控制索引体积
+- 卡片、列表行与搜索面板补齐新字段下传，排序偏好复用 `use-stored-state` 范式
+- 中英文字典新增排序口径与 Star 徽标文案

@@ -1,5 +1,5 @@
 name: 申请收录新工具
-description: 收录一个 AI 工具（若图标库尚未收录该品牌，请先去 lobe-icons 申请图标）
+description: 推荐一个 AI 工具，图标库没有的品牌也可以直接提交（会自动抓取官网图标）
 title: '[New Site] '
 labels: ['data', 'new-site']
 body:
@@ -7,8 +7,11 @@ body:
     attributes:
       value: |
         感谢你推荐新工具！请尽量填全，信息越完整合并越快。
-        若该品牌在 https://lobehub.com/icons 找不到图标，请先到
-        https://github.com/lobehub/lobe-icons/issues 申请图标。
+
+        **两条收录路径**：
+        1. 该品牌已被图标库收录 → 在 https://lobehub.com/icons 找到图标 ID 填入下方；
+        2. 图标库还没有该品牌 → **无需等待图标**，留空图标 ID 即可，
+           维护者会把条目加入 `data/catalog/` 并运行 `pnpm fetch:favicons` 抓取官网图标。
 
   - type: input
     id: name
@@ -37,11 +40,16 @@ body:
   - type: input
     id: icon-id
     attributes:
-      label: 图标 ID
-      description: 在 https://lobehub.com/icons 上确认的 PascalCase 图标 id，例如 `Perplexity`
+      label: 图标 ID（可选）
+      description: 若 https://lobehub.com/icons 已收录该品牌，填入 PascalCase 图标 id；没有就留空，我们会抓取官网图标
       placeholder: Perplexity
-    validations:
-      required: true
+
+  - type: input
+    id: github
+    attributes:
+      label: 开源仓库（可选）
+      description: 形如 `owner/repo`，填写后会定期同步 GitHub Star 数（仅使用公开客观数据）
+      placeholder: ollama/ollama
 
   - type: select
     id: category

@@ -2,8 +2,10 @@ import Link from 'next/link';
 
 import { FavoriteButton } from '@/components/site/favorite-button';
 import { SiteIconTile } from '@/components/site/site-icon-tile';
+import { SiteStarBadge } from '@/components/site/site-star-badge';
 import { Badge } from '@/components/ui/badge';
 import { DEFAULT_LOCALE, localePath, type Locale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/dictionaries';
 import { cn } from '@/lib/cn';
 import { getSiteDisplayName } from '@/lib/sites';
 import type { Site } from '@/types/site';
@@ -11,6 +13,7 @@ import type { Site } from '@/types/site';
 /** 列表视图的行式布局：单行紧凑，图标 + 名称 + 简介 + 标签 + 收藏 */
 export function SiteRow({ site, locale = DEFAULT_LOCALE }: { site: Site; locale?: Locale }) {
   const displayName = getSiteDisplayName(site, locale);
+  const dict = getDictionary(locale);
 
   return (
     <div
@@ -30,12 +33,21 @@ export function SiteRow({ site, locale = DEFAULT_LOCALE }: { site: Site; locale?
         name={site.name}
         color={site.color}
         hasColor={site.hasColor}
+        iconSource={site.iconSource}
+        faviconUrl={site.faviconUrl}
         size="sm"
       />
 
       <div className="min-w-0 flex-1">
         <p className="truncate text-sm font-semibold leading-tight">{displayName}</p>
-        <p className="truncate text-xs text-muted-foreground">{site.description}</p>
+        <div className="flex items-center gap-2">
+          <p className="truncate text-xs text-muted-foreground">{site.description}</p>
+          <SiteStarBadge
+            stars={site.stars}
+            label={dict.star.label(site.stars ?? 0)}
+            className="shrink-0"
+          />
+        </div>
       </div>
 
       <div className="hidden items-center gap-1.5 lg:flex">

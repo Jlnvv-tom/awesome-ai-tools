@@ -55,6 +55,16 @@ const zh = {
     gridView: '网格视图',
     listView: '列表视图',
   },
+  sort: {
+    group: '排序方式',
+    default: '默认排序',
+    newest: '最新收录',
+    stars: 'Star 最多',
+    name: '按名称',
+  },
+  star: {
+    label: (count: number) => `GitHub Star ${count}`,
+  },
   newArrivals: {
     titleWeek: '本周新增',
     titleRecent: '最近收录',
@@ -275,6 +285,16 @@ const en: typeof zh = {
     switchView: 'Switch layout',
     gridView: 'Grid view',
     listView: 'List view',
+  },
+  sort: {
+    group: 'Sort by',
+    default: 'Default',
+    newest: 'Recently added',
+    stars: 'Most starred',
+    name: 'Name',
+  },
+  star: {
+    label: (count: number) => `${count} GitHub stars`,
   },
   newArrivals: {
     titleWeek: 'New this week',

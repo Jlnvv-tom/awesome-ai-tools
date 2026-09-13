@@ -53,11 +53,35 @@ pnpm dev          # http://localhost:3000
 3. 运行 `pnpm validate:data`，确认无 error；
 4. 提交 PR，标题建议使用 `data: 补充 Perplexity 站点信息`。
 
-### 场景 B：收录一个图标库还没有的工具
+### 场景 B：收录一个图标库还没有的工具（自主收录）
 
-1. 先到 [LobeHub Icons 仓库](https://github.com/lobehub/lobe-icons/issues) 提交图标申请；
-2. 图标合并后，回到本项目运行 `pnpm sync:icons` 拉取最新元数据；
-3. 再按场景 A 补充站点信息。
+不必再等图标库收录 —— 直接加入 `data/catalog/tools.json`：
+
+```json
+{
+  "id": "metaso",
+  "name": "Metaso",
+  "nameCn": "秘塔AI搜索",
+  "url": "https://metaso.cn",
+  "category": "search",
+  "tags": ["ai-search"],
+  "description": "无广告的中文 AI 搜索引擎，支持全网检索、学术模式与结构化结果输出。",
+  "color": "#6e56f8",
+  "addedAt": "2026-09-12",
+  "pricing": "freemium",
+  "openSource": "no",
+  "chineseSupport": "yes"
+}
+```
+
+1. `id` 用 kebab-case 且全局唯一（不得与图标库派生条目冲突，`validate:data` 会拦截）；
+2. `color` 是图标加载前兜底块与卡片辉光的颜色，取自官网 logo 主色；
+3. 运行 `pnpm fetch:favicons` 抓取官网图标（增量写入 `public/icons/`，失败会保持兜底块）；
+4. 运行 `pnpm validate:data` 与 `pnpm audit:catalog` 确认无 error；
+5. 若该工具后来被图标库收录，在条目上补 `"iconId": "Xxx"` 即可切换为官方图标。
+
+> 开源工具可以额外填 `"github": "owner/repo"`，维护者会定期运行 `pnpm sync:metrics`
+> 同步 Star 数（只使用公开客观数据，不接入任何流量估计）。
 
 > 查询某个图标是否存在：在 `src/data/icons.generated.ts` 中搜索品牌名，或查看
 > [lobehub.com/icons](https://lobehub.com/icons)。`iconId` 为 PascalCase，如 `OpenAI`、`AdobeFirefly`。

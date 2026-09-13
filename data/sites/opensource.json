@@ -10,6 +10,7 @@
   },
   {
     "iconId": "Ollama",
+    "github": "ollama/ollama",
     "nameCn": "Ollama",
     "category": "opensource",
     "tags": ["self-hosted", "inference"],
@@ -30,7 +31,8 @@
   },
   {
     "iconId": "OpenWebUI",
-    "nameCn": "Open WebUI",
+    "github": "open-webui/open-webui",
+    "nameCn": "Open Web UI",
     "category": "opensource",
     "tags": ["self-hosted", "chatbot"],
     "description": "可自托管的 AI 对话前端，兼容 Ollama 与 OpenAI 接口。",
@@ -58,6 +60,7 @@
   },
   {
     "iconId": "CherryStudio",
+    "github": "CherryHQ/cherry-studio",
     "nameCn": "Cherry Studio",
     "category": "opensource",
     "tags": ["desktop"],
@@ -68,6 +71,7 @@
   },
   {
     "iconId": "Vllm",
+    "github": "vllm-project/vllm",
     "nameCn": "vLLM",
     "category": "opensource",
     "tags": ["inference"],
@@ -77,6 +81,7 @@
   },
   {
     "iconId": "Unsloth",
+    "github": "unslothai/unsloth",
     "nameCn": "Unsloth",
     "category": "opensource",
     "tags": ["fine-tuning"],
@@ -105,6 +110,7 @@
   },
   {
     "iconId": "Langfuse",
+    "github": "langfuse/langfuse",
     "nameCn": "Langfuse",
     "category": "opensource",
     "tags": ["observability"],
