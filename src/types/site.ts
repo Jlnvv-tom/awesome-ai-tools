@@ -59,8 +59,16 @@ export interface IconMeta {
 
 /** 分类定义（人工维护于 data/categories.json） */
 export interface Category {
-  /** URL slug，如 `chat` */
+  /** URL slug，如 `chat`；全局唯一，二级分类同样拥有独立 URL */
   slug: string;
+  /**
+   * 父分类 slug，仅二级分类填写。
+   *
+   * 层级约定（见 ADR 0010）：
+   * - 一级分类不填，出现在顶部导航与首页分类入口；
+   * - 二级分类填一级分类的 slug，条目会被父分类页聚合展示。
+   */
+  parent?: string;
   /** 中文名 */
   name: string;
   /** 英文名 */

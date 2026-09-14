@@ -2,7 +2,7 @@
   {
     "iconId": "Dify",
     "nameCn": "Dify",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["workflow", "rag"],
     "description": "开源的 LLM 应用开发平台，可视化编排 Agent 与知识库。",
     "featured": true,
@@ -22,7 +22,7 @@
   {
     "iconId": "N8n",
     "nameCn": "n8n",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["workflow"],
     "description": "可自托管的自动化工作流平台，原生支持 AI 节点。",
     "featured": true,
@@ -32,7 +32,7 @@
   {
     "iconId": "LangChain",
     "nameCn": "LangChain",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["framework"],
     "description": "最流行的 LLM 应用开发框架，生态组件极其丰富。",
     "order": 4,
@@ -41,7 +41,7 @@
   {
     "iconId": "CrewAI",
     "nameCn": "CrewAI",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["framework", "workflow"],
     "description": "多智能体协作框架，用角色分工编排复杂任务。",
     "order": 5,
@@ -50,7 +50,7 @@
   {
     "iconId": "MCP",
     "nameCn": "Model Context Protocol",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["protocol", "mcp"],
     "description": "Anthropic 提出的模型上下文协议，统一工具接入标准。",
     "order": 6,
@@ -59,7 +59,7 @@
   {
     "iconId": "Manus",
     "nameCn": "Manus",
-    "category": "agent",
+    "category": "agent-app",
     "tags": ["agent", "cloud"],
     "description": "通用型 AI Agent，可自主完成调研、编码与文档任务。",
     "order": 7
@@ -67,7 +67,7 @@
   {
     "iconId": "Zapier",
     "nameCn": "Zapier",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["workflow"],
     "description": "连接数千款 SaaS 的自动化平台，支持 AI 编排。",
     "order": 8
@@ -75,7 +75,7 @@
   {
     "iconId": "Make",
     "nameCn": "Make",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["workflow"],
     "description": "可视化自动化编排平台，擅长复杂分支与数据处理。",
     "order": 9
@@ -83,7 +83,7 @@
   {
     "iconId": "OpenHands",
     "nameCn": "OpenHands",
-    "category": "agent",
+    "category": "agent-app",
     "tags": ["code-assistant"],
     "description": "开源的软件开发 Agent 平台，可自主改代码跑测试。",
     "order": 10,
@@ -92,7 +92,7 @@
   {
     "iconId": "FastGPT",
     "nameCn": "FastGPT",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["rag"],
     "description": "开箱即用的知识库问答平台，支持可视化编排工作流。",
     "order": 11,
@@ -102,7 +102,7 @@
   {
     "iconId": "LangGraph",
     "nameCn": "LangGraph",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["framework", "workflow"],
     "description": "用状态机方式构建可控、可恢复的 Agent 应用。",
     "order": 12,
@@ -111,7 +111,7 @@
   {
     "iconId": "Mastra",
     "nameCn": "Mastra",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["framework"],
     "description": "TypeScript 原生的 AI Agent 开发框架。",
     "order": 13,
@@ -120,7 +120,7 @@
   {
     "iconId": "Agui",
     "nameCn": "AG-UI",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["protocol", "frontend"],
     "description": "面向前端的 Agent 交互协议，统一流式 UI 事件格式。",
     "order": 14,
@@ -129,7 +129,7 @@
   {
     "iconId": "MetaGPT",
     "nameCn": "MetaGPT",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["framework"],
     "description": "把标准流程交给多角色智能体协作完成的开源框架。",
     "order": 15,
@@ -138,7 +138,7 @@
   {
     "iconId": "Flowith",
     "nameCn": "Flowith",
-    "category": "agent",
+    "category": "agent-app",
     "tags": ["workflow"],
     "description": "无限画布上的 AI 创作与任务编排工具。",
     "order": 16
@@ -146,42 +146,42 @@
   {
     "iconId": "CopilotKit",
     "nameCn": "CopilotKit",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["agent", "framework"],
     "description": "为应用内嵌 AI 助手与智能体的前端开发框架。"
   },
   {
     "iconId": "GeminiCLI",
     "nameCn": "Gemini CLI",
-    "category": "agent",
+    "category": "agent-app",
     "tags": ["cli", "agent"],
     "description": "Google 的命令行智能体，可在终端调用 Gemini 完成任务。"
   },
   {
     "iconId": "LangSmith",
     "nameCn": "LangSmith",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["observability", "framework"],
     "description": "LangChain 的调试与评估平台，用于观测智能体运行过程。"
   },
   {
     "iconId": "MyShell",
     "nameCn": "MyShell",
-    "category": "agent",
+    "category": "agent-app",
     "tags": ["agent", "voice"],
     "description": "可创建与分享 AI 智能体的平台，支持语音交互。"
   },
   {
     "iconId": "Phidata",
     "nameCn": "Phidata",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["framework", "agent"],
     "description": "用于构建带工具与记忆的多智能体系统的开发框架。"
   },
   {
     "iconId": "PydanticAI",
     "nameCn": "Pydantic AI",
-    "category": "agent",
+    "category": "agent-framework",
     "tags": ["framework", "agent"],
     "description": "基于 Pydantic 的智能体框架，强调类型安全与可观测性。"
   },

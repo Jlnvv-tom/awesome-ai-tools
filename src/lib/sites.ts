@@ -64,22 +64,32 @@ function hostOf(url: string): string {
 }
 
 /**
- * 自动归类：按「命中关键词长度之和」打分，分数相同时取 order 更小的分类。
- * 这样长关键词（更具体）天然优先于短关键词。
+ * 自动归类：按「命中关键词长度之和」打分，长关键词（更具体）天然优先。
+ *
+ * 平票时的取舍顺序（二级分类上线后新增，见 ADR 0010）：
+ * 1. **更深的分类优先** —— 下放到二级的关键词通常仍保留在父分类里（如 `groq` 同时在
+ *    infra 与 inference），若沿用「取 order 小者」，父分类会永远胜出、二级分类形同虚设；
+ * 2. 深度相同时取 `order` 更小者，保持既有行为。
  */
 export function resolveCategory(meta: IconMeta, categories: Category[]): string {
   const haystack = `${meta.fullTitle} ${meta.title} ${meta.id} ${hostOf(meta.url)}`.toLowerCase();
 
-  let best: { slug: string; score: number; order: number } | null = null;
+  let best: { slug: string; score: number; order: number; depth: number } | null = null;
   for (const category of categories) {
     const score = category.keywords.reduce((sum, keyword) => {
       const value = keyword.toLowerCase();
       return haystack.includes(value) ? sum + value.length : sum;
     }, 0);
     if (score === 0) continue;
-    if (!best || score > best.score || (score === best.score && category.order < best.order)) {
-      best = { slug: category.slug, score, order: category.order };
-    }
+
+    const depth = category.parent ? 1 : 0;
+    const better =
+      !best ||
+      score > best.score ||
+      (score === best.score && depth > best.depth) ||
+      (score === best.score && depth === best.depth && category.order < best.order);
+
+    if (better) best = { slug: category.slug, score, order: category.order, depth };
   }
 
   return best?.slug ?? GROUP_FALLBACK_CATEGORY[meta.group];
@@ -249,6 +259,31 @@ export function getCategory(slug: string): Category | undefined {
   return CATEGORIES.find((category) => category.slug === slug);
 }
 
+/** 一级分类（不填 parent），供导航与首页入口使用 */
+export function getTopCategories(): Category[] {
+  return CATEGORIES.filter((category) => !category.parent).sort((a, b) => a.order - b.order);
+}
+
+/** 某个分类的直接子分类（二级分类） */
+export function getChildCategories(slug: string): Category[] {
+  return CATEGORIES.filter((category) => category.parent === slug).sort(
+    (a, b) => a.order - b.order,
+  );
+}
+
+/**
+ * 分类的作用域：自身 + 全部子分类的 slug。
+ *
+ * 一级分类页据此聚合二级分类条目；二级分类的作用域只含自身。
+ */
+export function getCategoryScope(slug: string): Set<string> {
+  if (!CATEGORIES.some((category) => category.slug === slug)) return new Set<string>();
+
+  const scope = new Set<string>([slug]);
+  for (const child of getChildCategories(slug)) scope.add(child.slug);
+  return scope;
+}
+
 /** 站点展示名：中文站优先中文名，英文站使用英文原名 */
 export function getSiteDisplayName(site: Site, locale: Locale = DEFAULT_LOCALE): string {
   return locale === 'en' ? site.name : (site.nameCn ?? site.name);
@@ -259,22 +294,36 @@ export function getCategoryName(category: Category, locale: Locale = DEFAULT_LOC
   return locale === 'en' ? category.nameEn : category.name;
 }
 
-/** 按 slug 取站点，并按排序规则返回 */
+/** 按 slug 取站点（一级分类自动聚合其二级分类的条目），并按排序规则返回 */
 export function getSitesByCategory(slug: string): Site[] {
+  const scope = getCategoryScope(slug);
+  if (scope.size === 0) return [];
+
   return getAllSites()
-    .filter((site) => site.category === slug)
+    .filter((site) => scope.has(site.category))
     .sort(byRank);
 }
 
-/** 分类 + 条目数（按分类 order 排序） */
+/**
+ * 分类 + 条目数（按分类 order 排序）。
+ *
+ * 一级分类的 count 为「自身 + 全部子分类」的条目总数，与分类页展示口径保持一致。
+ */
 export function getCategoriesWithCount(): (Category & { count: number })[] {
   const counts = new Map<string, number>();
   for (const site of getAllSites()) {
     counts.set(site.category, (counts.get(site.category) ?? 0) + 1);
   }
+
   return [...CATEGORIES]
     .sort((a, b) => a.order - b.order)
-    .map((category) => ({ ...category, count: counts.get(category.slug) ?? 0 }));
+    .map((category) => {
+      let total = 0;
+      for (const slug of getCategoryScope(category.slug)) {
+        total += counts.get(slug) ?? 0;
+      }
+      return { ...category, count: total };
+    });
 }
 
 /** 按 id 取站点 */

@@ -184,6 +184,7 @@ SiteOverride[]│
 | 字段          | 类型     | 约束                                     |
 | ------------- | -------- | ---------------------------------------- |
 | `slug`        | string   | 唯一，`^[a-z0-9-]+$`                     |
+| `parent`      | string   | ➖ 仅二级分类填写，须为某一级分类的 slug |
 | `name`        | string   | 中文名                                   |
 | `nameEn`      | string   | 英文名                                   |
 | `description` | string   | 一句话描述，≤ 60 字符                    |
@@ -191,6 +192,11 @@ SiteOverride[]│
 | `color`       | string   | 分类主题色 hex                           |
 | `order`       | number   | 排序权重                                 |
 | `keywords`    | string[] | 自动归类关键词（小写），命中即归入该分类 |
+
+> **层级约定**：不填 `parent` 的是**一级分类**（出现在顶部导航与首页入口）；
+> 填了 `parent` 的是**二级分类**，同样拥有独立 URL `/category/<slug>`。
+> `Site.category` 始终指向**最精确**的分类（可能是二级），
+> 父分类页通过聚合其全部子分类来展示条目（见 `getCategoryScope`）。
 
 ## 7. Tag（受控词表）
 

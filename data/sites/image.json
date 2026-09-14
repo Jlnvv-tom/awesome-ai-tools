@@ -2,7 +2,7 @@
   {
     "iconId": "Midjourney",
     "nameCn": "Midjourney",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation"],
     "description": "以艺术表现力著称的图像生成服务，社区风格库丰富。",
     "featured": true,
@@ -11,7 +11,7 @@
   {
     "iconId": "Bfl",
     "nameCn": "Black Forest Labs",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation", "model-hub"],
     "description": "FLUX 系列图像模型团队，画质与提示词跟随表现出众。",
     "featured": true,
@@ -20,7 +20,7 @@
   {
     "iconId": "Dalle",
     "nameCn": "DALL·E",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation"],
     "description": "OpenAI 的图像生成模型，擅长概念插画与创意表达。",
     "featured": true,
@@ -29,7 +29,7 @@
   {
     "iconId": "Ideogram",
     "nameCn": "Ideogram",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation", "design"],
     "description": "文字渲染能力出色的图像生成工具，适合海报与Logo。",
     "order": 4
@@ -37,7 +37,7 @@
   {
     "iconId": "Recraft",
     "nameCn": "Recraft",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation", "design"],
     "description": "面向设计师的 AI 图像与矢量生成工具。",
     "order": 5
@@ -45,7 +45,7 @@
   {
     "iconId": "Krea",
     "nameCn": "Krea",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation", "design", "realtime"],
     "description": "实时画布 AI 创作平台，支持增强与视频生成。",
     "order": 6
@@ -53,7 +53,7 @@
   {
     "iconId": "ComfyUI",
     "nameCn": "ComfyUI",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["workflow", "self-hosted"],
     "description": "节点式图像生成工作流工具，可完全本地部署。",
     "order": 7,
@@ -62,7 +62,7 @@
   {
     "iconId": "Automatic",
     "nameCn": "Stable Diffusion WebUI",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["self-hosted"],
     "description": "最流行的 Stable Diffusion 本地 Web 界面。",
     "order": 8,
@@ -71,7 +71,7 @@
   {
     "iconId": "Civitai",
     "nameCn": "Civitai",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["community", "model-hub"],
     "description": "开源图像模型与 LoRA 的分享社区。",
     "order": 9
@@ -79,7 +79,7 @@
   {
     "iconId": "Stability",
     "nameCn": "Stability AI",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation"],
     "description": "Stable Diffusion 系列的研发公司。",
     "order": 10,
@@ -96,7 +96,7 @@
   {
     "iconId": "Clipdrop",
     "nameCn": "Clipdrop",
-    "category": "image",
+    "category": "image-design",
     "tags": ["editing", "design"],
     "description": "图像抠图、扩图与画质增强的一站式编辑工具。",
     "order": 12
@@ -104,7 +104,7 @@
   {
     "iconId": "Kolors",
     "nameCn": "快手可图",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation"],
     "description": "快手推出的中文图像生成大模型。",
     "order": 13,
@@ -113,7 +113,7 @@
   {
     "iconId": "Jimeng",
     "nameCn": "即梦",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation"],
     "description": "字节跳动的 AI 创作平台，支持图片与视频生成。",
     "order": 14,
@@ -122,7 +122,7 @@
   {
     "iconId": "NanoBanana",
     "nameCn": "Nano Banana",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation", "editing"],
     "description": "Google 的图像编辑模型，擅长一致性保持与局部重绘。",
     "order": 15
@@ -130,7 +130,7 @@
   {
     "iconId": "CogView",
     "nameCn": "CogView",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation"],
     "description": "智谱开源的中英双语图像生成模型。",
     "order": 16,
@@ -140,7 +140,7 @@
   {
     "iconId": "Figma",
     "nameCn": "Figma",
-    "category": "image",
+    "category": "image-design",
     "tags": ["design", "productivity"],
     "description": "协作式界面设计工具，内置 AI 辅助设计与代码生成。",
     "order": 17
@@ -148,7 +148,7 @@
   {
     "iconId": "TopazLabs",
     "nameCn": "Topaz Labs",
-    "category": "image",
+    "category": "image-design",
     "tags": ["editing", "video-generation"],
     "description": "专业级图像与视频画质增强、修复工具套件。",
     "order": 18
@@ -156,7 +156,7 @@
   {
     "iconId": "Lovart",
     "nameCn": "Lovart",
-    "category": "image",
+    "category": "image-design",
     "tags": ["design", "agent"],
     "description": "对话式 AI 设计 Agent，可一次性产出完整视觉物料。",
     "order": 19
@@ -164,7 +164,7 @@
   {
     "iconId": "NovelAI",
     "nameCn": "NovelAI",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation", "anime"],
     "description": "主打二次元风格的图像生成与故事创作平台。",
     "order": 20
@@ -172,70 +172,70 @@
   {
     "iconId": "BriaAI",
     "nameCn": "BRIA AI",
-    "category": "image",
+    "category": "image-design",
     "tags": ["image-generation", "licensed"],
     "description": "提供合规授权数据的图像生成模型与编辑接口。"
   },
   {
     "iconId": "Flux",
     "nameCn": "Flux",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation", "api"],
     "description": "Black Forest Labs 的图像生成模型，提示词还原度高。"
   },
   {
     "iconId": "Glif",
     "nameCn": "Glif",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation", "workflow"],
     "description": "可拼接图像生成流程的无代码创作与分享平台。"
   },
   {
     "iconId": "Lightricks",
     "nameCn": "Lightricks",
-    "category": "image",
+    "category": "image-design",
     "tags": ["image-generation", "editing"],
     "description": "面向图像与视频的生成式编辑工具厂商。"
   },
   {
     "iconId": "Meshy",
     "nameCn": "Meshy",
-    "category": "image",
+    "category": "image-3d",
     "tags": ["design", "api"],
     "description": "由文本或图片生成三维模型的创作工具。"
   },
   {
     "iconId": "Reve",
     "nameCn": "Reve",
-    "category": "image",
+    "category": "image-generation",
     "tags": ["image-generation"],
     "description": "注重提示词理解与文字排版效果的图像生成工具。"
   },
   {
     "iconId": "Tripo",
     "nameCn": "Tripo",
-    "category": "image",
+    "category": "image-3d",
     "tags": ["design", "api"],
     "description": "文本与图片转三维模型的平台，支持导出常用格式。"
   },
   {
     "iconId": "VectorizerAI",
     "nameCn": "Vectorizer.AI",
-    "category": "image",
+    "category": "image-design",
     "tags": ["design", "api"],
     "description": "把位图自动转换为可缩放矢量图的在线工具。"
   },
   {
     "iconId": "Adobe",
     "nameCn": "Adobe",
-    "category": "image",
+    "category": "image-design",
     "tags": ["design", "multimodal"],
     "description": "创意软件厂商，Firefly 系列提供图像生成与编辑能力。"
   },
   {
     "iconId": "DeepAI",
     "nameCn": "DeepAI",
-    "category": "image",
+    "category": "image-design",
     "tags": ["image-generation", "api"],
     "description": "提供图像、文本与视频生成接口的在线模型服务。"
   }

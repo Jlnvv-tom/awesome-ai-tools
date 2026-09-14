@@ -4,12 +4,17 @@ import { ICON_META } from '@/data/icons.generated';
 import { ADDED_AT_MAP, CATEGORIES } from '@/data/registry';
 import {
   getAllSites,
+  getCategoriesWithCount,
+  getCategory,
+  getCategoryScope,
+  getChildCategories,
   getFeaturedSites,
   getRecentSites,
   getRelatedSites,
   getSiteById,
   getSitesByCategory,
   getStats,
+  getTopCategories,
   isWithinDays,
   resolveCategory,
   slugify,
@@ -164,5 +169,58 @@ describe('查询能力', () => {
     expect(stats.total).toBeGreaterThanOrEqual(ICON_META.length);
     expect(stats.curated).toBeGreaterThan(0);
     expect(stats.categories).toBe(CATEGORIES.length);
+  });
+});
+
+describe('分类层级', () => {
+  it('一级分类不填 parent', () => {
+    for (const category of getTopCategories()) {
+      expect(category.parent).toBeUndefined();
+    }
+  });
+
+  it('二级分类的 parent 指向一个已存在的一级分类（仅两级）', () => {
+    for (const category of CATEGORIES.filter((item) => item.parent)) {
+      const parent = getCategory(category.parent as string);
+      expect(parent).toBeDefined();
+      expect(parent?.parent).toBeUndefined();
+    }
+  });
+
+  it('父分类的作用域包含自身与全部子分类', () => {
+    const scope = getCategoryScope('infra');
+    expect(scope.has('infra')).toBe(true);
+    for (const child of getChildCategories('infra')) {
+      expect(scope.has(child.slug)).toBe(true);
+    }
+  });
+
+  it('二级分类的作用域只含自身', () => {
+    expect([...getCategoryScope('inference')]).toEqual(['inference']);
+  });
+
+  it('父分类页聚合子分类条目，且条目数多于其兜底条目', () => {
+    const aggregated = getSitesByCategory('infra');
+    const ownOnly = getAllSites().filter((site) => site.category === 'infra');
+    const scope = getCategoryScope('infra');
+
+    expect(aggregated.length).toBeGreaterThan(ownOnly.length);
+    expect(aggregated.every((site) => scope.has(site.category))).toBe(true);
+  });
+
+  it('未登记的分类 slug 返回空数组', () => {
+    expect(getSitesByCategory('not-a-category')).toEqual([]);
+  });
+
+  it('一级分类的 count 为聚合值（自身 + 子分类）', () => {
+    const counts = getCategoriesWithCount();
+    const infra = counts.find((item) => item.slug === 'infra');
+    const sites = getAllSites();
+    const childSlugs = getChildCategories('infra').map((child) => child.slug);
+
+    const own = sites.filter((site) => site.category === 'infra').length;
+    const children = sites.filter((site) => childSlugs.includes(site.category)).length;
+
+    expect(infra?.count).toBe(own + children);
   });
 });

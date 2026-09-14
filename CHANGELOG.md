@@ -99,3 +99,20 @@
 - 搜索索引仅在非图标库来源时写入 `iconSource` / `faviconUrl`，控制索引体积
 - 卡片、列表行与搜索面板补齐新字段下传，排序偏好复用 `use-stored-state` 范式
 - 中英文字典新增排序口径与 Star 徽标文案
+
+### Added（M6 · 分类两级化）
+
+- 分类层级：`Category.parent` 字段、`getTopCategories` / `getChildCategories` / `getCategoryScope` 查询
+- 分类页二级导航：面包屑支持「首页 / 父分类 / 当前」，一级分类页新增子分类入口
+- 迁移脚本 `migrate:categories`（子树内安全迁移，默认预览、`--apply` 写入）
+- 批量导入工具链 `import:catalog`：CSV/JSON → catalog，内置 schema、id 冲突、URL 重复、分类与标签登记四道校验
+- ADR 0010 记录两级分类的决策、约束与备选方案
+
+### Changed（M6 · 分类两级化）
+
+- 分类数 10 → 20（一级 10 + 二级 10），细分 infra / model / agent / image 四个失衡大分类
+- `Site.category` 统一存放最精确分类，父分类页通过 `getCategoryScope` 聚合子分类条目
+- `resolveCategory` 平票策略改为「更深的分类优先」，否则二级分类永远不会被命中
+- `getCategoriesWithCount` 的一级分类计数改为聚合值，与分类页展示口径一致
+- 「看看其他分类」区块只列一级分类，避免二级分类灌满
+- 迁移 98 条钉死分类的条目；示范录入 8 条真实工具（收录量 328 → 336，自主收录 14 条）

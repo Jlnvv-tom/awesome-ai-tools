@@ -86,7 +86,32 @@ pnpm dev          # http://localhost:3000
 > 查询某个图标是否存在：在 `src/data/icons.generated.ts` 中搜索品牌名，或查看
 > [lobehub.com/icons](https://lobehub.com/icons)。`iconId` 为 PascalCase，如 `OpenAI`、`AdobeFirefly`。
 
-### 场景 C：修正错误信息
+### 场景 C：批量导入（成批收录时推荐）
+
+把清单整理成 CSV 后一次导入：
+
+```csv
+id,name,nameCn,url,category,tags,description,color,addedAt,pricing,openSource,chineseSupport,github
+xfyun-zhiwen,Zhiwen,讯飞智文,https://zhiwen.xfyun.cn,writing,productivity,"科大讯飞推出的 AI 文档工具，支持一键生成 PPT 与 Word 文稿。",,2026-09-13,freemium,no,yes,
+```
+
+```bash
+pnpm import:catalog data/catalog/batch.csv           # 预览校验结果（不写文件）
+pnpm import:catalog data/catalog/batch.csv --apply   # 写入 data/catalog/tools.json
+pnpm fetch:favicons                                  # 抓取官网图标
+pnpm validate:data                                   # 复核
+```
+
+说明：
+
+- `tags` 用 `|` 分隔（如 `ai-search|community`），取值须已在 `data/tags.json` 登记；
+- `category` 可以填二级分类（如 `inference`、`image-design`、`agent-framework`），完整清单见 `data/categories.json`；
+- `color` 留空会使用默认品牌色，`pnpm audit:catalog` 会提示需要校正的条目；
+- 脚本会拦截四类问题并逐条给出原因：schema 不合法、id 冲突（含图标库派生条目）、
+  URL 已被占用、分类或标签未登记；
+- 同一批次内的重复 id / URL 也会被拦截。
+
+### 场景 D：修正错误信息
 
 直接修改对应的 `data/sites/*.json`，并在 PR 描述中说明修改原因与信息来源（建议附官网截图或链接）。
 

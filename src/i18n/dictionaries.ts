@@ -146,6 +146,7 @@ const zh = {
       `${description}，共收录该分类下的 AI 工具官网，支持标签筛选与一键直达。`,
     nameEn: (nameEn: string) => `英文分类名 ${nameEn}`,
     otherCategories: '看看其他分类',
+    subcategories: '子分类',
   },
   about: {
     title: '关于本站',
@@ -379,6 +380,7 @@ const en: typeof zh = {
       `${description} — every AI tool in this category with tag filters and direct links.`,
     nameEn: (nameEn: string) => `English name: ${nameEn}`,
     otherCategories: 'Explore other categories',
+    subcategories: 'Subcategories',
   },
   about: {
     title: 'About',

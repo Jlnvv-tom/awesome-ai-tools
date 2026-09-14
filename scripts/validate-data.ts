@@ -47,6 +47,20 @@ function validateCategories() {
     if (seen.has(category.slug)) error(`分类 slug 重复：${category.slug}`);
     seen.add(category.slug);
   }
+
+  // 层级校验：仅支持两级，parent 必须指向一级分类
+  for (const category of CATEGORIES) {
+    if (!category.parent) continue;
+
+    const parent = CATEGORIES.find((item) => item.slug === category.parent);
+    if (!parent) {
+      error(`分类 ${category.slug} 的 parent 不存在：${category.parent}`);
+      continue;
+    }
+    if (parent.parent) {
+      error(`分类 ${category.slug} 的 parent 指向了二级分类（仅支持两级）：${category.parent}`);
+    }
+  }
 }
 
 function validateTags() {

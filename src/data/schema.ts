@@ -47,6 +47,8 @@ export const IconMetaSchema = z.object({
 
 export const CategorySchema = z.object({
   slug: z.string().regex(SLUG),
+  /** 仅二级分类填写；必须指向某个一级分类的 slug（层级校验见 validate-data） */
+  parent: z.string().regex(SLUG).optional(),
   name: z.string().min(1).max(20),
   nameEn: z.string().min(1).max(40),
   description: z.string().min(4).max(60),

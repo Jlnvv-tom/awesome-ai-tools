@@ -6,9 +6,9 @@ import type { Contributor } from '@/types/contributor';
 export const CONTRIBUTORS: Contributor[] = [
   {
     name: "吴集焕",
-    commits: 7,
-    dataCommits: 3,
+    commits: 8,
+    dataCommits: 4,
     firstCommit: "2026-09-08",
-    lastCommit: "2026-09-12",
+    lastCommit: "2026-09-13",
   },
 ];
